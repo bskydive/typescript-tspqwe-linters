@@ -63,7 +63,7 @@ Severity: low
 1. Follow the [preparation checklist](https://github.com/amilajack/project-checklist)
 1. Follow [README](https://github.com/matiassingers/awesome-readme) best practices
 1. Add code style guide
-1. Add live example on stackblitz, [gitlab pages](https://docs.gitlab.com/ee/user/project/pages/), [github pages](https://guides.github.com/features/pages/), [heroku](https://www.heroku.com/free)
+1. Add live example on [stackblitz](https://stackblitz.com/), [gitlab pages](https://docs.gitlab.com/ee/user/project/pages/), [github pages](https://guides.github.com/features/pages/), [heroku](https://www.heroku.com/free)
 1. Add screenshots
 1. Add link to KB/docs
 1. Add [svg badges](https://shields.io/)
