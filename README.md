@@ -5,12 +5,12 @@
 1. Lint libs collection and code [review template](./code-review.md).
 1. The handy tool set to begin code conventions automation
 1. Live linting playground
-	* [eslint]() - js/ts linter with plugins: typescript, angular, promise, react
-	* [tslint]() - still useful(finnish notation)
-	* [stylelint]() - css
-	* [cspell]() - spelling
-	* [prettier]() - formatter
-	* [sonar]() - code quality(TODO)
+	* [eslint](https://eslint.org/) - js/ts linter with plugins: typescript, angular, promise, react
+	* [tslint](https://github.com/palantir/tslint) - still useful(finnish notation)
+	* [stylelint](https://stylelint.io/) - css
+	* [cspell](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) - spelling
+	* [prettier](https://prettier.io/) - formatter
+	* [sonar](https://www.sonarqube.org/) - code quality(TODO)
 
 ## What is it for?
 
