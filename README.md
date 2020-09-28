@@ -49,3 +49,4 @@
  * sonarlint docker
  * Angular code examples
  * Find how make live cloud playground useful
+ * badges
