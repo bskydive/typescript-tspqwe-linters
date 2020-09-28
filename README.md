@@ -4,7 +4,7 @@
 
 1. Lint libs collection and code [review template](./code-review.md).
 1. The handy tool set to begin code conventions automation
-1. Live linting playground
+1. [Live](https://stackblitz.com/edit/typescript-tspqwe-linters?file=README.md) linting playground(TODO)
 	* [eslint](https://eslint.org/) - js/ts linter with plugins: typescript, angular, promise, react
 	* [tslint](https://github.com/palantir/tslint) - still useful(finnish notation)
 	* [stylelint](https://stylelint.io/) - css
@@ -48,3 +48,4 @@
 
  * sonarlint docker
  * Angular code examples
+ * Find how make live cloud playground can became useful
