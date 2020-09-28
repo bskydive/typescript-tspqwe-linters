@@ -1,0 +1,4367 @@
+{
+  "statistics": {
+    "detectionDate": "2020-09-28T23:16:58.694Z",
+    "formats": {
+      "typescript": {
+        "sources": {
+          "./typescript-tspqwe-linters/src/someComponent/someComponent.ts": {
+            "lines": 46,
+            "tokens": 468,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 42,
+            "duplicatedTokens": 558,
+            "percentage": 91.3,
+            "percentageTokens": 119.23,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./typescript-tspqwe-linters/src/index.ts": {
+            "lines": 24,
+            "tokens": 193,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 70,
+          "tokens": 661,
+          "sources": 2,
+          "clones": 1,
+          "duplicatedLines": 21,
+          "duplicatedTokens": 279,
+          "percentage": 30,
+          "percentageTokens": 42.21,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "javascript": {
+        "sources": {
+          "./typescript-tspqwe-linters/src/someComponent/some.js": {
+            "lines": 31,
+            "tokens": 354,
+            "sources": 1,
+            "clones": 2,
+            "duplicatedLines": 42,
+            "duplicatedTokens": 556,
+            "percentage": 135.48,
+            "percentageTokens": 157.06,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./typescript-tspqwe-linters/log/html/service-worker.js": {
+            "lines": 33,
+            "tokens": 128,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./typescript-tspqwe-linters/log/html/precache-manifest.87df0cdcb031c4ea273114a6c6ecf706.js": {
+            "lines": 97,
+            "tokens": 502,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./typescript-tspqwe-linters/src/some.js": {
+            "lines": 4,
+            "tokens": 34,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./typescript-tspqwe-linters/.stylelintrc.js": {
+            "lines": 86,
+            "tokens": 513,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./typescript-tspqwe-linters/.prettierrc.js": {
+            "lines": 14,
+            "tokens": 89,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./typescript-tspqwe-linters/.eslintrc.react.js": {
+            "lines": 377,
+            "tokens": 2332,
+            "sources": 1,
+            "clones": 3,
+            "duplicatedLines": 299,
+            "duplicatedTokens": 2049,
+            "percentage": 79.31,
+            "percentageTokens": 87.86,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          },
+          "./typescript-tspqwe-linters/.eslintrc.js": {
+            "lines": 388,
+            "tokens": 2436,
+            "sources": 1,
+            "clones": 3,
+            "duplicatedLines": 299,
+            "duplicatedTokens": 2049,
+            "percentage": 77.06,
+            "percentageTokens": 84.11,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 1030,
+          "tokens": 6388,
+          "sources": 8,
+          "clones": 4,
+          "duplicatedLines": 320,
+          "duplicatedTokens": 2327,
+          "percentage": 31.07,
+          "percentageTokens": 36.43,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      },
+      "scss": {
+        "sources": {
+          "./typescript-tspqwe-linters/src/index.scss": {
+            "lines": 8,
+            "tokens": 49,
+            "sources": 1,
+            "clones": 0,
+            "duplicatedLines": 0,
+            "duplicatedTokens": 0,
+            "percentage": 0,
+            "percentageTokens": 0,
+            "newDuplicatedLines": 0,
+            "newClones": 0
+          }
+        },
+        "total": {
+          "lines": 8,
+          "tokens": 49,
+          "sources": 1,
+          "clones": 0,
+          "duplicatedLines": 0,
+          "duplicatedTokens": 0,
+          "percentage": 0,
+          "percentageTokens": 0,
+          "newDuplicatedLines": 0,
+          "newClones": 0
+        }
+      }
+    },
+    "total": {
+      "lines": 1108,
+      "tokens": 7098,
+      "sources": 11,
+      "clones": 5,
+      "duplicatedLines": 341,
+      "duplicatedTokens": 2606,
+      "percentage": 30.78,
+      "percentageTokens": 36.71,
+      "newDuplicatedLines": 0,
+      "newClones": 0
+    }
+  },
+  "duplicates": [
+    {
+      "format": "typescript",
+      "lines": 22,
+      "fragment": "if (this.someVar) {\n\t\t\tthis.someVar = !this.someVar;\n\t\t} else if (this.someVar) {\n\t\t\tthis.someVar = !this.someVar;\n\t\t} else if (this.someVar) {\n\t\t\tthis.someVar = !this.someVar;\n\t\t} else if (this.someVar) {\n\t\t\tthis.someVar = !this.someVar;\n\t\t} else if (this.someVar) {\n\t\t\tthis.someVar = !this.someVar;\n\t\t} else if (this.someVar) {\n\t\t\tthis.someVar = !this.someVar;\n\t\t} else if (this.someVar) {\n\t\t\tthis.someVar = !this.someVar;\n\t\t} else if (this.someVar) {\n\t\t\tthis.someVar = !this.someVar;\n\t\t} else if (this.someVar) {\n\t\t\tthis.someVar = !this.someVar;\n\t\t} else if (this.someVar) {\n\t\t\tthis.someVar = !this.someVar;\n\t\t}\n\t}",
+      "tokens": 0,
+      "firstFile": {
+        "name": "./typescript-tspqwe-linters/src/someComponent/someComponent.ts",
+        "start": 25,
+        "end": 46,
+        "startLoc": {
+          "line": 25,
+          "column": 10,
+          "position": 187
+        },
+        "endLoc": {
+          "line": 46,
+          "column": 3,
+          "position": 466
+        },
+        "blame": {
+          "25": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "25",
+            "rev": "0029c645"
+          },
+          "26": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "26",
+            "rev": "0029c645"
+          },
+          "27": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "27",
+            "rev": "0029c645"
+          },
+          "28": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "28",
+            "rev": "0029c645"
+          },
+          "29": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "29",
+            "rev": "0029c645"
+          },
+          "30": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "30",
+            "rev": "0029c645"
+          },
+          "31": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "31",
+            "rev": "0029c645"
+          },
+          "32": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "32",
+            "rev": "0029c645"
+          },
+          "33": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "33",
+            "rev": "0029c645"
+          },
+          "34": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "34",
+            "rev": "0029c645"
+          },
+          "35": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "35",
+            "rev": "0029c645"
+          },
+          "36": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "36",
+            "rev": "0029c645"
+          },
+          "37": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "37",
+            "rev": "0029c645"
+          },
+          "38": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "38",
+            "rev": "0029c645"
+          },
+          "39": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "39",
+            "rev": "0029c645"
+          },
+          "40": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "40",
+            "rev": "0029c645"
+          },
+          "41": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "41",
+            "rev": "0029c645"
+          },
+          "42": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "42",
+            "rev": "0029c645"
+          },
+          "43": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "43",
+            "rev": "0029c645"
+          },
+          "44": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "44",
+            "rev": "0029c645"
+          },
+          "45": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "45",
+            "rev": "0029c645"
+          },
+          "46": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "46",
+            "rev": "0029c645"
+          }
+        }
+      },
+      "secondFile": {
+        "name": "./typescript-tspqwe-linters/src/someComponent/someComponent.ts",
+        "start": 23,
+        "end": 29,
+        "startLoc": {
+          "line": 23,
+          "column": 3,
+          "position": 159
+        },
+        "endLoc": {
+          "line": 29,
+          "column": 9,
+          "position": 241
+        },
+        "blame": {
+          "23": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "23",
+            "rev": "0029c645"
+          },
+          "24": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "24",
+            "rev": "0029c645"
+          },
+          "25": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "25",
+            "rev": "0029c645"
+          },
+          "26": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "26",
+            "rev": "0029c645"
+          },
+          "27": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "27",
+            "rev": "0029c645"
+          },
+          "28": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "28",
+            "rev": "0029c645"
+          },
+          "29": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "29",
+            "rev": "0029c645"
+          }
+        }
+      }
+    },
+    {
+      "format": "javascript",
+      "lines": 22,
+      "fragment": "if (this.someVar) {\n\t\tthis.someVar = !this.someVar;\n\t} else if (this.someVar) {\n\t\tthis.someVar = !this.someVar;\n\t} else if (this.someVar) {\n\t\tthis.someVar = !this.someVar;\n\t} else if (this.someVar) {\n\t\tthis.someVar = !this.someVar;\n\t} else if (this.someVar) {\n\t\tthis.someVar = !this.someVar;\n\t} else if (this.someVar) {\n\t\tthis.someVar = !this.someVar;\n\t} else if (this.someVar) {\n\t\tthis.someVar = !this.someVar;\n\t} else if (this.someVar) {\n\t\tthis.someVar = !this.someVar;\n\t} else if (this.someVar) {\n\t\tthis.someVar = !this.someVar;\n\t} else if (this.someVar) {\n\t\tthis.someVar = !this.someVar;\n\t}\n}",
+      "tokens": 0,
+      "firstFile": {
+        "name": "./typescript-tspqwe-linters/src/someComponent/some.js",
+        "start": 11,
+        "end": 32,
+        "startLoc": {
+          "line": 11,
+          "column": 9,
+          "position": 76
+        },
+        "endLoc": {
+          "line": 32,
+          "column": 2,
+          "position": 354
+        },
+        "blame": {
+          "11": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "11",
+            "rev": "00000000"
+          },
+          "12": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "12",
+            "rev": "00000000"
+          },
+          "13": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "13",
+            "rev": "00000000"
+          },
+          "14": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "14",
+            "rev": "00000000"
+          },
+          "15": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "15",
+            "rev": "00000000"
+          },
+          "16": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "16",
+            "rev": "00000000"
+          },
+          "17": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "17",
+            "rev": "00000000"
+          },
+          "18": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "18",
+            "rev": "00000000"
+          },
+          "19": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "19",
+            "rev": "00000000"
+          },
+          "20": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "20",
+            "rev": "00000000"
+          },
+          "21": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "21",
+            "rev": "00000000"
+          },
+          "22": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "22",
+            "rev": "00000000"
+          },
+          "23": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "23",
+            "rev": "00000000"
+          },
+          "24": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "24",
+            "rev": "00000000"
+          },
+          "25": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "25",
+            "rev": "00000000"
+          },
+          "26": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "26",
+            "rev": "00000000"
+          },
+          "27": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "27",
+            "rev": "00000000"
+          },
+          "28": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "28",
+            "rev": "00000000"
+          },
+          "29": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "29",
+            "rev": "00000000"
+          },
+          "30": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "30",
+            "rev": "00000000"
+          },
+          "31": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "31",
+            "rev": "00000000"
+          },
+          "32": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "32",
+            "rev": "00000000"
+          }
+        }
+      },
+      "secondFile": {
+        "name": "./typescript-tspqwe-linters/src/someComponent/some.js",
+        "start": 9,
+        "end": 15,
+        "startLoc": {
+          "line": 9,
+          "column": 2,
+          "position": 48
+        },
+        "endLoc": {
+          "line": 15,
+          "column": 8,
+          "position": 130
+        },
+        "blame": {
+          "9": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "9",
+            "rev": "00000000"
+          },
+          "10": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "10",
+            "rev": "00000000"
+          },
+          "11": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "11",
+            "rev": "00000000"
+          },
+          "12": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "12",
+            "rev": "00000000"
+          },
+          "13": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "13",
+            "rev": "00000000"
+          },
+          "14": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "14",
+            "rev": "00000000"
+          },
+          "15": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "15",
+            "rev": "00000000"
+          }
+        }
+      }
+    },
+    {
+      "format": "javascript",
+      "lines": 80,
+      "fragment": "{\n\t\t\t// ================================================================================= TypeScript\n\t\t\tfiles: ['*.ts'], // enable the rule specifically for TypeScript files\n\t\t\trules: {\n\t\t\t\t'@typescript-eslint/require-await': 'error',\n\t\t\t\t'@typescript-eslint/promise-function-async': [\n\t\t\t\t\t'warn',\n\t\t\t\t\t{\n\t\t\t\t\t\t// https://github.com/typescript-eslint/typescript-eslint/blob/v4.0.1/packages/eslint-plugin/docs/rules/promise-function-async.md#options\n\t\t\t\t\t\tallowedPromiseNames: ['Thenable'],\n\t\t\t\t\t\tcheckArrowFunctions: true,\n\t\t\t\t\t\tcheckFunctionDeclarations: true,\n\t\t\t\t\t\tcheckFunctionExpressions: true,\n\t\t\t\t\t\tcheckMethodDeclarations: true,\n\t\t\t\t\t},\n\t\t\t\t],\n\t\t\t\t'@typescript-eslint/ban-types': 'warn',\n\t\t\t\t'@typescript-eslint/no-empty-function': ['warn', { allow: [] }], // https://eslint.org/docs/rules/no-empty-function#options-74\n\t\t\t\t'@typescript-eslint/consistent-type-definitions': 'warn',\n\t\t\t\t'@typescript-eslint/consistent-type-assertions': 'warn',\n\t\t\t\t'@typescript-eslint/explicit-function-return-type': [\n\t\t\t\t\t// https://github.com/typescript-eslint/typescript-eslint/blob/v4.0.1/packages/eslint-plugin/docs/rules/explicit-function-return-type.md#options\n\t\t\t\t\t'warn',\n\t\t\t\t\t{\n\t\t\t\t\t\tallowExpressions: true,\n\t\t\t\t\t\tallowTypedFunctionExpressions: true,\n\t\t\t\t\t\tallowHigherOrderFunctions: true,\n\t\t\t\t\t\tallowConciseArrowFunctionExpressionsStartingWithVoid: true,\n\t\t\t\t\t},\n\t\t\t\t],\n\t\t\t\t'@typescript-eslint/explicit-module-boundary-types': [\n\t\t\t\t\t// https://github.com/typescript-eslint/typescript-eslint/blob/v4.0.1/packages/eslint-plugin/docs/rules/explicit-module-boundary-types.md#options\n\t\t\t\t\t'warn',\n\t\t\t\t\t{\n\t\t\t\t\t\tallowArgumentsExplicitlyTypedAsAny: false, // If true, the rule will not report for arguments that are explicitly typed as `any`\n\t\t\t\t\t\tallowDirectConstAssertionInArrowFunctions: true, // If true, body-less arrow functions that return an `as const` type assertion will not require an explicit return value annotation. You must still type the parameters of the function.\n\t\t\t\t\t\tallowedNames: [], // An array of function/method names that will not have their arguments or their return values checked.\n\t\t\t\t\t\tallowHigherOrderFunctions: true, // If true, functions immediately returning another function expression will not require an explicit return value annotation. You must still type the parameters of the function.\n\t\t\t\t\t\tallowTypedFunctionExpressions: true, // If true, type annotations are also allowed on the variable of a function expression rather than on the function arguments/return value directly.\n\t\t\t\t\t},\n\t\t\t\t],\n\t\t\t\t'@typescript-eslint/no-explicit-any': 'warn',\n\t\t\t\t'@typescript-eslint/naming-convention': [\n\t\t\t\t\t// https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/naming-convention.md#enforce-that-interface-names-do-not-begin-with-an-i\n\t\t\t\t\t'warn',\n\t\t\t\t\t{\n\t\t\t\t\t\tselector: 'interface',\n\t\t\t\t\t\tformat: ['PascalCase'],\n\t\t\t\t\t\tprefix: ['I'],\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tselector: 'typeAlias',\n\t\t\t\t\t\tformat: ['PascalCase'],\n\t\t\t\t\t\tprefix: ['T'],\n\t\t\t\t\t},\n\t\t\t\t\t{\n\t\t\t\t\t\tselector: 'variable',\n\t\t\t\t\t\tmodifiers: ['const'],\n\t\t\t\t\t\tformat: ['UPPER_CASE'],\n\t\t\t\t\t},\n\t\t\t\t],\n\t\t\t\t'one-var': [\n\t\t\t\t\t// combine var declaration in one https://eslint.org/docs/rules/one-var\n\t\t\t\t\t'warn',\n\t\t\t\t\t{\n\t\t\t\t\t\tseparateRequires: true,\n\t\t\t\t\t\tconst: 'never',\n\t\t\t\t\t\tlet: 'never',\n\t\t\t\t\t\tvar: 'consecutive', // too many issues in old code\n\t\t\t\t\t},\n\t\t\t\t],\n\t\t\t\t'no-unused-vars': 'off', // dedupe\n\t\t\t\t'@typescript-eslint/no-unused-vars': 'warn',\n\t\t\t\t'no-extra-semi': 'off',\n\t\t\t\t'@typescript-eslint/no-extra-semi': 'warn',\n\n\t\t\t\t// ================================================== ASYNC =============================================================\n\t\t\t\t'promise/prefer-await-to-callbacks': 'off', // fires on RxJS ()=>{} https://github.com/xjamundx/eslint-plugin-promise/blob/development/rules/prefer-await-to-callbacks.js\n\n\t\t\t\t// ================================================== ANGULAR ==========================================================",
+      "tokens": 0,
+      "firstFile": {
+        "name": "./typescript-tspqwe-linters/.eslintrc.js",
+        "start": 69,
+        "end": 148,
+        "startLoc": {
+          "line": 69,
+          "column": 3,
+          "position": 295
+        },
+        "endLoc": {
+          "line": 148,
+          "column": 125,
+          "position": 769
+        },
+        "blame": {
+          "69": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "69",
+            "rev": "0029c645"
+          },
+          "70": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "70",
+            "rev": "0029c645"
+          },
+          "71": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "71",
+            "rev": "0029c645"
+          },
+          "72": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "72",
+            "rev": "0029c645"
+          },
+          "73": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "73",
+            "rev": "0029c645"
+          },
+          "74": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "74",
+            "rev": "0029c645"
+          },
+          "75": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "75",
+            "rev": "0029c645"
+          },
+          "76": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "76",
+            "rev": "0029c645"
+          },
+          "77": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "77",
+            "rev": "0029c645"
+          },
+          "78": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "78",
+            "rev": "0029c645"
+          },
+          "79": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "79",
+            "rev": "0029c645"
+          },
+          "80": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "80",
+            "rev": "0029c645"
+          },
+          "81": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "81",
+            "rev": "0029c645"
+          },
+          "82": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "82",
+            "rev": "0029c645"
+          },
+          "83": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "83",
+            "rev": "0029c645"
+          },
+          "84": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "84",
+            "rev": "0029c645"
+          },
+          "85": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "85",
+            "rev": "0029c645"
+          },
+          "86": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "86",
+            "rev": "0029c645"
+          },
+          "87": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "87",
+            "rev": "0029c645"
+          },
+          "88": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "88",
+            "rev": "0029c645"
+          },
+          "89": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "89",
+            "rev": "0029c645"
+          },
+          "90": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "90",
+            "rev": "0029c645"
+          },
+          "91": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "91",
+            "rev": "0029c645"
+          },
+          "92": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "92",
+            "rev": "0029c645"
+          },
+          "93": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "93",
+            "rev": "0029c645"
+          },
+          "94": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "94",
+            "rev": "0029c645"
+          },
+          "95": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "95",
+            "rev": "0029c645"
+          },
+          "96": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "96",
+            "rev": "0029c645"
+          },
+          "97": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "97",
+            "rev": "0029c645"
+          },
+          "98": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "98",
+            "rev": "0029c645"
+          },
+          "99": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "99",
+            "rev": "0029c645"
+          },
+          "100": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "100",
+            "rev": "0029c645"
+          },
+          "101": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "101",
+            "rev": "0029c645"
+          },
+          "102": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "102",
+            "rev": "0029c645"
+          },
+          "103": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "103",
+            "rev": "0029c645"
+          },
+          "104": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "104",
+            "rev": "0029c645"
+          },
+          "105": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "105",
+            "rev": "0029c645"
+          },
+          "106": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "106",
+            "rev": "0029c645"
+          },
+          "107": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "107",
+            "rev": "0029c645"
+          },
+          "108": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "108",
+            "rev": "0029c645"
+          },
+          "109": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "109",
+            "rev": "0029c645"
+          },
+          "110": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "110",
+            "rev": "0029c645"
+          },
+          "111": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "111",
+            "rev": "0029c645"
+          },
+          "112": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "112",
+            "rev": "0029c645"
+          },
+          "113": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "113",
+            "rev": "0029c645"
+          },
+          "114": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "114",
+            "rev": "0029c645"
+          },
+          "115": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "115",
+            "rev": "0029c645"
+          },
+          "116": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "116",
+            "rev": "0029c645"
+          },
+          "117": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "117",
+            "rev": "0029c645"
+          },
+          "118": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "118",
+            "rev": "0029c645"
+          },
+          "119": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "119",
+            "rev": "0029c645"
+          },
+          "120": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "120",
+            "rev": "0029c645"
+          },
+          "121": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "121",
+            "rev": "0029c645"
+          },
+          "122": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "122",
+            "rev": "0029c645"
+          },
+          "123": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "123",
+            "rev": "0029c645"
+          },
+          "124": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "124",
+            "rev": "0029c645"
+          },
+          "125": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "125",
+            "rev": "0029c645"
+          },
+          "126": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "126",
+            "rev": "0029c645"
+          },
+          "127": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "127",
+            "rev": "0029c645"
+          },
+          "128": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "128",
+            "rev": "0029c645"
+          },
+          "129": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "129",
+            "rev": "0029c645"
+          },
+          "130": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "130",
+            "rev": "0029c645"
+          },
+          "131": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "131",
+            "rev": "0029c645"
+          },
+          "132": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "132",
+            "rev": "0029c645"
+          },
+          "133": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "133",
+            "rev": "0029c645"
+          },
+          "134": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "134",
+            "rev": "0029c645"
+          },
+          "135": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "135",
+            "rev": "0029c645"
+          },
+          "136": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "136",
+            "rev": "0029c645"
+          },
+          "137": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "137",
+            "rev": "0029c645"
+          },
+          "138": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "138",
+            "rev": "0029c645"
+          },
+          "139": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "139",
+            "rev": "0029c645"
+          },
+          "140": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "140",
+            "rev": "0029c645"
+          },
+          "141": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "141",
+            "rev": "0029c645"
+          },
+          "142": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "142",
+            "rev": "0029c645"
+          },
+          "143": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "143",
+            "rev": "0029c645"
+          },
+          "144": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "144",
+            "rev": "0029c645"
+          },
+          "145": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "145",
+            "rev": "0029c645"
+          },
+          "146": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "146",
+            "rev": "0029c645"
+          },
+          "147": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "147",
+            "rev": "0029c645"
+          },
+          "148": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "148",
+            "rev": "0029c645"
+          }
+        }
+      },
+      "secondFile": {
+        "name": "./typescript-tspqwe-linters/.eslintrc.react.js",
+        "start": 73,
+        "end": 151,
+        "startLoc": {
+          "line": 73,
+          "column": 3,
+          "position": 244
+        },
+        "endLoc": {
+          "line": 151,
+          "column": 5,
+          "position": 717
+        },
+        "blame": {
+          "73": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "73",
+            "rev": "00000000"
+          },
+          "74": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "74",
+            "rev": "00000000"
+          },
+          "75": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "75",
+            "rev": "00000000"
+          },
+          "76": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "76",
+            "rev": "00000000"
+          },
+          "77": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "77",
+            "rev": "00000000"
+          },
+          "78": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "78",
+            "rev": "00000000"
+          },
+          "79": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "79",
+            "rev": "00000000"
+          },
+          "80": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "80",
+            "rev": "00000000"
+          },
+          "81": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "81",
+            "rev": "00000000"
+          },
+          "82": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "82",
+            "rev": "00000000"
+          },
+          "83": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "83",
+            "rev": "00000000"
+          },
+          "84": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "84",
+            "rev": "00000000"
+          },
+          "85": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "85",
+            "rev": "00000000"
+          },
+          "86": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "86",
+            "rev": "00000000"
+          },
+          "87": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "87",
+            "rev": "00000000"
+          },
+          "88": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "88",
+            "rev": "00000000"
+          },
+          "89": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "89",
+            "rev": "00000000"
+          },
+          "90": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "90",
+            "rev": "00000000"
+          },
+          "91": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "91",
+            "rev": "00000000"
+          },
+          "92": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "92",
+            "rev": "00000000"
+          },
+          "93": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "93",
+            "rev": "00000000"
+          },
+          "94": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "94",
+            "rev": "00000000"
+          },
+          "95": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "95",
+            "rev": "00000000"
+          },
+          "96": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "96",
+            "rev": "00000000"
+          },
+          "97": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "97",
+            "rev": "00000000"
+          },
+          "98": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "98",
+            "rev": "00000000"
+          },
+          "99": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "99",
+            "rev": "00000000"
+          },
+          "100": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "100",
+            "rev": "00000000"
+          },
+          "101": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "101",
+            "rev": "00000000"
+          },
+          "102": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "102",
+            "rev": "00000000"
+          },
+          "103": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "103",
+            "rev": "00000000"
+          },
+          "104": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "104",
+            "rev": "00000000"
+          },
+          "105": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "105",
+            "rev": "00000000"
+          },
+          "106": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "106",
+            "rev": "00000000"
+          },
+          "107": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "107",
+            "rev": "00000000"
+          },
+          "108": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "108",
+            "rev": "00000000"
+          },
+          "109": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "109",
+            "rev": "00000000"
+          },
+          "110": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "110",
+            "rev": "00000000"
+          },
+          "111": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "111",
+            "rev": "00000000"
+          },
+          "112": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "112",
+            "rev": "00000000"
+          },
+          "113": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "113",
+            "rev": "00000000"
+          },
+          "114": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "114",
+            "rev": "00000000"
+          },
+          "115": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "115",
+            "rev": "00000000"
+          },
+          "116": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "116",
+            "rev": "00000000"
+          },
+          "117": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "117",
+            "rev": "00000000"
+          },
+          "118": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "118",
+            "rev": "00000000"
+          },
+          "119": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "119",
+            "rev": "00000000"
+          },
+          "120": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "120",
+            "rev": "00000000"
+          },
+          "121": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "121",
+            "rev": "00000000"
+          },
+          "122": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "122",
+            "rev": "00000000"
+          },
+          "123": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "123",
+            "rev": "00000000"
+          },
+          "124": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "124",
+            "rev": "00000000"
+          },
+          "125": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "125",
+            "rev": "00000000"
+          },
+          "126": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "126",
+            "rev": "00000000"
+          },
+          "127": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "127",
+            "rev": "00000000"
+          },
+          "128": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "128",
+            "rev": "00000000"
+          },
+          "129": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "129",
+            "rev": "00000000"
+          },
+          "130": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "130",
+            "rev": "00000000"
+          },
+          "131": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "131",
+            "rev": "00000000"
+          },
+          "132": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "132",
+            "rev": "00000000"
+          },
+          "133": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "133",
+            "rev": "00000000"
+          },
+          "134": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "134",
+            "rev": "00000000"
+          },
+          "135": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "135",
+            "rev": "00000000"
+          },
+          "136": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "136",
+            "rev": "00000000"
+          },
+          "137": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "137",
+            "rev": "00000000"
+          },
+          "138": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "138",
+            "rev": "00000000"
+          },
+          "139": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "139",
+            "rev": "00000000"
+          },
+          "140": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "140",
+            "rev": "00000000"
+          },
+          "141": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "141",
+            "rev": "00000000"
+          },
+          "142": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "142",
+            "rev": "00000000"
+          },
+          "143": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "143",
+            "rev": "00000000"
+          },
+          "144": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "144",
+            "rev": "00000000"
+          },
+          "145": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "145",
+            "rev": "00000000"
+          },
+          "146": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "146",
+            "rev": "00000000"
+          },
+          "147": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "147",
+            "rev": "00000000"
+          },
+          "148": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "148",
+            "rev": "00000000"
+          },
+          "149": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "149",
+            "rev": "00000000"
+          },
+          "150": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "150",
+            "rev": "00000000"
+          },
+          "151": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "151",
+            "rev": "00000000"
+          }
+        }
+      }
+    },
+    {
+      "format": "javascript",
+      "lines": 123,
+      "fragment": "},\n\t\t},\n\t\t{\n\t\t\t// ====================================================== MODEL ============================================================\n\t\t\tfiles: ['*.model.ts'],\n\t\t\trules: {\n\t\t\t\tcamelcase: ['off'], // sometimes API model using Weird_Naming https://eslint.org/docs/rules/camelcase\n\t\t\t\tcomplexity: ['warn', { max: 20 }], // models using a lot of `if` https://eslint.org/docs/rules/complexity\n\t\t\t\t'prettier/prettier': ['off'], // models requires less formatting https://github.com/prettier/eslint-plugin-prettier\n\t\t\t},\n\t\t},\n\t\t{\n\t\t\t// ====================================================== JS ===============================================================\n\t\t\tfiles: ['*.js'],\n\t\t\trules: {\n\t\t\t\t'one-var': [\n\t\t\t\t\t// too many issues in libs. combine var declaration in one https://eslint.org/docs/rules/one-var\n\t\t\t\t\t'warn',\n\t\t\t\t\t{\n\t\t\t\t\t\tseparateRequires: true,\n\t\t\t\t\t\tconst: 'consecutive',\n\t\t\t\t\t\tlet: 'consecutive',\n\t\t\t\t\t\tvar: 'consecutive',\n\t\t\t\t\t},\n\t\t\t\t],\n\t\t\t\t'@typescript-eslint/no-empty-function': ['warn', { allow: ['functions'] }], // https://eslint.org/docs/rules/no-empty-function#options-74,\n\t\t\t\t'@typescript-eslint/no-this-alias': 'warn',\n\t\t\t\t'no-unused-vars': 'warn',\n\t\t\t\t'@typescript-eslint/no-unused-vars': 'off', // dedupe\n\t\t\t\t'no-extra-semi': 'warn',\n\t\t\t\t'@typescript-eslint/no-extra-semi': 'off', // dedupe\n\t\t\t},\n\t\t},\n\t],\n\trules: {\n\t\t// ========================================================== COMMON ==========================================================\n\t\tquotes: 'off',\n\t\t'quote-props': 'off',\n\t\t'no-extra-parens': 'off', //! conflicts with  Unnecessary parentheses around expression.\n\t\t// 'no-extra-parens': ['warn', 'all'], // https://eslint.org/docs/rules/no-extra-parens\n\t\t'dot-location': 'off', // Expected dot to be on same line as object.\n\t\t'import/no-unresolved': 'off', // don't work with Angular @alias\n\t\t// 'import/no-unresolved': ['warn', { commonjs: true, amd: true }],\n\t\t'accessor-pairs': 'off',\n\t\t'no-use-before-define': 'off', // fires on typescript interfaces\n\n\t\tyoda: 'warn', // if (\"red\" === color)  https://eslint.org/docs/rules/yoda\n\t\t'new-parens': 'warn', // require parentheses when invoking a constructor with no arguments \n\n\t\t// ========================================================== STYLE ===========================================================\n\n\t\t'new-cap': 'off', //  violates @Input(). A function with a name starting with an uppercase letter should only be used as a constructor.\n\t\t// 'trailing-comma': 'warn', // deprecated\n\t\tsemi: 'off',\n\n\t\t'comma-dangle': [\n\t\t\t// https://eslint.org/docs/rules/comma-dangle\n\t\t\t'warn',\n\t\t\t{\n\t\t\t\tarrays: 'always-multiline', // is for array literals and array patterns of destructuring. (e.g. let [a,] = [1,];)\n\t\t\t\tobjects: 'always-multiline', // is for object literals and object patterns of destructuring. (e.g. let {a,} = {a: 1};)\n\t\t\t\timports: 'always-multiline', // is for import declarations of ES Modules. (e.g. import {a,} from \"foo\";)\n\t\t\t\texports: 'always-multiline', // is for export declarations of ES Modules. (e.g. export {a,};)\n\t\t\t\tfunctions: 'ignore', // conflict with prettier. is for function declarations and function calls. (e.g. (function(a,){ })(b,);)\n\t\t\t},\n\t\t],\n\n\t\t// ========================================================== PRETTIER\n\n\t\t'prettier/prettier': ['off', {}, { usePrettierrc: true }], // can't fit to eslint rules. https://github.com/prettier/eslint-plugin-prettier\n\n\t\t// ========================================================== NEWLINE\n\n\t\t'newline-after-var': 'off', // replaced with padding-line-between-statements https://eslint.org/docs/rules/newline-after-var\n\t\t'newline-before-return': 'off', // replaced with padding-line-between-statements https://eslint.org/docs/rules/newline-before-return\n\t\t'linebreak-style': ['off'],\n\t\t'max-len': ['off'],\n\t\t'no-multiple-empty-lines': 'off',\n\n\t\t'object-curly-newline': [\n\t\t\t// conflicts with prettier. line breaks inside curly braces `{}`  https://eslint.org/docs/rules/object-curly-newline\n\t\t\t'off',\n\t\t\t{\n\t\t\t\t// increase minProperties to match prettier formatter, that align only to overall line width\n\t\t\t\tObjectExpression: { multiline: true, consistent: true, minProperties: 3 }, //  object literals\n\t\t\t\tObjectPattern: { multiline: true, consistent: true, minProperties: 3 }, // object patterns of destructuring assignments\n\t\t\t\t// ImportDeclaration: { multiline: false, consistent: false, minProperties: 3 },\n\t\t\t\tExportDeclaration: { multiline: true, minProperties: 3 },\n\t\t\t},\n\t\t],\n\t\t'object-property-newline': [\n\t\t\t//  conflicts with prettier. Object properties must go on a new line. Reduce merge conflicts  https://eslint.org/docs/rules/object-property-newline\n\t\t\t'off',\n\t\t\t{ allowAllPropertiesOnSameLine: false }\n\t\t],\n\t\t'function-paren-newline': ['warn', 'consistent'], // https://eslint.org/docs/rules/function-paren-newline\n\t\t'padding-line-between-statements': [\n\t\t\t'warn',\n\t\t\t{ blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },\n\t\t\t{ blankLine: 'any', prev: ['const', 'let', 'var'], next: ['const', 'let', 'var'] },\n\t\t\t{ blankLine: 'always', prev: ['*'], next: ['return'] },\n\t\t], // replace newline-after-var, newline-before-return https://eslint.org/docs/rules/padding-line-between-statements\n\t\t'function-call-argument-newline': ['warn', 'consistent'], // https://eslint.org/docs/rules/function-call-argument-newline\n\t\t'operator-linebreak': 'warn', // '&&' should be placed at the end of the line.\n\t\t'brace-style': ['warn', '1tbs', { allowSingleLine: true }], // newline in `if` braces https://eslint.org/docs/rules/brace-style\n\t\t'padded-blocks': [\n\t\t\t// newline in curly braces blocks https://eslint.org/docs/rules/padded-blocks\n\t\t\t'warn', {\n\t\t\t\tblocks: 'never', // require or disallow padding within block statements\n\t\t\t\tclasses: 'never', // require or disallow padding within classes\n\t\t\t\tswitches: 'never', // require or disallow padding within switch statements\n\t\t\t},\n\t\t\t{ \"allowSingleLineBlocks\": true }, // allows single-line blocks\n\t\t],\n\n\t\t// ========================================================== SPACES\n\n\t\t'no-tabs': 'off',\n\t\tindent: 'off',\n\t\t'semi-spacing': 'off', // no space after semicolon\n\t\t'no-multi-spaces': 'off',\n\t\t'space-before-function-paren': 'off',\n\t\t'no-tabs'",
+      "tokens": 0,
+      "firstFile": {
+        "name": "./typescript-tspqwe-linters/.eslintrc.js",
+        "start": 169,
+        "end": 291,
+        "startLoc": {
+          "line": 169,
+          "column": 4,
+          "position": 860
+        },
+        "endLoc": {
+          "line": 291,
+          "column": 12,
+          "position": 1763
+        },
+        "blame": {
+          "169": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "169",
+            "rev": "0029c645"
+          },
+          "170": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "170",
+            "rev": "0029c645"
+          },
+          "171": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "171",
+            "rev": "0029c645"
+          },
+          "172": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "172",
+            "rev": "0029c645"
+          },
+          "173": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "173",
+            "rev": "0029c645"
+          },
+          "174": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "174",
+            "rev": "0029c645"
+          },
+          "175": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "175",
+            "rev": "0029c645"
+          },
+          "176": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "176",
+            "rev": "0029c645"
+          },
+          "177": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "177",
+            "rev": "0029c645"
+          },
+          "178": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "178",
+            "rev": "0029c645"
+          },
+          "179": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "179",
+            "rev": "0029c645"
+          },
+          "180": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "180",
+            "rev": "0029c645"
+          },
+          "181": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "181",
+            "rev": "0029c645"
+          },
+          "182": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "182",
+            "rev": "0029c645"
+          },
+          "183": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "183",
+            "rev": "0029c645"
+          },
+          "184": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "184",
+            "rev": "0029c645"
+          },
+          "185": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "185",
+            "rev": "0029c645"
+          },
+          "186": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "186",
+            "rev": "0029c645"
+          },
+          "187": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "187",
+            "rev": "0029c645"
+          },
+          "188": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "188",
+            "rev": "0029c645"
+          },
+          "189": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "189",
+            "rev": "0029c645"
+          },
+          "190": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "190",
+            "rev": "0029c645"
+          },
+          "191": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "191",
+            "rev": "0029c645"
+          },
+          "192": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "192",
+            "rev": "0029c645"
+          },
+          "193": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "193",
+            "rev": "0029c645"
+          },
+          "194": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "194",
+            "rev": "0029c645"
+          },
+          "195": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "195",
+            "rev": "0029c645"
+          },
+          "196": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "196",
+            "rev": "0029c645"
+          },
+          "197": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "197",
+            "rev": "0029c645"
+          },
+          "198": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "198",
+            "rev": "0029c645"
+          },
+          "199": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "199",
+            "rev": "0029c645"
+          },
+          "200": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "200",
+            "rev": "0029c645"
+          },
+          "201": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "201",
+            "rev": "0029c645"
+          },
+          "202": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "202",
+            "rev": "0029c645"
+          },
+          "203": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "203",
+            "rev": "0029c645"
+          },
+          "204": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "204",
+            "rev": "0029c645"
+          },
+          "205": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "205",
+            "rev": "0029c645"
+          },
+          "206": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "206",
+            "rev": "0029c645"
+          },
+          "207": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "207",
+            "rev": "0029c645"
+          },
+          "208": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "208",
+            "rev": "0029c645"
+          },
+          "209": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "209",
+            "rev": "0029c645"
+          },
+          "210": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "210",
+            "rev": "0029c645"
+          },
+          "211": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "211",
+            "rev": "0029c645"
+          },
+          "212": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "212",
+            "rev": "0029c645"
+          },
+          "213": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "213",
+            "rev": "0029c645"
+          },
+          "214": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "214",
+            "rev": "0029c645"
+          },
+          "215": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "215",
+            "rev": "0029c645"
+          },
+          "216": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "216",
+            "rev": "0029c645"
+          },
+          "217": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "217",
+            "rev": "0029c645"
+          },
+          "218": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "218",
+            "rev": "0029c645"
+          },
+          "219": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "219",
+            "rev": "0029c645"
+          },
+          "220": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "220",
+            "rev": "0029c645"
+          },
+          "221": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "221",
+            "rev": "0029c645"
+          },
+          "222": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "222",
+            "rev": "0029c645"
+          },
+          "223": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "223",
+            "rev": "0029c645"
+          },
+          "224": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "224",
+            "rev": "0029c645"
+          },
+          "225": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "225",
+            "rev": "0029c645"
+          },
+          "226": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "226",
+            "rev": "0029c645"
+          },
+          "227": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "227",
+            "rev": "0029c645"
+          },
+          "228": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "228",
+            "rev": "0029c645"
+          },
+          "229": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "229",
+            "rev": "0029c645"
+          },
+          "230": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "230",
+            "rev": "0029c645"
+          },
+          "231": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "231",
+            "rev": "0029c645"
+          },
+          "232": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "232",
+            "rev": "0029c645"
+          },
+          "233": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "233",
+            "rev": "0029c645"
+          },
+          "234": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "234",
+            "rev": "0029c645"
+          },
+          "235": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "235",
+            "rev": "0029c645"
+          },
+          "236": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "236",
+            "rev": "0029c645"
+          },
+          "237": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "237",
+            "rev": "0029c645"
+          },
+          "238": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "238",
+            "rev": "0029c645"
+          },
+          "239": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "239",
+            "rev": "0029c645"
+          },
+          "240": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "240",
+            "rev": "0029c645"
+          },
+          "241": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "241",
+            "rev": "0029c645"
+          },
+          "242": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "242",
+            "rev": "0029c645"
+          },
+          "243": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "243",
+            "rev": "0029c645"
+          },
+          "244": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "244",
+            "rev": "0029c645"
+          },
+          "245": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "245",
+            "rev": "0029c645"
+          },
+          "246": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "246",
+            "rev": "0029c645"
+          },
+          "247": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "247",
+            "rev": "0029c645"
+          },
+          "248": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "248",
+            "rev": "0029c645"
+          },
+          "249": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "249",
+            "rev": "0029c645"
+          },
+          "250": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "250",
+            "rev": "0029c645"
+          },
+          "251": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "251",
+            "rev": "0029c645"
+          },
+          "252": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "252",
+            "rev": "0029c645"
+          },
+          "253": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "253",
+            "rev": "0029c645"
+          },
+          "254": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "254",
+            "rev": "0029c645"
+          },
+          "255": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "255",
+            "rev": "0029c645"
+          },
+          "256": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "256",
+            "rev": "0029c645"
+          },
+          "257": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "257",
+            "rev": "0029c645"
+          },
+          "258": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "258",
+            "rev": "0029c645"
+          },
+          "259": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "259",
+            "rev": "0029c645"
+          },
+          "260": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "260",
+            "rev": "0029c645"
+          },
+          "261": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "261",
+            "rev": "0029c645"
+          },
+          "262": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "262",
+            "rev": "0029c645"
+          },
+          "263": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "263",
+            "rev": "0029c645"
+          },
+          "264": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "264",
+            "rev": "0029c645"
+          },
+          "265": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "265",
+            "rev": "0029c645"
+          },
+          "266": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "266",
+            "rev": "0029c645"
+          },
+          "267": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "267",
+            "rev": "0029c645"
+          },
+          "268": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "268",
+            "rev": "0029c645"
+          },
+          "269": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "269",
+            "rev": "0029c645"
+          },
+          "270": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "270",
+            "rev": "0029c645"
+          },
+          "271": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "271",
+            "rev": "0029c645"
+          },
+          "272": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "272",
+            "rev": "0029c645"
+          },
+          "273": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "273",
+            "rev": "0029c645"
+          },
+          "274": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "274",
+            "rev": "0029c645"
+          },
+          "275": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "275",
+            "rev": "0029c645"
+          },
+          "276": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "276",
+            "rev": "0029c645"
+          },
+          "277": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "277",
+            "rev": "0029c645"
+          },
+          "278": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "278",
+            "rev": "0029c645"
+          },
+          "279": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "279",
+            "rev": "0029c645"
+          },
+          "280": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "280",
+            "rev": "0029c645"
+          },
+          "281": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "281",
+            "rev": "0029c645"
+          },
+          "282": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "282",
+            "rev": "0029c645"
+          },
+          "283": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "283",
+            "rev": "0029c645"
+          },
+          "284": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "284",
+            "rev": "0029c645"
+          },
+          "285": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "285",
+            "rev": "0029c645"
+          },
+          "286": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "286",
+            "rev": "0029c645"
+          },
+          "287": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "287",
+            "rev": "0029c645"
+          },
+          "288": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "288",
+            "rev": "0029c645"
+          },
+          "289": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "289",
+            "rev": "0029c645"
+          },
+          "290": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "290",
+            "rev": "0029c645"
+          },
+          "291": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "291",
+            "rev": "0029c645"
+          }
+        }
+      },
+      "secondFile": {
+        "name": "./typescript-tspqwe-linters/.eslintrc.react.js",
+        "start": 159,
+        "end": 281,
+        "startLoc": {
+          "line": 159,
+          "column": 4,
+          "position": 763
+        },
+        "endLoc": {
+          "line": 281,
+          "column": 19,
+          "position": 1666
+        },
+        "blame": {
+          "159": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "159",
+            "rev": "00000000"
+          },
+          "160": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "160",
+            "rev": "00000000"
+          },
+          "161": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "161",
+            "rev": "00000000"
+          },
+          "162": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "162",
+            "rev": "00000000"
+          },
+          "163": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "163",
+            "rev": "00000000"
+          },
+          "164": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "164",
+            "rev": "00000000"
+          },
+          "165": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "165",
+            "rev": "00000000"
+          },
+          "166": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "166",
+            "rev": "00000000"
+          },
+          "167": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "167",
+            "rev": "00000000"
+          },
+          "168": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "168",
+            "rev": "00000000"
+          },
+          "169": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "169",
+            "rev": "00000000"
+          },
+          "170": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "170",
+            "rev": "00000000"
+          },
+          "171": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "171",
+            "rev": "00000000"
+          },
+          "172": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "172",
+            "rev": "00000000"
+          },
+          "173": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "173",
+            "rev": "00000000"
+          },
+          "174": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "174",
+            "rev": "00000000"
+          },
+          "175": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "175",
+            "rev": "00000000"
+          },
+          "176": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "176",
+            "rev": "00000000"
+          },
+          "177": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "177",
+            "rev": "00000000"
+          },
+          "178": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "178",
+            "rev": "00000000"
+          },
+          "179": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "179",
+            "rev": "00000000"
+          },
+          "180": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "180",
+            "rev": "00000000"
+          },
+          "181": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "181",
+            "rev": "00000000"
+          },
+          "182": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "182",
+            "rev": "00000000"
+          },
+          "183": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "183",
+            "rev": "00000000"
+          },
+          "184": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "184",
+            "rev": "00000000"
+          },
+          "185": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "185",
+            "rev": "00000000"
+          },
+          "186": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "186",
+            "rev": "00000000"
+          },
+          "187": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "187",
+            "rev": "00000000"
+          },
+          "188": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "188",
+            "rev": "00000000"
+          },
+          "189": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "189",
+            "rev": "00000000"
+          },
+          "190": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "190",
+            "rev": "00000000"
+          },
+          "191": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "191",
+            "rev": "00000000"
+          },
+          "192": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "192",
+            "rev": "00000000"
+          },
+          "193": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "193",
+            "rev": "00000000"
+          },
+          "194": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "194",
+            "rev": "00000000"
+          },
+          "195": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "195",
+            "rev": "00000000"
+          },
+          "196": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "196",
+            "rev": "00000000"
+          },
+          "197": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "197",
+            "rev": "00000000"
+          },
+          "198": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "198",
+            "rev": "00000000"
+          },
+          "199": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "199",
+            "rev": "00000000"
+          },
+          "200": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "200",
+            "rev": "00000000"
+          },
+          "201": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "201",
+            "rev": "00000000"
+          },
+          "202": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "202",
+            "rev": "00000000"
+          },
+          "203": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "203",
+            "rev": "00000000"
+          },
+          "204": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "204",
+            "rev": "00000000"
+          },
+          "205": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "205",
+            "rev": "00000000"
+          },
+          "206": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "206",
+            "rev": "00000000"
+          },
+          "207": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "207",
+            "rev": "00000000"
+          },
+          "208": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "208",
+            "rev": "00000000"
+          },
+          "209": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "209",
+            "rev": "00000000"
+          },
+          "210": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "210",
+            "rev": "00000000"
+          },
+          "211": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "211",
+            "rev": "00000000"
+          },
+          "212": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "212",
+            "rev": "00000000"
+          },
+          "213": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "213",
+            "rev": "00000000"
+          },
+          "214": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "214",
+            "rev": "00000000"
+          },
+          "215": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "215",
+            "rev": "00000000"
+          },
+          "216": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "216",
+            "rev": "00000000"
+          },
+          "217": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "217",
+            "rev": "00000000"
+          },
+          "218": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "218",
+            "rev": "00000000"
+          },
+          "219": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "219",
+            "rev": "00000000"
+          },
+          "220": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "220",
+            "rev": "00000000"
+          },
+          "221": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "221",
+            "rev": "00000000"
+          },
+          "222": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "222",
+            "rev": "00000000"
+          },
+          "223": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "223",
+            "rev": "00000000"
+          },
+          "224": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "224",
+            "rev": "00000000"
+          },
+          "225": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "225",
+            "rev": "00000000"
+          },
+          "226": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "226",
+            "rev": "00000000"
+          },
+          "227": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "227",
+            "rev": "00000000"
+          },
+          "228": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "228",
+            "rev": "00000000"
+          },
+          "229": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "229",
+            "rev": "00000000"
+          },
+          "230": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "230",
+            "rev": "00000000"
+          },
+          "231": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "231",
+            "rev": "00000000"
+          },
+          "232": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "232",
+            "rev": "00000000"
+          },
+          "233": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "233",
+            "rev": "00000000"
+          },
+          "234": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "234",
+            "rev": "00000000"
+          },
+          "235": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "235",
+            "rev": "00000000"
+          },
+          "236": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "236",
+            "rev": "00000000"
+          },
+          "237": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "237",
+            "rev": "00000000"
+          },
+          "238": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "238",
+            "rev": "00000000"
+          },
+          "239": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "239",
+            "rev": "00000000"
+          },
+          "240": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "240",
+            "rev": "00000000"
+          },
+          "241": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "241",
+            "rev": "00000000"
+          },
+          "242": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "242",
+            "rev": "00000000"
+          },
+          "243": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "243",
+            "rev": "00000000"
+          },
+          "244": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "244",
+            "rev": "00000000"
+          },
+          "245": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "245",
+            "rev": "00000000"
+          },
+          "246": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "246",
+            "rev": "00000000"
+          },
+          "247": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "247",
+            "rev": "00000000"
+          },
+          "248": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "248",
+            "rev": "00000000"
+          },
+          "249": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "249",
+            "rev": "00000000"
+          },
+          "250": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "250",
+            "rev": "00000000"
+          },
+          "251": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "251",
+            "rev": "00000000"
+          },
+          "252": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "252",
+            "rev": "00000000"
+          },
+          "253": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "253",
+            "rev": "00000000"
+          },
+          "254": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "254",
+            "rev": "00000000"
+          },
+          "255": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "255",
+            "rev": "00000000"
+          },
+          "256": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "256",
+            "rev": "00000000"
+          },
+          "257": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "257",
+            "rev": "00000000"
+          },
+          "258": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "258",
+            "rev": "00000000"
+          },
+          "259": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "259",
+            "rev": "00000000"
+          },
+          "260": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "260",
+            "rev": "00000000"
+          },
+          "261": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "261",
+            "rev": "00000000"
+          },
+          "262": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "262",
+            "rev": "00000000"
+          },
+          "263": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "263",
+            "rev": "00000000"
+          },
+          "264": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "264",
+            "rev": "00000000"
+          },
+          "265": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "265",
+            "rev": "00000000"
+          },
+          "266": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "266",
+            "rev": "00000000"
+          },
+          "267": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "267",
+            "rev": "00000000"
+          },
+          "268": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "268",
+            "rev": "00000000"
+          },
+          "269": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "269",
+            "rev": "00000000"
+          },
+          "270": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "270",
+            "rev": "00000000"
+          },
+          "271": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "271",
+            "rev": "00000000"
+          },
+          "272": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "272",
+            "rev": "00000000"
+          },
+          "273": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "273",
+            "rev": "00000000"
+          },
+          "274": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "274",
+            "rev": "00000000"
+          },
+          "275": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "275",
+            "rev": "00000000"
+          },
+          "276": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "276",
+            "rev": "00000000"
+          },
+          "277": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "277",
+            "rev": "00000000"
+          },
+          "278": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "278",
+            "rev": "00000000"
+          },
+          "279": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "279",
+            "rev": "00000000"
+          },
+          "280": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "280",
+            "rev": "00000000"
+          },
+          "281": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "281",
+            "rev": "00000000"
+          }
+        }
+      }
+    },
+    {
+      "format": "javascript",
+      "lines": 99,
+      "fragment": ": 'off',\n\t\t'spaced-comment': 'off',\n\t\t'no-trailing-spaces': 'off',\n\t\t'lines-between-class-members': 'off',\n\t\t'eol-last': 'off',\n\t\t'object-curly-spacing': 'off',\n\t\t'object-curly-even-spacing': 'off',\n\n\t\t'space-before-blocks': 'warn', // too many, use auto format\n\t\t'block-spacing': 'warn',\n\t\t'no-lone-blocks': 'warn',\n\t\t'space-infix-ops': 'warn',\n\t\tcurly: 'warn', // Expected { after 'if' condition\n\t\t'comma-spacing': 'warn', // missing whitespace\n\t\t'arrow-spacing': 'warn',\n\t\t'key-spacing': 'warn',\n\t\t'space-in-parens': 'warn',\n\t\tcamelcase: [\n\t\t\t'warn',\n\t\t\t{\n\t\t\t\tproperties: 'always', // (default) enforces camelcase style for property names\n\t\t\t\tignoreDestructuring: false, // (default) enforces camelcase style for destructured identifiers\n\t\t\t\tignoreImports: false, // (default) enforces camelcase style for ES2015 imports\n\t\t\t\tignoreGlobals: false, // (default) enforces camelcase style for global variables\n\t\t\t\t// \"ignoreGlobals\": true, // does not enforce camelcase style for global variables\n\t\t\t\tallow: [], // (string[]) list of properties to accept. Accept regex.\n\t\t\t},\n\t\t], // https://eslint.org/docs/rules/camelcase\n\t\t'keyword-spacing': 'warn',\n\t\t'array-bracket-spacing': 'warn',\n\n\t\t// ======================================================================== ASYNC =========================================================\n\n\t\t// 'promise/no-native': 'off', // violates forEach error in eslint logs\n\n\t\t'promise/catch-or-return': 'error',\n\t\t'promise/always-return': 'error',\n\t\t'promise/no-nesting': 'error',\n\t\t'promise/prefer-await-to-then': 'warn', // https://github.com/xjamundx/eslint-plugin-promise/blob/development/docs/rules/prefer-await-to-then.md\n\t\t'promise/no-return-wrap': 'error',\n\t\t'promise/param-names': 'error',\n\t\t'promise/no-callback-in-promise': 'error',\n\t\t'promise/avoid-new': 'error',\n\t\t'promise/no-new-statics': 'error',\n\t\t'promise/no-return-in-finally': 'error',\n\t\t'promise/valid-params': 'error',\n\t\t'promise/prefer-await-to-callbacks': 'warn', // https://github.com/xjamundx/eslint-plugin-promise/blob/development/rules/prefer-await-to-callbacks.js\n\t\t'promise/no-promise-in-callback': 'warn',\n\t\t'require-await': 'error',\n\t\t'no-return-await': 'error',\n\t\t'no-async-promise-executor': 'error',\n\t\t'no-await-in-loop': 'error',\n\t\t'prefer-promise-reject-errors': 'error',\n\n\t\t// ======================================================================== TYPES ===========================================================\n\n\t\t'no-useless-constructor': 'off', // check only body, not arguments. Not suitable for DI https://eslint.org/docs/rules/no-useless-constructor\n\t\t'handle-callback-err': 'off',\n\t\t'prefer-const': 'off',\n\n\t\t'getter-return': 'warn',\n\t\tradix: 'warn',\n\t\t'no-unused-labels': 'warn',\n\t\t'no-unused-expressions': 'warn',\n\t\t'no-undefined': 'warn', // undefined can be overwritten or shadowed. null is a keyword that always produces the same value. https://eslint.org/docs/rules/no-undefined\n\t\t'no-undef': 'off', // can't resolve angular modules https://eslint.org/docs/rules/no-undef\n\t\tcomplexity: ['warn', { max: 10 }], // https://eslint.org/docs/rules/complexity\n\t\t'unicode-bom': 'warn', // Unexpected Unicode BOM (Byte Order Mark)\n\t\t'no-unmodified-loop-condition': 'warn',\n\t\t'wrap-iife': ['error', 'any'], // https://eslint.org/docs/rules/wrap-iife\n\t\t'import/export': 'warn', // Multiple exports of name\n\t\t'no-array-constructor': 'warn',\n\t\t'no-extra-bind': 'warn',\n\t\t'no-prototype-builtins': 'warn',\n\t\t'import/no-duplicates': 'warn',\n\t\t'import/first': 'warn',\n\t\t'no-useless-return': 'warn',\n\t\t'no-console': 'warn',\n\t\teqeqeq: 'warn', // always `===`\n\t\t'no-shadow': 'warn', // https://eslint.org/docs/rules/no-shadow\n\t\t'no-multi-assign': 'warn', // https://eslint.org/docs/rules/no-multi-assign\n\t\t'no-self-assign': 'warn',\n\t\t'no-confusing-arrow': 'warn', // https://eslint.org/docs/rules/no-confusing-arrow Arrow function used ambiguously with a conditional\n\t\t'no-cond-assign': 'warn',\n\t\t'no-return-assign': 'warn',\n\t\t'no-dupe-args': 'error',\n\t\t'no-dupe-class-members': 'warn',\n\t\t'no-dupe-keys': 'error',\n\t\t'no-control-regex': 'warn',\n\t\t'no-useless-escape': 'warn',\n\t\t'dot-notation': 'warn',\n\t\t'no-mixed-operators': 'warn',\n\t\t'no-new-object': 'warn',\n\t\t'no-case-declarations': 'warn',\n\t\t'no-unneeded-ternary': 'warn',\n\t\t'no-extra-boolean-cast': 'warn',\n\t\t'no-var': 'warn',\n\t},\n};",
+      "tokens": 0,
+      "firstFile": {
+        "name": "./typescript-tspqwe-linters/.eslintrc.js",
+        "start": 291,
+        "end": 389,
+        "startLoc": {
+          "line": 291,
+          "column": 12,
+          "position": 1764
+        },
+        "endLoc": {
+          "line": 389,
+          "column": 3,
+          "position": 2436
+        },
+        "blame": {
+          "291": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "291",
+            "rev": "0029c645"
+          },
+          "292": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "292",
+            "rev": "0029c645"
+          },
+          "293": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "293",
+            "rev": "0029c645"
+          },
+          "294": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "294",
+            "rev": "0029c645"
+          },
+          "295": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "295",
+            "rev": "0029c645"
+          },
+          "296": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "296",
+            "rev": "0029c645"
+          },
+          "297": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "297",
+            "rev": "0029c645"
+          },
+          "298": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "298",
+            "rev": "0029c645"
+          },
+          "299": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "299",
+            "rev": "0029c645"
+          },
+          "300": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "300",
+            "rev": "0029c645"
+          },
+          "301": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "301",
+            "rev": "0029c645"
+          },
+          "302": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "302",
+            "rev": "0029c645"
+          },
+          "303": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "303",
+            "rev": "0029c645"
+          },
+          "304": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "304",
+            "rev": "0029c645"
+          },
+          "305": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "305",
+            "rev": "0029c645"
+          },
+          "306": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "306",
+            "rev": "0029c645"
+          },
+          "307": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "307",
+            "rev": "0029c645"
+          },
+          "308": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "308",
+            "rev": "0029c645"
+          },
+          "309": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "309",
+            "rev": "0029c645"
+          },
+          "310": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "310",
+            "rev": "0029c645"
+          },
+          "311": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "311",
+            "rev": "0029c645"
+          },
+          "312": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "312",
+            "rev": "0029c645"
+          },
+          "313": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "313",
+            "rev": "0029c645"
+          },
+          "314": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "314",
+            "rev": "0029c645"
+          },
+          "315": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "315",
+            "rev": "0029c645"
+          },
+          "316": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "316",
+            "rev": "0029c645"
+          },
+          "317": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "317",
+            "rev": "0029c645"
+          },
+          "318": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "318",
+            "rev": "0029c645"
+          },
+          "319": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "319",
+            "rev": "0029c645"
+          },
+          "320": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "320",
+            "rev": "0029c645"
+          },
+          "321": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "321",
+            "rev": "0029c645"
+          },
+          "322": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "322",
+            "rev": "0029c645"
+          },
+          "323": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "323",
+            "rev": "0029c645"
+          },
+          "324": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "324",
+            "rev": "0029c645"
+          },
+          "325": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "325",
+            "rev": "0029c645"
+          },
+          "326": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "326",
+            "rev": "0029c645"
+          },
+          "327": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "327",
+            "rev": "0029c645"
+          },
+          "328": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "328",
+            "rev": "0029c645"
+          },
+          "329": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "329",
+            "rev": "0029c645"
+          },
+          "330": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "330",
+            "rev": "0029c645"
+          },
+          "331": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "331",
+            "rev": "0029c645"
+          },
+          "332": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "332",
+            "rev": "0029c645"
+          },
+          "333": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "333",
+            "rev": "0029c645"
+          },
+          "334": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "334",
+            "rev": "0029c645"
+          },
+          "335": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "335",
+            "rev": "0029c645"
+          },
+          "336": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "336",
+            "rev": "0029c645"
+          },
+          "337": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "337",
+            "rev": "0029c645"
+          },
+          "338": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "338",
+            "rev": "0029c645"
+          },
+          "339": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "339",
+            "rev": "0029c645"
+          },
+          "340": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "340",
+            "rev": "0029c645"
+          },
+          "341": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "341",
+            "rev": "0029c645"
+          },
+          "342": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "342",
+            "rev": "0029c645"
+          },
+          "343": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "343",
+            "rev": "0029c645"
+          },
+          "344": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "344",
+            "rev": "0029c645"
+          },
+          "345": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "345",
+            "rev": "0029c645"
+          },
+          "346": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "346",
+            "rev": "0029c645"
+          },
+          "347": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "347",
+            "rev": "0029c645"
+          },
+          "348": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "348",
+            "rev": "0029c645"
+          },
+          "349": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "349",
+            "rev": "0029c645"
+          },
+          "350": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "350",
+            "rev": "0029c645"
+          },
+          "351": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "351",
+            "rev": "0029c645"
+          },
+          "352": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "352",
+            "rev": "0029c645"
+          },
+          "353": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "353",
+            "rev": "0029c645"
+          },
+          "354": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "354",
+            "rev": "0029c645"
+          },
+          "355": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "355",
+            "rev": "0029c645"
+          },
+          "356": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "356",
+            "rev": "0029c645"
+          },
+          "357": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "357",
+            "rev": "0029c645"
+          },
+          "358": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "358",
+            "rev": "0029c645"
+          },
+          "359": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "359",
+            "rev": "0029c645"
+          },
+          "360": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "360",
+            "rev": "0029c645"
+          },
+          "361": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "361",
+            "rev": "0029c645"
+          },
+          "362": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "362",
+            "rev": "0029c645"
+          },
+          "363": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "363",
+            "rev": "0029c645"
+          },
+          "364": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "364",
+            "rev": "0029c645"
+          },
+          "365": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "365",
+            "rev": "0029c645"
+          },
+          "366": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "366",
+            "rev": "0029c645"
+          },
+          "367": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "367",
+            "rev": "0029c645"
+          },
+          "368": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "368",
+            "rev": "0029c645"
+          },
+          "369": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "369",
+            "rev": "0029c645"
+          },
+          "370": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "370",
+            "rev": "0029c645"
+          },
+          "371": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "371",
+            "rev": "0029c645"
+          },
+          "372": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "372",
+            "rev": "0029c645"
+          },
+          "373": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "373",
+            "rev": "0029c645"
+          },
+          "374": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "374",
+            "rev": "0029c645"
+          },
+          "375": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "375",
+            "rev": "0029c645"
+          },
+          "376": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "376",
+            "rev": "0029c645"
+          },
+          "377": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "377",
+            "rev": "0029c645"
+          },
+          "378": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "378",
+            "rev": "0029c645"
+          },
+          "379": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "379",
+            "rev": "0029c645"
+          },
+          "380": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "380",
+            "rev": "0029c645"
+          },
+          "381": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "381",
+            "rev": "0029c645"
+          },
+          "382": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "382",
+            "rev": "0029c645"
+          },
+          "383": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "383",
+            "rev": "0029c645"
+          },
+          "384": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "384",
+            "rev": "0029c645"
+          },
+          "385": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "385",
+            "rev": "0029c645"
+          },
+          "386": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "386",
+            "rev": "0029c645"
+          },
+          "387": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "387",
+            "rev": "0029c645"
+          },
+          "388": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "388",
+            "rev": "0029c645"
+          },
+          "389": {
+            "author": "Valeriy Stepanov",
+            "date": "2020-09-29 02:01:59 +0300",
+            "line": "389",
+            "rev": "0029c645"
+          }
+        }
+      },
+      "secondFile": {
+        "name": "./typescript-tspqwe-linters/.eslintrc.react.js",
+        "start": 280,
+        "end": 378,
+        "startLoc": {
+          "line": 280,
+          "column": 32,
+          "position": 1660
+        },
+        "endLoc": {
+          "line": 378,
+          "column": 3,
+          "position": 2332
+        },
+        "blame": {
+          "280": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "280",
+            "rev": "00000000"
+          },
+          "281": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "281",
+            "rev": "00000000"
+          },
+          "282": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "282",
+            "rev": "00000000"
+          },
+          "283": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "283",
+            "rev": "00000000"
+          },
+          "284": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "284",
+            "rev": "00000000"
+          },
+          "285": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "285",
+            "rev": "00000000"
+          },
+          "286": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "286",
+            "rev": "00000000"
+          },
+          "287": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "287",
+            "rev": "00000000"
+          },
+          "288": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "288",
+            "rev": "00000000"
+          },
+          "289": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "289",
+            "rev": "00000000"
+          },
+          "290": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "290",
+            "rev": "00000000"
+          },
+          "291": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "291",
+            "rev": "00000000"
+          },
+          "292": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "292",
+            "rev": "00000000"
+          },
+          "293": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "293",
+            "rev": "00000000"
+          },
+          "294": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "294",
+            "rev": "00000000"
+          },
+          "295": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "295",
+            "rev": "00000000"
+          },
+          "296": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "296",
+            "rev": "00000000"
+          },
+          "297": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "297",
+            "rev": "00000000"
+          },
+          "298": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "298",
+            "rev": "00000000"
+          },
+          "299": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "299",
+            "rev": "00000000"
+          },
+          "300": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "300",
+            "rev": "00000000"
+          },
+          "301": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "301",
+            "rev": "00000000"
+          },
+          "302": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "302",
+            "rev": "00000000"
+          },
+          "303": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "303",
+            "rev": "00000000"
+          },
+          "304": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "304",
+            "rev": "00000000"
+          },
+          "305": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "305",
+            "rev": "00000000"
+          },
+          "306": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "306",
+            "rev": "00000000"
+          },
+          "307": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "307",
+            "rev": "00000000"
+          },
+          "308": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "308",
+            "rev": "00000000"
+          },
+          "309": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "309",
+            "rev": "00000000"
+          },
+          "310": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "310",
+            "rev": "00000000"
+          },
+          "311": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "311",
+            "rev": "00000000"
+          },
+          "312": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "312",
+            "rev": "00000000"
+          },
+          "313": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "313",
+            "rev": "00000000"
+          },
+          "314": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "314",
+            "rev": "00000000"
+          },
+          "315": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "315",
+            "rev": "00000000"
+          },
+          "316": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "316",
+            "rev": "00000000"
+          },
+          "317": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "317",
+            "rev": "00000000"
+          },
+          "318": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "318",
+            "rev": "00000000"
+          },
+          "319": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "319",
+            "rev": "00000000"
+          },
+          "320": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "320",
+            "rev": "00000000"
+          },
+          "321": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "321",
+            "rev": "00000000"
+          },
+          "322": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "322",
+            "rev": "00000000"
+          },
+          "323": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "323",
+            "rev": "00000000"
+          },
+          "324": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "324",
+            "rev": "00000000"
+          },
+          "325": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "325",
+            "rev": "00000000"
+          },
+          "326": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "326",
+            "rev": "00000000"
+          },
+          "327": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "327",
+            "rev": "00000000"
+          },
+          "328": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "328",
+            "rev": "00000000"
+          },
+          "329": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "329",
+            "rev": "00000000"
+          },
+          "330": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "330",
+            "rev": "00000000"
+          },
+          "331": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "331",
+            "rev": "00000000"
+          },
+          "332": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "332",
+            "rev": "00000000"
+          },
+          "333": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "333",
+            "rev": "00000000"
+          },
+          "334": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "334",
+            "rev": "00000000"
+          },
+          "335": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "335",
+            "rev": "00000000"
+          },
+          "336": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "336",
+            "rev": "00000000"
+          },
+          "337": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "337",
+            "rev": "00000000"
+          },
+          "338": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "338",
+            "rev": "00000000"
+          },
+          "339": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "339",
+            "rev": "00000000"
+          },
+          "340": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "340",
+            "rev": "00000000"
+          },
+          "341": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "341",
+            "rev": "00000000"
+          },
+          "342": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "342",
+            "rev": "00000000"
+          },
+          "343": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "343",
+            "rev": "00000000"
+          },
+          "344": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "344",
+            "rev": "00000000"
+          },
+          "345": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "345",
+            "rev": "00000000"
+          },
+          "346": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "346",
+            "rev": "00000000"
+          },
+          "347": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "347",
+            "rev": "00000000"
+          },
+          "348": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "348",
+            "rev": "00000000"
+          },
+          "349": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "349",
+            "rev": "00000000"
+          },
+          "350": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "350",
+            "rev": "00000000"
+          },
+          "351": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "351",
+            "rev": "00000000"
+          },
+          "352": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "352",
+            "rev": "00000000"
+          },
+          "353": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "353",
+            "rev": "00000000"
+          },
+          "354": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "354",
+            "rev": "00000000"
+          },
+          "355": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "355",
+            "rev": "00000000"
+          },
+          "356": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "356",
+            "rev": "00000000"
+          },
+          "357": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "357",
+            "rev": "00000000"
+          },
+          "358": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "358",
+            "rev": "00000000"
+          },
+          "359": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "359",
+            "rev": "00000000"
+          },
+          "360": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "360",
+            "rev": "00000000"
+          },
+          "361": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "361",
+            "rev": "00000000"
+          },
+          "362": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "362",
+            "rev": "00000000"
+          },
+          "363": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "363",
+            "rev": "00000000"
+          },
+          "364": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "364",
+            "rev": "00000000"
+          },
+          "365": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "365",
+            "rev": "00000000"
+          },
+          "366": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "366",
+            "rev": "00000000"
+          },
+          "367": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "367",
+            "rev": "00000000"
+          },
+          "368": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "368",
+            "rev": "00000000"
+          },
+          "369": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "369",
+            "rev": "00000000"
+          },
+          "370": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "370",
+            "rev": "00000000"
+          },
+          "371": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "371",
+            "rev": "00000000"
+          },
+          "372": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "372",
+            "rev": "00000000"
+          },
+          "373": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "373",
+            "rev": "00000000"
+          },
+          "374": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "374",
+            "rev": "00000000"
+          },
+          "375": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "375",
+            "rev": "00000000"
+          },
+          "376": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "376",
+            "rev": "00000000"
+          },
+          "377": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "377",
+            "rev": "00000000"
+          },
+          "378": {
+            "author": "Not Committed Yet",
+            "date": "2020-09-29 02:16:58 +0300",
+            "line": "378",
+            "rev": "00000000"
+          }
+        }
+      }
+    }
+  ]
+}

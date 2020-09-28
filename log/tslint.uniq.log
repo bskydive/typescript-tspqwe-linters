@@ -1,0 +1,3 @@
+-duplicate-imports  Multiple imports from 'stylelint' can be combined into one.
+js-finnish          Finnish notation required for someAsyncFn
+js-finnish          Finnish notation required for someAsyncVar

@@ -1,0 +1,39 @@
+
+> lint@1.1.0 lint:es ./typescript-tspqwe-linters
+> eslint -c ${LINTER_PATH}.eslintrc.js ./src
+
+
+./typescript-tspqwe-linters/src/index.js
+  0:0  error  Parsing error: "parserOptions.project" has been set for @typescript-eslint/parser.
+The file does not match your project config: src/index.js.
+The file must be included in at least one of the projects provided
+
+./typescript-tspqwe-linters/src/index.ts
+   1:13  warning  'someLint' is defined but never used                                                                                      @typescript-eslint/no-unused-vars
+   1:27  warning  './typescript-tspqwe-linters/node_modules/stylelint/lib/index.js' imported multiple times  import/no-duplicates
+   2:10  warning  'Forms' is defined but never used                                                                                         @typescript-eslint/no-unused-vars
+   3:13  warning  'someLintDup' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
+   3:30  warning  './typescript-tspqwe-linters/node_modules/stylelint/lib/index.js' imported multiple times  import/no-duplicates
+   5:18  warning  Interface name `SomeInterfaceNeedsPrefix` must have one of the following prefixes: I                                      @typescript-eslint/naming-convention
+  10:14  warning  Variable name `returnErrorInsteadPromise` must match one of the following formats: UPPER_CASE                             @typescript-eslint/naming-convention
+  10:60  warning  Unexpected any. Specify a different type                                                                                  @typescript-eslint/no-explicit-any
+  11:8   warning  'SOME_VAR' is assigned a value but never used                                                                             @typescript-eslint/no-unused-vars
+  12:8   warning  Variable name `someVar2` must match one of the following formats: UPPER_CASE                                              @typescript-eslint/naming-convention
+  15:3   warning  Unexpected console statement                                                                                              no-console
+
+./typescript-tspqwe-linters/src/some.js
+  4:10  warning  'foo' is defined but never used  no-unused-vars
+  7:18  warning  Unexpected console statement     no-console
+
+./typescript-tspqwe-linters/src/someComponent/some.js
+  1:10  warning  'one' is defined but never used  no-unused-vars
+  2:2   warning  Unexpected console statement     no-console
+
+./typescript-tspqwe-linters/src/someComponent/someComponent.ts
+  3:7   warning  'SomeComponent' is defined but never used  @typescript-eslint/no-unused-vars
+  4:27  warning  Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+  6:16  warning  Unexpected empty constructor               @typescript-eslint/no-empty-function
+  8:27  warning  Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
+
+✖ 20 problems (1 error, 19 warnings)
+
