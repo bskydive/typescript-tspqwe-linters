@@ -1,0 +1,28 @@
+
+# Created by https://www.toptal.com/developers/gitignore/api/angular
+
+# compiled output
+dist/
+tmp/
+log/
+
+# dependencies
+node_modules/
+bower_components/
+
+# IDEs and editors
+.idea/
+.vscode/
+
+# misc
+.sass-cache/
+*.lock
+coverage/
+*.log
+
+# e2e
+
+# System Files
+.DS_Store/
+
+
