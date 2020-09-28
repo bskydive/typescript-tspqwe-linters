@@ -399,7 +399,7 @@ You can request knowledge transfer from more experienced project teams with huge
 1. "Promise" is not defined
 	* rule: [promise/no-native](https://github.com/xjamundx/eslint-plugin-promise/blob/v4.0.1/rules/no-native.js)
 	* line: `index.ts:10`
-	* example: `const [bucketsResponse, usersResponse] = await Promise.allSettled([`
+	* example: `const [foo, bar] = await Promise.all([`
 1. Avoid nesting promises. That requires several `catch` blocks and slowdown code testing/refactoring
 	* rule: [promise/no-nesting](https://github.com/xjamundx/eslint-plugin-promise/blob/v4.0.1/rules/no-nesting.js)
 	* line: `index.ts:10`
