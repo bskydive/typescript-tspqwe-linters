@@ -2,7 +2,15 @@
 
 ## What is it?
 
-Live lint libs collection and code [review template](./code-review.md).
+1. Lint libs collection and code [review template](./code-review.md).
+1. The handy tool set to begin code conventions automation
+1. Live linting playground
+	* [eslint]() - js/ts linter with plugins: typescript, angular, promise, react
+	* [tslint]() - still useful(finnish notation)
+	* [stylelint]() - css
+	* [cspell]() - spelling
+	* [prettier]() - formatter
+	* [sonar]() - code quality(TODO)
 
 ## What is it for?
 
@@ -10,7 +18,6 @@ Live lint libs collection and code [review template](./code-review.md).
 	* working live linters config files
 	* typical code review issues based on linter rules
 1. Provide an alternative to airbnb/google rule sets. Enterprise rule sets made to fit any project and reduce enabled rules as much as it possible.
-1. Give a handy tool set to begin code conventions automation
 
 ## How to use with existed eslint in project
 

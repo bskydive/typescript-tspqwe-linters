@@ -10,7 +10,7 @@ Issues was found during static code analysis tools with extended rule set. To de
 
 Described issues and recommendations should not be fixed mandatory(in any way), and does not guarantee the success. This is additional information for decision making process.
 
-The most useful part is in the code analysis tools configuration
+The most useful part is in the code analysis tools configuration. Any linter rules can be used as code style guide because it's maintained by community of programmers.
 
 * `package.json` - the scripts section
 * `.cspell-dict-exclude.txt`
@@ -103,21 +103,18 @@ Check by: `npm run lint:cp`
 
 Code duplicates increase hidden bugs risk, missed during refactoring.
 
-See [full report](log/jscpd/html/index.html)
-
-> Duplications detection: Found 0 exact clones with 0(0%) duplicated lines in 9 (3 formats) files.
+* See [full report](log/jscpd/html/index.html)
+* Duplications detection: Found 2 exact clones with 42(5.75%) duplicated lines in 10 (3 formats) files.
+* jscpd found too many duplicates (30.78%) over threshold (0.1%)
+* adjust threshold in `.jscpd.json`
 
 | Format     | Files analyzed | Total lines | Total tokens | Clones found | Duplicated lines | Duplicated tokens |
 | ---------- | -------------- | ----------- | ------------ | ------------ | ---------------- | ----------------- |
-| typescript | 2              | 34          | 266          | 0            | 0 (0%)           | 0 (0%)            |
-| javascript | 6              | 622         | 3702         | 0            | 0 (0%)           | 0 (0%)            |
+| typescript | 2              | 70          | 661          | 1            | 21 (30%)         | 279 (42.21%)      |
+| javascript | 7              | 653         | 4056         | 1            | 21 (3.22%)       | 278 (6.85%)       |
 | scss       | 1              | 8           | 49           | 0            | 0 (0%)           | 0 (0%)            |
-| **Total:** | **9**          | **664**     | **4017**     | **0**        | **0 (0%)**       | **0 (0%)**        |
+| **Total:** | **10**         | **731**     | **4766**     | **2**        | **42 (5.75%)**   | **557 (11.69%)**  |
 
-## ESLint
-
-Issues in: `eslint.log`
-Check by: `npm run lint:es`
 
 ### React
 
