@@ -2,7 +2,7 @@
 
 ## What is it?
 
-1. Lint libs collection and code [review template](./code-review.md).
+1. Lint libs collection and code [review template](./code-review.template.md).
 1. The handy tool set to begin code conventions automation
 1. [Live](https://stackblitz.com/edit/typescript-tspqwe-linters?file=README.md) linting playground(TODO)
 	* [eslint](https://eslint.org/) - js/ts linter with plugins: typescript, angular, promise, react
@@ -48,4 +48,4 @@
 
  * sonarlint docker
  * Angular code examples
- * Find how make live cloud playground can became useful
+ * Find how make live cloud playground useful
