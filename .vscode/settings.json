@@ -1,0 +1,58 @@
+{
+	"eslint.alwaysShowStatus": true,
+	"eslint.options": {
+		"preferGlobal": true,
+		"configFile": "/coding/typescript-tspqwe-linters/.eslintrc.js"
+	},
+	"eslint.lintTask.options": "--resolve-plugins-relative-to /coding/typescript-tspqwe-linters -p ./tsconfig.eslint.json .",
+	"eslint.codeAction.showDocumentation": {
+		"enable": true
+	},
+	"eslint.validate": ["javascript", "typescript", "typescriptreact", "javascriptreact"],
+	"tslint.alwaysShowRuleFailuresAsWarnings": false,
+	"tslint.configFile": "./tslint.json",
+	"cSpell.customWorkspaceDictionaries": [".cspell-dict-exclude.txt"],
+	"sonarlint.ls.javaHome": "/etc/alternatives/jre/",
+	"sonarlint.connectedMode.connections.sonarqube": [
+		{
+			"serverUrl": "localhost:9000",
+			"token": ""
+		}
+	],
+	"sonarlint.connectedMode.project": {
+		"projectKey": ""
+	},
+	"sonarlint.disableTelemetry": true,
+	"sqltools.connections": [
+		{
+			"database": "",
+			"driver": "PostgreSQL",
+			"name": "",
+			"port": 5432,
+			"previewLimit": 50,
+			"server": "localhost",
+			"username": "",
+			"password": ""
+		}
+	],
+	// "editor.defaultFormatter": "esbenp.prettier-vscode"
+	// "editor.defaultFormatter": "HookyQR.beautify",
+	// "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	"[json]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features"
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "dbaeumer.vscode-eslint"
+	},
+	"eslint.format.enable": true,
+	"prettier.endOfLine": "auto",
+	"editor.defaultFormatter": "dbaeumer.vscode-eslint",
+	"prettier.enable": true,
+	"prettier.configPath": "/coding/typescript-tspqwe-linters/.prettierrc.js"
+}
