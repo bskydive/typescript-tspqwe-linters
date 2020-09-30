@@ -21,8 +21,16 @@
 
 ## How to use with existed eslint in project
 
- * `export LINTER_PATH=./`
- * You can use `// prettier-ignore` before line/class/method
+ * `export LINTER_PATH=./` for CLI variant
+ * Disabling in IDE and CLI:
+ 	* `// prettier-ignore` before line/class/method
+	* eslint
+	```ts
+	/* eslint-disable */
+
+	/* eslint-enable */
+	```
+	* `tslint`
  * CLI variant works fine, but For setting linters work in IDE you should:
 	* remove local eslint
 		```bash

@@ -10,8 +10,26 @@
 	},
 	"eslint.validate": ["javascript", "typescript", "typescriptreact", "javascriptreact"],
 	"tslint.alwaysShowRuleFailuresAsWarnings": false,
-	"tslint.configFile": "./tslint.json",
 	"cSpell.customWorkspaceDictionaries": [".cspell-dict-exclude.txt"],
+	"tslint.configFile": "/coding/typescript-tspqwe-linters/tslint.json",
+	"stylelint.config": {
+		"configFile": "/coding/typescript-tspqwe-linters/.stylelintrc.json",
+	},
+	"stylelint.configOverrides": {
+		"configFile": "/coding/typescript-tspqwe-linters/.stylelintrc.json",
+	},
+	"stylelint.syntax": "",
+	"stylelint.configBasedir": "/coding/typescript-tspqwe-linters/",
+	"stylelint.validate": [
+		"css",
+		"html",
+		"less",
+		"postcss",
+		"sass",
+		"scss",
+		"source.css.styled",
+		"styled-css",
+	],
 	"sonarlint.ls.javaHome": "/etc/alternatives/jre/",
 	"sonarlint.connectedMode.connections.sonarqube": [
 		{
