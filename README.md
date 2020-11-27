@@ -31,6 +31,9 @@
 	/* eslint-enable */
 	```
 	* `tslint`
+	```ts
+	/* tslint:disable */
+	```
  * CLI variant works fine, but For setting linters work in IDE you should:
 	* remove local eslint
 		```bash
