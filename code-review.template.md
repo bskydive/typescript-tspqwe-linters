@@ -297,7 +297,7 @@ Severity: moderate
 
 Severity: moderate
 
-Works better than ESLint, use more wide [rule set](https://rules.sonarsource.com/) for much more language count. Included in EngX best practices and IT Security quality gates. You can use corporate [sonar Qube](https://www.sonarqube.org/) and IDE plugin [sonarlint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode)
+Works better than ESLint, use more wide [rule set](https://rules.sonarsource.com/) for much more language count. Included in security and quality best practices. You can use corporate [sonar Qube](https://www.sonarqube.org/) and IDE plugin [sonarlint](https://marketplace.visualstudio.com/items?itemName=SonarSource.sonarlint-vscode)
 
 1. Expected an assignment or function call and instead saw an expression. Confusing IIFE usage.
 	* rule: [typescript:S905](https://rules.sonarsource.com/typescript/RSPEC-905)
