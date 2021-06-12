@@ -21,7 +21,7 @@ npm run lint:scss > log/scsslint.log
 #grep ' ⚠ ' log/scsslint.log | colrm 1 10 | tr -s ' ' | sort | uniq | less # linux
 grep ' ⚠ ' log/scsslint.log | colrm 1 10 | tr -s ' ' | sort | uniq  > log/scsslint.uniq.log # linux
 
-
-eslint -c /coding/lint/.eslintrc.js --resolve-plugins-relative-to /coding/lint/ .
-stylelint --config /coding/lint/.stylelintrc.json --syntax css-in-js ./**/*.tsx | grep ' ⚠ ' | colrm 1 10 | tr -s ' ' | sort | uniq | less
-cspell -uc /coding/lint/.cspell.json ./*.* | awk -F 'Unknown word ' '{print $2}' | tr -d '()' > .cspell-dict-exclude.txt
+export LINTER_PATH="coding/lint"
+eslint -c ${LINTER_PATH}/.eslintrc.js --resolve-plugins-relative-to ${LINTER_PATH}/ .
+stylelint --config ${LINTER_PATH}/.stylelintrc.json --syntax css-in-js ./**/*.tsx | grep ' ⚠ ' | colrm 1 10 | tr -s ' ' | sort | uniq | less
+cspell -uc ${LINTER_PATH}/.cspell.json ./*.* | awk -F 'Unknown word ' '{print $2}' | tr -d '()' > .cspell-dict-exclude.txt

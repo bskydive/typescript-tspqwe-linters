@@ -72,5 +72,6 @@
 	"prettier.endOfLine": "auto",
 	"editor.defaultFormatter": "dbaeumer.vscode-eslint",
 	"prettier.enable": true,
-	"prettier.configPath": "/coding/typescript-tspqwe-linters/.prettierrc.js"
+	"prettier.configPath": "/coding/typescript-tspqwe-linters/.prettierrc.js",
+	"editor.fontLigatures": false
 }

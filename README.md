@@ -21,8 +21,18 @@
 
 ## How to use with existed eslint in project
 
- * `export LINTER_PATH=./` for CLI variant
- * Disabling in IDE and CLI:
+ * CLI runs from your project folder
+	* `cd your_project_path`
+	* workaround to fix duplicate linter versions and condigs: `rm -rf node_modules`
+	* `export LINTER_PATH="coding/lint"`
+	* `eslint -c ${LINTER_PATH}/.eslintrc.js --resolve-plugins-relative-to ${LINTER_PATH}/ .`
+	* `stylelint --config ${LINTER_PATH}/.stylelintrc.json --syntax css-in-js ./**/*.tsx | grep ' ⚠ ' | colrm 1 10 | tr -s ' ' | sort | uniq | less`
+	* `cspell -uc ${LINTER_PATH}/.cspell.json ./*.* | awk -F 'Unknown word ' '{print $2}' | tr -d '()' > .cspell-dict-exclude.txt`
+ * CLI runs from linters folder
+	* `cd typescript-tspqwe-linters`
+	* `cp your_project_path/src ./src`
+	* `npm run lint:all`
+ * Disabling linter rules in IDE and CLI:
  	* `// prettier-ignore` before line/class/method
 	* eslint
 	```ts
@@ -34,7 +44,7 @@
 	```ts
 	/* tslint:disable */
 	```
- * CLI variant works fine, but For setting linters work in IDE you should:
+ * Enable external  linters in IDE:
 	* remove local eslint
 		```bash
 			rm .eslintrc.js
@@ -42,7 +52,7 @@
 		```
 	* revert `package*.json` changes
 	* Don't forgot to repair local `.eslintrc` before commit!
-	* install linters globally
+	* instal  linters globally
 	```bash
 		npm i -g \
 		typescript \
