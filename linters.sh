@@ -115,11 +115,18 @@ npm run lint:spell > log/spell.log
 cat log/spell.log | awk -F'(' '{print$2}' | awk -F')' '{print $1}' | sort | uniq > log/spell.words.log
 less log/spell.words.log
 cat >> log/spell.words.log .cspell-dict-exclude.txt
+
 # remove mistakes from .cspell-dict-exclude.txt
 # run again
 npm run lint:spell > log/spell.log
 cat log/spell.log | awk -F'(' '{print$2}' | awk -F')' '{print $1}' | sort | uniq > log/spell.words.log
 less log/spell.words.log
+
+
+find src/ -type f -name '*.html' -exec wc -l {} \; | awk '{ total += $1 } END {print total}'
+find src/ -type f -name '*.less' -exec wc -l {} \; | awk '{ total += $1 } END {print total}'
+find src/ -type f -name '*.ts' -exec wc -l {} \; | awk '{ total += $1 } END {print total}'
+
 
 export LINTER_PATH="coding/lint"
 eslint -c ${LINTER_PATH}/.eslintrc.js --resolve-plugins-relative-to ${LINTER_PATH}/ .
