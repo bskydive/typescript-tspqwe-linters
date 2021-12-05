@@ -214,6 +214,7 @@ module.exports = {
 
 		yoda: 'warn', // if ("red" === color)  https://eslint.org/docs/rules/yoda
 		'new-parens': 'warn', // require parentheses when invoking a constructor with no arguments 
+		"no-restricted-imports": ["warn", { "paths": ["untilDestroyed", "lodash", "jquery", "uirouter"]}],
 
 		// ========================================================== STYLE ===========================================================
 
@@ -355,6 +356,11 @@ module.exports = {
 		'no-undefined': 'warn', // undefined can be overwritten or shadowed. null is a keyword that always produces the same value. https://eslint.org/docs/rules/no-undefined
 		'no-undef': 'off', // can't resolve angular modules https://eslint.org/docs/rules/no-undef
 		complexity: ['warn', { max: 10 }], // https://eslint.org/docs/rules/complexity
+		'max-depth': ["error", 4], // https://eslint.org/docs/rules/max-depth
+		'max-params': ["error", 5], // https://eslint.org/docs/rules/max-params
+		'max-statements': ["error", 10], // https://eslint.org/docs/rules/max-statements
+		'max-lines': ["error", {"max": 400, "skipBlankLines": true, "skipComments": true}], // https://eslint.org/docs/rules/max-lines
+		'max-lines-per-function': ["error", {"max": 50, "skipBlankLines": true, "skipComments": true}], //https://eslint.org/docs/rules/max-lines-per-function
 		'unicode-bom': 'warn', // Unexpected Unicode BOM (Byte Order Mark)
 		'no-unmodified-loop-condition': 'warn',
 		'wrap-iife': ['error', 'any'], // https://eslint.org/docs/rules/wrap-iife

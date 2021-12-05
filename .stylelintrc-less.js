@@ -2,10 +2,9 @@ module.exports = {
 	//https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint
 	extends: [
 		'stylelint-config-standard', // https://github.com/stylelint/stylelint-config-standard/blob/master/index.js
-		'stylelint-config-recommended',
-		'stylelint-config-recommended-scss',
+		'stylelint-config-recommended-less',
 	],
-	syntax: ['scss'],
+	customSyntax: "less",
 	plugins: ['stylelint-order'],
 	ignoreFiles: [
 		"**/*.min.*",

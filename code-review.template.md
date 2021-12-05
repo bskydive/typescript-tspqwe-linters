@@ -69,15 +69,15 @@ Severity: low
 1. Add [svg badges](https://shields.io/)
 1. Exclude(comment with TODO or disable) fake tests to reduce testing time
 
-## cspell(the text)
+## Spelling
+
+There a re lot of mistakes, you should collect your own exclude file before make decisions. But after that you can find really important mistakes.
 
 Severity: low
 
-Issues in: `cspell.log`
-
-Exclude words dictionary: `.cspell-dict-exclude.txt`
-
-Check by: `npm run lint:spell`
+* Issues in: `cspell.log`
+* Exclude words dictionary: `.cspell-dict-exclude.txt`
+* Check by: `npm run lint:spell`
 
 1. Use direct web links. Indirect reference can became broken due to overtime limitations. Broken direct links much easier to detect
 	* line: `index.ts:10`
@@ -86,9 +86,18 @@ Check by: `npm run lint:spell`
 	* https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
 	* https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker-russian
 
-## Stylelint(css)
+## CSS Styles
+
+There are lot of issues, but most of them are about formatting.
+Select rules, that most important to you and add to stylelintrc config
 
 Severity: low
+
+ * Issues in log/css.log
+ * Uniq files in log/css.files.log
+ * Uniq issues in log/css.short.uniq.log
+ * Uniq violated rules in log/css.rules.uniq.log
+ * Check by: `npm run lint:css`
 
 1. Unexpected named color "red" - use scss variables
 	* rule: [color-named](https://stylelint.io/user-guide/rules/color-named)
@@ -107,6 +116,15 @@ Code duplicates increase hidden bugs risk, missed during refactoring.
 * Duplications detection: Found 2 exact clones with 42(5.75%) duplicated lines in 10 (3 formats) files.
 * jscpd found too many duplicates (30.78%) over threshold (0.1%)
 * adjust threshold in `.jscpd.json`
+* CSS: 1% 
+	- Anallyzed 2 files
+	- 2 exact clones with 2 duplicated lines
+* HTML: 1%
+	- Anallyzed 2 files
+	- 2 exact clones with 2 duplicated lines
+* TS: 1%
+	- Anallyzed 2 files
+	- 2 exact clones with 2 duplicated lines
 
 | Format     | Files analyzed | Total lines | Total tokens | Clones found | Duplicated lines | Duplicated tokens |
 | ---------- | -------------- | ----------- | ------------ | ------------ | ---------------- | ----------------- |
@@ -116,7 +134,7 @@ Code duplicates increase hidden bugs risk, missed during refactoring.
 | **Total:** | **10**         | **731**     | **4766**     | **2**        | **42 (5.75%)**   | **557 (11.69%)**  |
 
 
-### React
+## React
 
 Severity: moderate
 
@@ -124,13 +142,13 @@ Framework related issues
 
 1. Configure [eslint rule plugin](https://github.com/yannickcr/eslint-plugin-react#configuration)
 
-### Angular
+## Angular
 
 Severity: moderate
 
 Framework related issues
 
-### Data types
+## Data types
 
 Severity: moderate
 
@@ -424,3 +442,21 @@ You can request knowledge transfer from more experienced project teams with huge
 		});
 	```
 	* fix: split into [several functions](https://philipwalton.com/articles/untangling-deeply-nested-promise-chains/) with correct naming, catching and commenting. Look to the  [rxjs](https://rxjs.dev/)
+
+
+## Webpack bundle
+
+see stats.jpg
+lodash, uirouter, vendor.js, quill, ng-bootstrap - are good candidates to analyze and remove
+
+## Test coverage
+
+Severity: moderate
+
+Check by: `npm run lint:test`
+
+Low test code coverage increases risk of adding new production issues while fixing old.
+* See [full report](log/test.log)
+
+3 enabled tests covered 3% of functions
+

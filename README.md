@@ -11,6 +11,7 @@
 	* [cspell](https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker) - spelling
 	* [prettier](https://prettier.io/) - formatter
 	* [sonar](https://www.sonarqube.org/) - code quality(TODO)
+	* [jscpd](https://www.npmjs.com/package/jscpd) - copy paste
 
 ## What is it for?
 
@@ -31,7 +32,13 @@
  * CLI runs from linters folder
 	* `cd typescript-tspqwe-linters`
 	* `cp your_project_path/src ./src`
-	* `npm run lint:all`
+	* `cp your_project_path/angular.json ./angular.json`
+	* `cp your_project_path/angular.json ./tsconfig.json`
+	* add dependencies in package.json
+	* install/update and make all dependencies suitable to your framework version 
+		* for ng v9: `npm i -D @angular-eslint/builder@1 @angular-eslint/eslint-plugin@1 @angular-eslint/eslint-plugin-template@1 @angular-eslint/schematics@1 @angular-eslint/template-parser@1`
+	* add and commit files to git
+	* Run commands from the `linters.sh` one by one
  * Disabling linter rules in IDE and CLI:
  	* `// prettier-ignore` before line/class/method
 	* eslint
@@ -64,6 +71,13 @@
 	```
 	* use project related IDE config `./.vscode/*`
 	* enable using global eslint in IDE
+
+## Issues
+
+ * jscpd hangs
+	* disable blame
+	* reduce threshold
+	* analyze html|ts|css separately
 
 ## TODO
 

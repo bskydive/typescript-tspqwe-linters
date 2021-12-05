@@ -1,6 +1,6 @@
 {
 	"": "https://www.npmjs.com/package/jscpd#options",
-	"threshold": 0.1,
+	"threshold": 2.1,
 	"ignore": [
 		"**/__snapshots__/**",
 		"**/node_modules/**",
@@ -9,7 +9,7 @@
 		"**/dist/**"
 	],
 	"absolute": true,
-	"pattern": "**/*.{ts,js,scss,less,html}",
+	"pattern": "**/*.{scss,less}",
 	"min-tokens": 50,
 	"min-lines": 5,
 	"max-lines": 1000,
@@ -17,24 +17,16 @@
 	"reporters": [
         "consoleFull", 
         "markdown", 
-        "badge", 
         "html"
     ],
-    "output": "./log",
+    "output": "./log/jscpd-css",
     "mode": "mild",
     "format": [
-        "javascript",
-        "markup",
         "css",
-        "typescript",
         "scss",
-        "less",
-        "html"
+        "less"
     ],
-    "blame": true,
+    "blame": false,
     "ignoreCase": true,
-    "noSymLinks": true,
-    "formats-exts": [
-        "javascript:es,es6"
-    ]
+    "noSymLinks": true
 }

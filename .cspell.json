@@ -1,7 +1,7 @@
 // cSpell Settings https://www.npmjs.com/package/cspell
 {
     // Version of the setting file.  Always 0.1
-    "version": "0.1",
+    "version": "0.2",
     // language - current active spelling language
     "language": "en, ru",
     // defaults to false; set to true to allow compound words by default
@@ -31,7 +31,9 @@
         "**/*.png",
         "**/*.log",
         "**/*.jpeg",
-        "**/*.jpg"
+        "**/*.jpg",
+        "**/*mock*",
+        "**/*stub*"
     ],
     // words - list of words to be always considered correct
     "words": [

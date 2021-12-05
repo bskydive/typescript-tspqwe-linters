@@ -19,7 +19,6 @@
 		"no-any": false,
 		"no-internal-module": true,
 		"no-var-requires": false,
-		"ban": false,
 		"no-null-keyword": false,
 		"no-use-before-declare": true,
 		"switch-default": true,
@@ -51,7 +50,7 @@
 			"severity": "off"
 		},
 		"forin": true,
-		"import-blacklist": [true, "rxjs/Rx"],
+		"import-blacklist": [true, "rxjs/Rx", "untilDestroyed", "lodash", "jquery", "uirouter"],
 		"import-spacing": true,
 		"indent": [false, "tabs"],
 		"interface-over-type-literal": true,
@@ -66,7 +65,7 @@
 		],
 		"no-arg": true,
 		"no-bitwise": true,
-		"no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
+		"no-console": [true, "log", "debug", "info", "time", "timeEnd", "trace"],
 		"no-construct": true,
 		"no-debugger": true,
 		"no-duplicate-super": true,
@@ -83,7 +82,7 @@
 		"no-switch-case-fall-through": true,
 		"no-trailing-whitespace": false,
 		"no-unnecessary-initializer": true,
-		"no-unused-expression": [true, "warn"],
+		"no-unused-expression": [true],
 		"no-var-keyword": true,
 		"object-literal-sort-keys": false,
 		"one-line": [true, "check-open-brace", "check-catch", "check-else", "check-whitespace"],
@@ -133,6 +132,20 @@
 		"increment-decrement": false,
 		"arrow-return-shorthand": false,
 		"rxjs-no-unsafe-takeuntil": true,
-		"eofline": false
+		"eofline": false,
+        "max-params": ["warn", {"max":5} ],
+        "max-depth": ["warn", {"max":4} ],
+        "max-lines": ["warn", {
+            "max":400,
+            "skipBlankLines": true,
+            "skipComments": true
+        }],
+		"ban": [true,
+			{ "name": "fit", "message": "all other unit tests will be disabled" },
+			{ "name": "fdescribe", "message": "all other unit tests will be disabled" },
+			{ "name": "xit", "message": "ubused code" },
+			{ "name": "xdescribe", "message": "unused code" },
+			{ "name": "untilDestroyed", "message": "deprecated, use takeUntil(this.destroyed$)" }
+		]
 	}
 }
