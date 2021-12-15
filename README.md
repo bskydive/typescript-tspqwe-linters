@@ -53,6 +53,7 @@
 	```
  * Enable external  linters in IDE:
 	* remove local eslint
+
 		```bash
 			rm .eslintrc.js
 			npm rm eslint @angular-eslint/builder @angular-eslint/eslint-plugin @angular-eslint/eslint-plugin-template @angular-eslint/schematics @angular-eslint/template-parser @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-plugin-compat
@@ -71,7 +72,14 @@
 	```
 	* use project related IDE config `./.vscode/*`
 	* enable using global eslint in IDE
+ * Install eslint in your project
 
+	```bash
+		npm i webpack eslint @angular-eslint/builder @angular-eslint/eslint-plugin @angular-eslint/eslint-plugin-template @angular-eslint/schematics @angular-eslint/template-parser eslint-config-prettier eslint-config-standard eslint-import-resolver-typescript eslint-plugin-compat eslint-plugin-flowtype eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-node eslint-plugin-prettier eslint-plugin-promise eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-rxjs @typescript-eslint/eslint-plugin @typescript-eslint/parser 
+		
+		# to add functional plugin
+		npm i eslint@latest @typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest tsutils eslint-plugin-functional
+	```
 ## Issues
 
  * jscpd hangs

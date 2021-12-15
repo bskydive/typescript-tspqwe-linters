@@ -6,9 +6,8 @@ npm run lint:ng 2>&1 > log/nglint.log
 #grep ' warning ' log/nglint.log | awk -F '  warning  ' '{print $2}' | tr -s " " | sort | uniq | less
 grep ' warning ' log/nglint.log | awk -F '  warning  ' '{print $2}' | tr -s " " | sort | uniq > log/nglint.uniq.log
 
-
-
-npm run lint:es > log/eslint.log
+# eslint
+npm run lint:es
 # grep ' warning ' log/eslint.log | awk -F '  warning  ' '{print $2}' | tr -s " " | sort | uniq | less
 #grep -iE ' warning | error ' log/eslint.log | awk -F '  warning  ' '{print $2}' | tr -s " " | sort | uniq > log/eslint.uniq.log
 cat log/eslint.log | awk -F'(' '{print $1}' | sort | uniq > log/eslint.files.log
@@ -27,10 +26,23 @@ wc -l log/eslint.complexity.log
 cat log/eslint.complexity.log | awk -F'(' '{print $1}' | sort | uniq > log/eslint.complexity.files.log
 wc -l log/eslint.complexity.files.log
 
+# complexity and max-lines
 cat log/eslint.log | grep -iE 'max-lines|complexity' > log/eslint.max-lines-complexity.log
 wc -l log/eslint.max-lines-complexity.log
 cat log/eslint.max-lines-complexity.log | awk -F'(' '{print $1}' | sort | uniq > log/eslint.max-lines-complexity.files.log
 wc -l log/eslint.max-lines-complexity.files.log
+
+# missed type definitions/signatures
+cat log/eslint.log | grep -iE 'typedef|signature' > log/eslint.type-sig.log
+wc -l log/eslint.type-sig.log
+cat log/eslint.type-sig.log | awk -F'(' '{print $1}' | sort | uniq > log/eslint.type-sig.files.log
+wc -l log/eslint.type-sig.files.log
+
+#cycle dependencies
+cat log/eslint.log | grep -iE 'cycle' > log/eslint.cycle.log
+wc -l log/eslint.cycle.log
+cat log/eslint.cycle.log | awk -F'(' '{print $1}' | sort | uniq > log/eslint.cycle.files.log
+wc -l log/eslint.cycle.files.log
 
 
 # after manual editing of the eslint.rules.log

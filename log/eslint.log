@@ -1,39 +1,37 @@
-
-> lint@1.1.0 lint:es ./typescript-tspqwe-linters
-> eslint -c ${LINTER_PATH}.eslintrc.js ./src
-
-
-./typescript-tspqwe-linters/src/index.js
-  0:0  error  Parsing error: "parserOptions.project" has been set for @typescript-eslint/parser.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/index.js(0): error : Parsing error: "parserOptions.project" has been set for @typescript-eslint/parser.
 The file does not match your project config: src/index.js.
-The file must be included in at least one of the projects provided
+The file must be included in at least one of the projects provided.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/index.ts(1,13): warning @typescript-eslint/no-unused-vars : 'someLint' is defined but never used.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/index.ts(1,27): warning import/no-duplicates : '/mnt/disk273/doc/coding/typescript-tspqwe-linters/node_modules/stylelint/lib/index.js' imported multiple times.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/index.ts(2,10): warning @typescript-eslint/no-unused-vars : 'Forms' is defined but never used.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/index.ts(3,13): warning @typescript-eslint/no-unused-vars : 'someLintDup' is defined but never used.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/index.ts(3,30): warning import/no-duplicates : '/mnt/disk273/doc/coding/typescript-tspqwe-linters/node_modules/stylelint/lib/index.js' imported multiple times.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/index.ts(5,18): warning @typescript-eslint/naming-convention : Interface name `SomeInterfaceNeedsPrefix` must have one of the following prefixes: I
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/index.ts(10,14): warning @typescript-eslint/naming-convention : Variable name `returnErrorInsteadPromise` must match one of the following formats: UPPER_CASE
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/index.ts(10,14): error @typescript-eslint/typedef : Expected returnErrorInsteadPromise to have a type annotation.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/index.ts(10,60): warning @typescript-eslint/no-explicit-any : Unexpected any. Specify a different type.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/index.ts(11,8): error @typescript-eslint/typedef : Expected SOME_VAR to have a type annotation.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/index.ts(11,8): warning @typescript-eslint/no-unused-vars : 'SOME_VAR' is assigned a value but never used.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/index.ts(12,8): warning @typescript-eslint/naming-convention : Variable name `someVar2` must match one of the following formats: UPPER_CASE
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/index.ts(12,8): error @typescript-eslint/typedef : Expected someVar2 to have a type annotation.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/index.ts(15,3): warning no-console : Unexpected console statement.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/some.js(4,10): warning no-unused-vars : 'foo' is defined but never used.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/some.js(5,11): error @typescript-eslint/typedef : Expected someVar to have a type annotation.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/some.js(7,18): warning no-console : Unexpected console statement.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/someComponent/some.js(1,10): warning no-unused-vars : 'one' is defined but never used.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/someComponent/some.js(2,2): warning no-console : Unexpected console statement.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/someComponent/some.js(5,1): warning complexity : Function 'foo' has a complexity of 12. Maximum allowed is 10.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/someComponent/some.js(5,1): error max-statements : Function 'foo' has too many statements (13). Maximum allowed is 10.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/someComponent/some.js(5,10): warning no-unused-vars : 'foo' is defined but never used.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/someComponent/some.js(5,16): warning padded-blocks : Block must not be padded by blank lines.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/someComponent/someComponent.ts(3,7): warning @typescript-eslint/no-unused-vars : 'SomeComponent' is defined but never used.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/someComponent/someComponent.ts(4,27): warning @typescript-eslint/no-explicit-any : Unexpected any. Specify a different type.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/someComponent/someComponent.ts(5,2): error @typescript-eslint/typedef : Expected someVar to have a type annotation.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/someComponent/someComponent.ts(6,9): warning @typescript-eslint/no-explicit-any : Unexpected any. Specify a different type.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/someComponent/someComponent.ts(8,16): warning @typescript-eslint/no-empty-function : Unexpected empty constructor.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/someComponent/someComponent.ts(10,27): warning @typescript-eslint/no-explicit-any : Unexpected any. Specify a different type.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/someComponent/someComponent.ts(11,7): error @typescript-eslint/typedef : Expected foo to have a type annotation.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/someComponent/someComponent.ts(22,5): warning complexity : Method 'foo' has a complexity of 12. Maximum allowed is 10.
+/mnt/disk273/doc/coding/typescript-tspqwe-linters/src/someComponent/someComponent.ts(22,5): error max-statements : Method 'foo' has too many statements (12). Maximum allowed is 10.
 
-./typescript-tspqwe-linters/src/index.ts
-   1:13  warning  'someLint' is defined but never used                                                                                      @typescript-eslint/no-unused-vars
-   1:27  warning  './typescript-tspqwe-linters/node_modules/stylelint/lib/index.js' imported multiple times  import/no-duplicates
-   2:10  warning  'Forms' is defined but never used                                                                                         @typescript-eslint/no-unused-vars
-   3:13  warning  'someLintDup' is defined but never used                                                                                   @typescript-eslint/no-unused-vars
-   3:30  warning  './typescript-tspqwe-linters/node_modules/stylelint/lib/index.js' imported multiple times  import/no-duplicates
-   5:18  warning  Interface name `SomeInterfaceNeedsPrefix` must have one of the following prefixes: I                                      @typescript-eslint/naming-convention
-  10:14  warning  Variable name `returnErrorInsteadPromise` must match one of the following formats: UPPER_CASE                             @typescript-eslint/naming-convention
-  10:60  warning  Unexpected any. Specify a different type                                                                                  @typescript-eslint/no-explicit-any
-  11:8   warning  'SOME_VAR' is assigned a value but never used                                                                             @typescript-eslint/no-unused-vars
-  12:8   warning  Variable name `someVar2` must match one of the following formats: UPPER_CASE                                              @typescript-eslint/naming-convention
-  15:3   warning  Unexpected console statement                                                                                              no-console
-
-./typescript-tspqwe-linters/src/some.js
-  4:10  warning  'foo' is defined but never used  no-unused-vars
-  7:18  warning  Unexpected console statement     no-console
-
-./typescript-tspqwe-linters/src/someComponent/some.js
-  1:10  warning  'one' is defined but never used  no-unused-vars
-  2:2   warning  Unexpected console statement     no-console
-
-./typescript-tspqwe-linters/src/someComponent/someComponent.ts
-  3:7   warning  'SomeComponent' is defined but never used  @typescript-eslint/no-unused-vars
-  4:27  warning  Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
-  6:16  warning  Unexpected empty constructor               @typescript-eslint/no-empty-function
-  8:27  warning  Unexpected any. Specify a different type   @typescript-eslint/no-explicit-any
-
-✖ 20 problems (1 error, 19 warnings)
-
+33 problems

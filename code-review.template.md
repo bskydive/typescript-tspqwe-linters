@@ -148,6 +148,15 @@ Severity: moderate
 
 Framework related issues
 
+ * Build with strictTemplates and fullTemplateTypeCheck enabled
+ * Search for *.ts without onPush: (filesCountWithTemplateUrl - filesCountWithOnPush)
+ * Obsolete libraries
+ * Self-made routing/store
+ * User role-entity model complexity: [using](https://railsware.com/blog/how-to-analyze-circular-dependencies-in-es6/) dot [language](https://graphviz.gitlab.io/_pages/doc/info/lang.html) and render with [graphviz](https://graphviz.gitlab.io/)
+ * Business logic complexity: rules count, logic chains length
+ * Dependencies graph complexity: https://github.com/compodoc/compodoc or https://github.com/heypoom/webpack-dep-graph
+ * Cycle dependencies
+
 ## Data types
 
 Severity: moderate
@@ -460,3 +469,4 @@ Low test code coverage increases risk of adding new production issues while fixi
 
 3 enabled tests covered 3% of functions
 
+## Performance

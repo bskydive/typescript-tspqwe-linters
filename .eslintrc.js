@@ -9,6 +9,7 @@ module.exports = {
 		'plugin:import/typescript',
 		'plugin:promise/recommended',
 		'plugin:prettier/recommended', // https://www.npmjs.com/package/eslint-plugin-prettier
+		'plugin:functional/recommended',
 	],
 	env: {
 		browser: true,
@@ -22,12 +23,12 @@ module.exports = {
 		],
 	},
 	plugins: [
-		'standard',
 		'@typescript-eslint',
 		'import',
 		'node',
 		'promise',
 		'prettier',
+		'functional',
 	],
 	settings: {
 		import: {
@@ -214,7 +215,8 @@ module.exports = {
 
 		yoda: 'warn', // if ("red" === color)  https://eslint.org/docs/rules/yoda
 		'new-parens': 'warn', // require parentheses when invoking a constructor with no arguments 
-		"no-restricted-imports": ["warn", { "paths": ["untilDestroyed", "lodash", "jquery", "uirouter"]}],
+		"no-restricted-imports": ["warn", { "paths": ["untilDestroyed", "lodash", "jquery", "uirouter"] }],
+		'import/no-cycle': [1, { maxDepth: 1 }], // https://github.com/import-js/eslint-plugin-import/blob/HEAD/docs/rules/no-cycle.md#importno-cycle
 
 		// ========================================================== STYLE ===========================================================
 
@@ -348,7 +350,39 @@ module.exports = {
 		'no-useless-constructor': 'off', // check only body, not arguments. Not suitable for DI https://eslint.org/docs/rules/no-useless-constructor
 		'handle-callback-err': 'off',
 		'prefer-const': 'off',
-
+		'@typescript-eslint/typedef': [ // https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/typedef.md
+			"error",
+			{
+				arrayDestructuring: true,
+				arrowParameter: true,
+				memberVariableDeclaration: true,
+				objectDestructuring: true,
+				parameter: true,
+				propertyDeclaration: true,
+				variableDeclaration: true,
+				variableDeclarationIgnoreFunction: false,
+			}],
+		'functional/immutable-data': ['off', {
+			assumeTypes: true,
+			ignoreClass: "fieldsOnly",
+			ignoreImmediateMutation: true,
+		}], // https://github.com/jonaskello/eslint-plugin-functional/blob/master/docs/rules/immutable-data.md
+		'functional/no-expression-statement': 'off',
+		'functional/no-class': 'off',
+		'functional/no-this': 'off',
+		'functional/no-let': 'off',
+		'functional/no-this-expression': 'off',
+		'functional/prefer-readonly-type': 'off',
+		'functional/functional-parameters': 'off',
+		'functional/no-return-void': 'off',
+		'functional/no-conditional-statement': 'off',
+		'functional/no-throw-statement': 'off',
+		'functional/no-loop-statement': 'off',
+		'functional/no-mixed-type':'off',
+		'functional/no-promise-reject':'off',
+		'functional/no-try-statement': 'off',
+		'functional/no-method-signature': 'warn',
+		'functional/prefer-tacit':'off', // a = () => false
 		'getter-return': 'warn',
 		radix: 'warn',
 		'no-unused-labels': 'warn',
@@ -359,8 +393,8 @@ module.exports = {
 		'max-depth': ["error", 4], // https://eslint.org/docs/rules/max-depth
 		'max-params': ["error", 5], // https://eslint.org/docs/rules/max-params
 		'max-statements': ["error", 10], // https://eslint.org/docs/rules/max-statements
-		'max-lines': ["error", {"max": 400, "skipBlankLines": true, "skipComments": true}], // https://eslint.org/docs/rules/max-lines
-		'max-lines-per-function': ["error", {"max": 50, "skipBlankLines": true, "skipComments": true}], //https://eslint.org/docs/rules/max-lines-per-function
+		'max-lines': ["error", { "max": 400, "skipBlankLines": true, "skipComments": true }], // https://eslint.org/docs/rules/max-lines
+		'max-lines-per-function': ["error", { "max": 50, "skipBlankLines": true, "skipComments": true }], //https://eslint.org/docs/rules/max-lines-per-function
 		'unicode-bom': 'warn', // Unexpected Unicode BOM (Byte Order Mark)
 		'no-unmodified-loop-condition': 'warn',
 		'wrap-iife': ['error', 'any'], // https://eslint.org/docs/rules/wrap-iife
