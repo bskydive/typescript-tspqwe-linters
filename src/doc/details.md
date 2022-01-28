@@ -1,75 +1,8 @@
-# Code review
 
-## Disclaimer
 
-### What is it?
+##  [SOME] project details
 
-Typical recommendations list for open source project release preparation.
-
-Issues was found during static code analysis tools with extended rule set. To detect founded issues automatically in project was added the corresponding rule set. For triggered rules was collected and commented all unique issue types.
-
-Described issues and recommendations should not be fixed mandatory(in any way), and does not guarantee the success. This is additional information for decision making process.
-
-The most useful part is in the code analysis tools configuration. Any linter rules can be used as code style guide because it's maintained by community of programmers.
-
-* `package.json` - the scripts section
-* `.cspell-dict-exclude.txt`
-* `.cspell.json`
-* `.eslintrc.js`
-* `tsconfig.eslint.json`
-* `.vscode\settings.json`
-
-The full issues list is in the `log` folder: cspell.log, eslint.log, tslint.log
-
-### What to do next?
-
-1. collect issues with `npm run lint:* > log/*.log` commands
-1. filter log files with `linters.sh` example commands
-1. introduce team with issues, collect feedback, discuss the typical issues and issues resolving methods
-1. find additional info in similar project or communities for issues, that cannot be approved by all team members
-1. make a task list and calculate estimation time to resolve that tasks
-1. mark approved issue types(eslint rules) as `error` or `warn` in the `.eslintrc.js`, doesn't approved as `warn` or `off`:
-	* rules, that can be resolved in short time mark as `error`
-	* rules, that require long time to resolve mark as `warn`
-	* after resolving all detected by single rule issues mark as `error`. 
-	* Add to build script [eslint --fix](https://eslint.org/docs/user-guide/command-line-interface#fixing-problems) command. For that you can make separate `.eslintrc.fix.js` only with rules in `error` state
-
-## Common recommendations
-
-Severity: High
-
-1. Cover all code units(files, modules, functions, etc) with tests. Collaboration is very hard without unit testing, especially with external teams.
-1. License information: [LICENSE.md](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/licensing-a-repository)
-1. [License checker](fossa.io)
-1. Add contributors list
-1. Add contribution guide, issue & PR templates
-1. Add project goals
-1. Add use cases
-
-Severity: moderate
-
-1. Use unit test code coverage calculation tools: [codecov](https://codecov.io/pricing), [coveralls](https://coveralls.io/pricing)
-1. Add real data calculation conditions: 
-	* hardware(CPU, RAM, STORAGE)
-	* OS architecture(32/64/...) and version
-	* browser version
-	* input and output data size and type
-	* expectable overall calculation time in described conditions(1Tb animal pictures data for the 1 hour using win10x64/Chrome 84/core i7x4/8GB ram)
-1. Add CI/CD configuration: [gitlab](https://docs.gitlab.com/ee/ci/yaml/README.html), [Bitbucket](https://www.atlassian.com/continuous-delivery/tutorials), [GitHub](https://docs.github.com/en/free-pro-team@latest/actions)
-1. Use code quality tools: [sonarcloud](https://sonarcloud.io/pricing), [code inspector](https://www.code-inspector.com/pricing), [codeclimate](https://codeclimate.com/velocity/pricing/)
-
-Severity: low
-
-1. Follow the [preparation checklist](https://github.com/amilajack/project-checklist)
-1. Follow [README](https://github.com/matiassingers/awesome-readme) best practices
-1. Add code style guide
-1. Add live example on [stackblitz](https://stackblitz.com/), [gitlab pages](https://docs.gitlab.com/ee/user/project/pages/), [github pages](https://guides.github.com/features/pages/), [heroku](https://www.heroku.com/free)
-1. Add screenshots
-1. Add link to KB/docs
-1. Add [svg badges](https://shields.io/)
-1. Exclude(comment with TODO or disable) fake tests to reduce testing time
-
-## Spelling
+### Spelling
 
 There a re lot of mistakes, you should collect your own exclude file before make decisions. But after that you can find really important mistakes.
 
@@ -77,7 +10,10 @@ Severity: low
 
 * Issues in: `cspell.log`
 * Exclude words dictionary: `.cspell-dict-exclude.txt`
+* 2 uniq words with mistakes in `spell.words.log`
 * Check by: `npm run lint:spell`
+
+Recommendations
 
 1. Use direct web links. Indirect reference can became broken due to overtime limitations. Broken direct links much easier to detect
 	* line: `index.ts:10`
@@ -86,17 +22,17 @@ Severity: low
 	* https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
 	* https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker-russian
 
-## CSS Styles
+### CSS Styles
 
 There are lot of issues, but most of them are about formatting.
 Select rules, that most important to you and add to stylelintrc config
 
 Severity: low
 
- * Issues in log/css.log
- * Uniq files in log/css.files.log
- * Uniq issues in log/css.short.uniq.log
- * Uniq violated rules in log/css.rules.uniq.log
+ * 3 Issues in log/css.log
+ * 1 Uniq files in log/css.files.log
+ * 1 Uniq issues in log/css.short.uniq.log
+ * 1 Uniq violated rules in log/css.rules.uniq.log
  * Check by: `npm run lint:css`
 
 1. Unexpected named color "red" - use scss variables
@@ -114,8 +50,8 @@ Code duplicates increase hidden bugs risk, missed during refactoring.
 
 * See [full report](log/jscpd/html/index.html)
 * Duplications detection: Found 2 exact clones with 42(5.75%) duplicated lines in 10 (3 formats) files.
-* jscpd found too many duplicates (30.78%) over threshold (0.1%)
-* adjust threshold in `.jscpd.json`
+* jscpd found too many duplicates 10 over threshold 0.1%
+* configurable threshold located in the `.jscpd.json`
 * CSS: 1% 
 	- Anallyzed 2 files
 	- 2 exact clones with 2 duplicated lines
@@ -148,18 +84,98 @@ Severity: moderate
 
 Framework related issues
 
- * Build with strictTemplates and fullTemplateTypeCheck enabled
- * Search for *.ts without onPush: (filesCountWithTemplateUrl - filesCountWithOnPush)
- * Obsolete libraries
- * Self-made routing/store
- * User role-entity model complexity: [using](https://railsware.com/blog/how-to-analyze-circular-dependencies-in-es6/) dot [language](https://graphviz.gitlab.io/_pages/doc/info/lang.html) and render with [graphviz](https://graphviz.gitlab.io/)
- * Business logic complexity: rules count, logic chains length
- * Dependencies graph complexity: https://github.com/compodoc/compodoc or https://github.com/heypoom/webpack-dep-graph
- * Cycle dependencies
+Hidden issues in production env
 
-## Data types
+ * Build with strictTemplates and fullTemplateTypeCheck enabled
+	* 0 of 5 files
+	* +0% from last year
+	* 1 TS error types
+		* TS2322
+
+Performance issues risk
+
+ * Search for *.ts without onPush: (filesCountWithTemplateUrl - filesCountWithOnPush)
+	* 0 of 5 files
+	* +0% from last year
+
+Unmaintainable code, async racing risks, potentionally broken unsubscribers, broken type definitions and tight coupling inheritance
+
+ * Obsolete libraries
+	* 0 of 5 files
+	* +0% from last year
+ * Self-made routing/store
+	* 0 of 5 files
+	* +0% from last year
+
+High complexity can cause huge task estimation shifting
+
+ * Business logic complexity
+	* ngrx 
+		* stores interconnection
+		* actions count
+		* actions chains length
+	* services 
+		* chains length in services
+		* services chains length
+ * Dependencies graph complexity
+ 	* using compodoc
+	 	* https://github.com/compodoc/compodoc
+	* using [dot language](https://graphviz.gitlab.io/_pages/doc/info/lang.html) and render with [graphviz](https://graphviz.gitlab.io/)
+		* https://railsware.com/blog/how-to-analyze-circular-dependencies-in-es6/
+	* using webpack 
+		* https://www.npmjs.com/package/circular-dependency-plugin
+		* https://www.npmjs.com/package/webpack-dependency-tree
+		* https://webpack.js.org/configuration/stats/#root
+		* https://github.com/heypoom/webpack-dep-graph
+ 	* Cycle dependencies
+		* 0 of 5 files
+		* +0% from last year
+	* chains length
+		* 0 of 5 files
+		* +0% from last year
+
+## backend logic
 
 Severity: moderate
+
+ * collect csv/xml like data about user roles, artifacts and it's interconnections
+ * visualize it via yEd or graphviz like tools
+ * search for the loops and long chains
+ * search for the unused at the FE roles/artifacts
+
+## code quality
+
+Severity: Critical
+
+ * large code complexity and length
+	* 10% - 2 issues in 1 of 5 *.ts files
+	* +10% from last year
+ 	* 1 files with too long lines count in files and functions
+ 	* 1 files with too complex code
+
+Severity: High, Moderate
+
+Important issues with moderate or high severity
+Including: no type definitions, promise, errors catch, too many lines, too comples code, banned functions, shadow vars, console.log().
+
+ * see eslint.rules.important.log
+ * 1 issues
+ * 1 files
+ * no type definitions
+	* 1 log/eslint.type-sig.log
+		* +0% from last year
+	* 1 log/eslint.type-sig.files.log
+		* +0% from last year
+
+Severity: High, Moderate, Low
+
+ * 1 issues in 1 files
+ * 1 uniq issues
+ * 1 uniq rules violated
+
+## broken data types
+
+Severity: high
 
 Covering code with data types reduce issues count at the code editing(in IDE) stage and improve code understanding by humans. Also that allow to mitigate absent unit tests issues
 
@@ -455,18 +471,44 @@ You can request knowledge transfer from more experienced project teams with huge
 
 ## Webpack bundle
 
-see stats.jpg
-lodash, uirouter, vendor.js, quill, ng-bootstrap - are good candidates to analyze and remove
+ * see stats.jpg
+ * lodash, jquery, router - are good candidates to analyze and remove
 
+## Files and folders structure
+
+ * `git add src;git commit 'add'`
+ * CRLF should be replaced by LF in:
+ 	* src/index.js
+ * should be removed:
+	* unused some.min.js
+	* unused .vscode folder
 ## Test coverage
 
-Severity: moderate
+Severity: high
 
 Check by: `npm run lint:test`
 
 Low test code coverage increases risk of adding new production issues while fixing old.
-* See [full report](log/test.log)
 
-3 enabled tests covered 3% of functions
+ * See [full report](log/test.log)
+ * 3 enabled tests covered 3% of functions
+ * +0% from last year
+ * 1 of 5 it assertions disabled
+ * Statements   : 0% ( 0/0 )
+ * Branches     : 0% ( 0/0 )
+ * Functions    : 0% ( 0/0 )
+ * Lines        : 0% ( 0/0 )
 
 ## Performance
+
+ * chrome devtools profiler diagrams
+ * lighthouse recommendations
+ * too many XHR requests
+ * long XHR requests
+
+## Security
+
+ * OWASP
+ * configs/pass in repo
+ * CORS/CSP setup
+ * env hardening/updating

@@ -4,6 +4,10 @@
 
 1. Lint libs collection and code [review template](./code-review.template.md).
 1. The handy tool set to begin code conventions automation
+1. Project health check report templates
+	* [disclaimer](doc/disclaimer.md)
+	* [summary](doc/summary.md)
+	* [details](doc/details.md)
 1. [Live](https://stackblitz.com/edit/typescript-tspqwe-linters?file=README.md) linting playground(TODO)
 	* [eslint](https://eslint.org/) - js/ts linter with plugins: typescript, angular, promise, react
 	* [tslint](https://github.com/palantir/tslint) - still useful(finnish notation)
