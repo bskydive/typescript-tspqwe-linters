@@ -2,7 +2,6 @@
 
 ## What is it?
 
-1. Lint libs collection and code [review template](./code-review.template.md).
 1. The handy tool set to begin code conventions automation
 1. Project health check report templates
 	* [disclaimer](doc/disclaimer.md)
