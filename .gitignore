@@ -5,6 +5,8 @@
 dist/
 tmp/
 log/
+log.*/
+.angular/
 
 # dependencies
 node_modules/

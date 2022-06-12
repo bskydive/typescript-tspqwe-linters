@@ -96,3 +96,4 @@
  * Angular code examples
  * Find how make live cloud playground useful https://stackblitz.com/edit/typescript-tspqwe-linters
  * badges
+ * jest --coverage

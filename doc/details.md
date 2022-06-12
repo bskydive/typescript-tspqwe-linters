@@ -117,7 +117,11 @@ High complexity can cause huge task estimation shifting
 	* services 
 		* chains length in services
 		* services chains length
- * Dependencies graph complexity
+
+## Dependencies graph
+
+	* using nx
+		* https://nx.dev/structure/dependency-graph
  	* using compodoc
 	 	* https://github.com/compodoc/compodoc
 	* using [dot language](https://graphviz.gitlab.io/_pages/doc/info/lang.html) and render with [graphviz](https://graphviz.gitlab.io/)
@@ -143,7 +147,7 @@ Severity: moderate
  * search for the loops and long chains
  * search for the unused at the FE roles/artifacts
 
-## code quality
+## code complexity
 
 Severity: Critical
 
@@ -486,7 +490,7 @@ You can request knowledge transfer from more experienced project teams with huge
 
 Severity: high
 
-Check by: `npm run lint:test`
+Check by: `npm run test-coverage`
 
 Low test code coverage increases risk of adding new production issues while fixing old.
 

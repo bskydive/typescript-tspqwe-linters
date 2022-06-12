@@ -128,7 +128,7 @@
 		"linebreak-style": [true, "LF"],
 		"ban-ts-ignore": true,
 		"no-unused-variable": false,
-		"rxjs-no-create": true,
+		"rxjs-no-create": false,
 		"increment-decrement": false,
 		"arrow-return-shorthand": false,
 		"rxjs-no-unsafe-takeuntil": true,
