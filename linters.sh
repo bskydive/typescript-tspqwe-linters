@@ -28,22 +28,25 @@ echo -e "`find src/ -type f -name '*.ts' | wc -l` *.ts" >> log/log.md
 
 ############################################# TODO
 
-echo -e "\n# todo" >> log/todo.md
+echo -e "\n## todo" >> log/todo.md
+echo -e "\n## TODO" >> log/log.md
 
 echo -e "\n## count" >> log/todo.md
 find src/ -type f -name '*.ts' -exec grep -iE 'TODO|FIXME' {} \; | wc -l >> log/todo.md
+find src/ -type f -name '*.ts' -exec grep -iE 'TODO|FIXME' {} \; | wc -l >> log/log.md
 
 echo -e "\n## list" >> log/todo.md
 find src/ -type f -name '*.ts' -exec grep -iE 'TODO|FIXME' {} \; >> log/todo.md
 
 ############################################# GIT
 
-echo -e "\n# git" >> log/git.md
+echo -e "\n## GIT" >> log/git.md
 
-echo -e "\n## first commits" >> log/git.md
+echo -e "\n### first commits" >> log/git.md
+# run in project folder
 git log --reverse --pretty=oneline --format='DEV: %cd #%h %s' --date=format:'%c' | head -10 >> log/git.md
 
-echo -e "\n## authors stats" >> log/git.md
+echo -e "\n### authors stats" >> log/git.md
 git shortlog --summary --numbered --email 
 # ctrl+ins
 # q
@@ -222,8 +225,15 @@ echo -e "\n# WEBPACK" >> log/log.md
 echo -e "copy stats in dist/stats.json" >> log/log.md
 echo -e " * \![](webpack-stats.jpg)" >> log/log.md
 echo -e " * \![](webpack-stats1.jpg)" >> log/log.md
+
+# "build": "ng build  --aot --prod",
 # "build:analyze": "ng build --stats-json",
+# "webpack:build":"webpack --profile --json > dist/stats.json",
+# "webpack:analyze:view": "webpack-bundle-analyzer dist/stats.json",
+
+# npm i webpack-bundle-analyzer
 # npm run build:analyze:view
+# make the screenshots
 
 # "build-stats": "nx build name --configuration production --stats-json",
 # cp ./dist/app/name ./dist
@@ -231,6 +241,9 @@ echo -e " * \![](webpack-stats1.jpg)" >> log/log.md
 
 ############################################## COPY PASTE
 
+# you need at least one commit in local git repo
+# copy .jscpd* config files if you want to run in project folder
+# npm i jscpd jscpd-badge-reporter
 echo -e "\n# COPY PASTE" >> log/log.md
 npm run lint:cp
 cat log/jscpd/jscpd-report.md >> log/log.md

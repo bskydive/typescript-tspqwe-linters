@@ -5,7 +5,7 @@
 	"private": "false",
 	"main": "src/index.ts",
 	"engines": {
-			"node": ">=14.5.0"
+		"node": ">=14.5.0"
 	},
 	"scripts": {
 		"!!!for global linting!!!": "export LINTER_PATH=./",
@@ -24,7 +24,8 @@
 		"lint:prettier": "./node_modules/.bin/prettier -c \"**/*.html\"",
 		"build": "ng build  --aot --prod",
 		"build:analyze": "ng build --stats-json",
-		"build:analyze:view": "webpack-bundle-analyzer dist/stats.json",
+		"webpack:build":"webpack --profile --json > dist/stats.json",
+		"webpack:analyze:view": "webpack-bundle-analyzer dist/stats.json",
 		"test-coverage": "ng test --browsers=Chrome  --codeCoverage=true --watch=false",
 		"test-coverage-headless": "ng test --browsers=ChromeHeadlessNoSandbox --codeCoverage=true --progress=true",
 		"test-headless": "ng test --browsers=ChromeHeadlessNoSandbox --codeCoverage=true --progress=true",
@@ -74,6 +75,7 @@
 		"eslint-plugin-functional": "^4.2.1",
 		"eslint-plugin-import": "^2.26.0",
 		"eslint-plugin-jsx-a11y": "^6.5.1",
+		"eslint-plugin-n": "^15.2.4",
 		"eslint-plugin-node": "^11.1.0",
 		"eslint-plugin-prettier": "^4.0.0",
 		"eslint-plugin-promise": "^6.0.0",
