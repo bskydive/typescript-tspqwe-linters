@@ -26,17 +26,35 @@ echo -e "`find src/ -type f -name '*.scss' | wc -l` *.scss" >> log/log.md
 echo -e "`find src/ -type f -name '*.css' | wc -l` *.css" >> log/log.md
 echo -e "`find src/ -type f -name '*.ts' | wc -l` *.ts" >> log/log.md
 
-############################################# TODO
+############################################# COMMENTS
 
-echo -e "\n## todo" >> log/todo.md
-echo -e "\n## TODO" >> log/log.md
+echo -e "\n# COMMENTS" >> log/comments.md
 
-echo -e "\n## count" >> log/todo.md
-find src/ -type f -name '*.ts' -exec grep -iE 'TODO|FIXME' {} \; | wc -l >> log/todo.md
-find src/ -type f -name '*.ts' -exec grep -iE 'TODO|FIXME' {} \; | wc -l >> log/log.md
+echo -e "\n## TODO count" >> log/comments.md
+find src/ -type f \( -name '*.less' -o -name '*.scss' -o -name '*.css' -o -name '*.ts' -o -name '*.html' \) -exec grep -iE 'TODO|FIXME' {} \; | wc -l >> log/comments.md
 
-echo -e "\n## list" >> log/todo.md
-find src/ -type f -name '*.ts' -exec grep -iE 'TODO|FIXME' {} \; >> log/todo.md
+echo -e "\n## comment|JSDOC count" >> log/comments.md
+#find src/ -type f \( -name '*.less' -o -name '*.scss' -o -name '*.css' -o -name '*.ts' -o -name '*.html' \) -exec grep -iE '/\*|//' {} \; | wc -l >> log/comments.md
+grep --include=\*.{less,scss,css,ts,html} -RiE '/\*|//' src/ | wc -l >> log/comments.md
+
+echo -e "\n## comment|JSDOC count FILES" >> log/comments.md
+grep --include=\*.{less,scss,css,ts,html} -RilE '/\*|//' src/ | wc -l >> log/comments.md
+
+echo -e "\n## JSDOC count" >> log/comments.md
+#find src/ -type f \( -name '*.less' -o -name '*.scss' -o -name '*.css' -o -name '*.ts' -o -name '*.html' \) -exec grep -iE '/\**' {} \; | wc -l >> log/comments.md
+grep --include=\*.{less,scss,css,ts,html} -RiE '/\**' src/ | wc -l >> log/comments.md
+
+echo -e "\n## JSDOC count FILES" >> log/comments.md
+grep --include=\*.{less,scss,css,ts,html} -RilE '/\**' src/ | wc -l >> log/comments.md
+
+cat log/comments.md >> log/log.md
+
+echo -e "\n## TODO list" >> log/comments.md
+find src/ -type f \( -name '*.less' -o -name '*.scss' -o -name '*.css' -o -name '*.ts' -o -name '*.html' \) -exec grep -iE 'TODO|FIXME' {} \; >> log/comments.md
+
+echo -e "\n## comment|JSDOC list" >> log/comments.md
+grep --include=\*.{less,scss,css,ts,html} -RiEn '/\**' src/ | wc -l >> log/comments.md
+
 
 ############################################# GIT
 
@@ -45,6 +63,9 @@ echo -e "\n## GIT" >> log/git.md
 echo -e "\n### first commits" >> log/git.md
 # run in project folder
 git log --reverse --pretty=oneline --format='DEV: %cd #%h %s' --date=format:'%c' | head -10 >> log/git.md
+
+echo -e "\n### current commit" >> log/git.md
+git log --pretty=oneline --format='DEV: %cd #%h %s' --date=format:'%c' | head -1 >> log/git.md
 
 echo -e "\n### authors stats" >> log/git.md
 git shortlog --summary --numbered --email 
