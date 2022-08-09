@@ -1,6 +1,7 @@
-
-
 ##  [SOME] project details
+
+* [disclaimer](disclaimer.md)
+* [summary](summary.md)
 
 ### Spelling
 

@@ -1,6 +1,7 @@
-# Project code quality review
+##  [SOME] project disclaimer
 
-## Disclaimer
+* [summary](summary.md)
+* [details](details.md)
 
 ### What is it?
 

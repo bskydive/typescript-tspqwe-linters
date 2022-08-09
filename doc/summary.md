@@ -1,4 +1,7 @@
-## [SOME] project report
+## [SOME] project summary
+
+* [disclaimer](disclaimer.md)
+* [details](details.md)
 
 ### Summary
 
