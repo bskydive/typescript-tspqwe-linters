@@ -3,6 +3,8 @@ mkdir log
 rm -rf log/*
 
 ############################################## CODE LINES
+# copy project src folder to linter repo folder
+
 echo -e "\n# SIZE" >> log/log.md
 
 echo -e "\n## LINES" >> log/log.md
@@ -27,6 +29,7 @@ echo -e "`find src/ -type f -name '*.css' | wc -l` *.css" >> log/log.md
 echo -e "`find src/ -type f -name '*.ts' | wc -l` *.ts" >> log/log.md
 
 ############################################# COMMENTS
+# copy project src folder to linter repo folder
 
 echo -e "\n# COMMENTS" >> log/comments.md
 
@@ -56,16 +59,34 @@ echo -e "\n## comment|JSDOC list" >> log/comments.md
 grep --include=\*.{less,scss,css,ts,html} -RiEn '/\**' src/ | wc -l >> log/comments.md
 
 
+############################################## PACKAGE
+# run in project folder
+# edit file after copying
+
+echo -e "\n# PACKAGE" >> log/package.md
+
+echo -e "\n## Dependencies" >> log/package.md
+cat package.json | tr -d '",:{}' >> log/package.md
+# edit file package.md
+exit
+
+cat log/dependencies.md >> log/log.md
+
 ############################################# GIT
+# run in project folder
 
 echo -e "\n## GIT" >> log/git.md
 
 echo -e "\n### first commits" >> log/git.md
-# run in project folder
 git log --reverse --pretty=oneline --format='DEV: %cd #%h %s' --date=format:'%c' | head -10 >> log/git.md
 
 echo -e "\n### current commit" >> log/git.md
 git log --pretty=oneline --format='DEV: %cd #%h %s' --date=format:'%c' | head -1 >> log/git.md
+git log --pretty=oneline --format='DEV: %cd #%h %s' --date=format:'%c' | wc -l >> log/git.md
+
+echo -e "\n### 1 year ago commit" >> log/git.md
+git log --pretty=oneline --format='DEV: %cd #%h %s' --date=format:'%c' --before="2021-08-02 8:00" | head -1 >> log/git.md
+git log --pretty=oneline --format='DEV: %cd #%h %s' --date=format:'%c' --before="2021-08-02 8:00" | wc -l >> log/git.md
 
 echo -e "\n### authors stats" >> log/git.md
 git shortlog --summary --numbered --email 
@@ -74,11 +95,13 @@ git shortlog --summary --numbered --email
 # cat >> log/git.md
 # shift+ins
 exit
+# move *.md|log files to linter repo folder
 
 cat log/git.md >> log/log.md
 
 
 ############################################# ES LINT
+# copy project src folder to linter repo folder
 
 npm run lint:es
 # grep ' warning ' log/eslint.log | awk -F '  warning  ' '{print $2}' | tr -s " " | sort | uniq | less
@@ -154,6 +177,14 @@ echo -e "\n# CSS" >> log/log.md
 npm run lint:scss > log/css.log
 
 npm run lint:less >> log/css.log
+
+cat log/css.log | grep '(' | awk -F'(' '{print $2}' |grep -E ')$'|tr -d ')'|sort|uniq> log/css.rules.uniq.log
+wc -l log/css.rules.uniq.log >> log/log.md
+cat log/css.log | awk -F' - ' '{print $2}' | sort | uniq |less > log/css.short.uniq.log
+wc -l log/css.short.uniq.log >> log/log.md
+cat log/css.log | grep ':' | awk -F':' '{print $1}' |sort|uniq |less > log/css.files.log
+wc -l log/css.files.log >> log/log.md
+
 # win
 # grep ' ✖ ' log/css.log | colrm 1 9 | sort | uniq | less 
 # grep ' ✖ ' log/css.log | colrm 1 9 | sort | uniq > log/css.uniq.log
@@ -165,23 +196,19 @@ npm run lint:less >> log/css.log
 #grep -i ' ⚠ ' log/css.log | colrm 1 10 | tr -s ' ' | sort | uniq  > log/css.uniq.log
 #grep -iE 'Expected|Expected|invalid|:' log/css.log | colrm 1 10 | tr -s ' ' | sort | uniq  > log/css.uniq.log
 
-cat log/css.log | grep '(' | awk -F'(' '{print $2}' |grep -E ')$'|tr -d ')'|sort|uniq> log/css.rules.uniq.log
-wc -l log/css.rules.uniq.log >> log/log.md
-cat log/css.log | awk -F' - ' '{print $2}' | sort | uniq |less > log/css.short.uniq.log
-wc -l log/css.short.uniq.log >> log/log.md
-cat log/css.log | grep ':' | awk -F':' '{print $1}' |sort|uniq |less > log/css.files.log
-wc -l log/css.files.log >> log/log.md
-
 ############################################# NPM AUDIT
-
-echo -e "\n# NPM AUDIT" >> log/log.md
-exit
 # run in project folder or add all libs in package.json
+# run `npm i` before
+
 npm audit > log/audit.log
-# 
+
 grep -iE 'Path|Low|Moderate|High|Critical' log/audit.log | less
 grep -iE 'Path|Low|Moderate|High|Critical' log/audit.log > log/audit.parsed.log
+# edit file
+exit
 
+echo -e "\n# NPM AUDIT" >> log/log.md
+cat log/audit.parsed.log >> log/log.md
 
 ############################################# ANGULAR
 
@@ -217,9 +244,11 @@ wc -l log/build.ts-numbers.ts >> log/log.md
 #"test-coverage": "ng test --browsers=Chrome  --codeCoverage=true --watch=false",
 #"test-headless": "ng test --browsers=ChromeHeadlessNoSandbox --codeCoverage=true --progress=true",
 
-echo -e "\n# UNIT TEST COVERAGE" >> log/log.md
-find src/ -type f -name '*spec.ts' -exec wc -l {} \; | awk '{ total += $1 } END {print total " spec.ts"}' >> log/log.md
-find src/ -type f \( -name '*component*.ts' -o -name '*service*.ts' -o -name '*directive*.ts' \) -exec wc -l {} \; | awk '{ total += $1 } END {print total " component|service|directive"}' >> log/log.md
+echo -e "\n# UNIT TEST COVERAGE" >> log/test.md
+find src/ -type f -name '*spec.ts' -exec wc -l {} \; | awk '{ total += $1 } END {print total " spec.ts"}' >> log/test.md
+find src/ -type f \( -name '*component*.ts' -o -name '*service*.ts' -o -name '*directive*.ts' \) -exec wc -l {} \; | awk '{ total += $1 } END {print total " component|service|directive"}' >> log/test.md
+
+cat log/test.md >> log/log.md
 
 # npm run test > log/test.log
 # npm run test-headless > log/test.log
@@ -265,19 +294,25 @@ echo -e " * \![](webpack-stats1.jpg)" >> log/log.md
 # you need at least one commit in local git repo
 # copy .jscpd* config files if you want to run in project folder
 # npm i jscpd jscpd-badge-reporter
-echo -e "\n# COPY PASTE" >> log/log.md
+echo -e "\n# COPY PASTE" >> log/jscpd.md
+
+echo -e "\n# All" >> log/jscpd.md
 npm run lint:cp
-cat log/jscpd/jscpd-report.md >> log/log.md
+cat log/jscpd/jscpd-report.md >> log/jscpd.md
 
+echo -e "\n# Html" >> log/jscpd.md
 npm run lint:cp-html
-cat log/jscpd-html/jscpd-report.md >> log/log.md
+cat log/jscpd-html/jscpd-report.md >> log/jscpd.md
 
+echo -e "\n# CSS" >> log/jscpd.md
 npm run lint:cp-css
-cat log/jscpd-css/jscpd-report.md >> log/log.md
+cat log/jscpd-css/jscpd-report.md >> log/jscpd.md
 
+echo -e "\n# TS" >> log/jscpd.md
 npm run lint:cp-ts
-cat log/jscpd-ts/jscpd-report.md >> log/log.md
+cat log/jscpd-ts/jscpd-report.md >> log/jscpd.md
 
+cat log/jscpd.md >> log/log.md
 
 ############################################## SPELLING
 echo -e "\n# SPELLING" >> log/log.md
@@ -288,15 +323,16 @@ wc -l log/spell.log >> log/log.md
 #cat log/spell.log | awk -F'(' '{print$2}' | awk -F')' '{print $1}' | sort | uniq > log/spell.words.log
 cat log/spell.log | grep -i word | awk -F'(' '{print$2}' | awk -F')' '{print $1}' | sort | uniq > log/spell.words.log
 wc -l log/spell.words.log >> log/log.md
-less log/spell.words.log
+cat log/spell.words.log > log/spell.words.fixed.log
+#less log/spell.words.fixed.log
 echo -e "\n# SPELLING FIXED" >> log/log.md
 exit
 
-# remove mistakes from log/spell.words.log
+# remove mistakes from log/spell.words.fixed.log
 
 # fill dictionary
-cat log/spell.words.log >> .cspell-dict-exclude.txt
-wc -l .cspell-dict-exclude.txt >> log/log.md
+cat log/spell.words.fixed.log >> .cspell-dict-exclude.txt
+wc -l log/spell.words.fixed.log >> log/log.md
 
 # run again
 npm run lint:spell > log/spell-excluded.log

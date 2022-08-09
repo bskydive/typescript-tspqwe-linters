@@ -1,6 +1,6 @@
 {
 	"": "https://www.npmjs.com/package/jscpd#options",
-	"threshold": 10.5,
+	"threshold": 20.5,
 	"ignore": [
 		"**/__snapshots__/**",
 		"**/node_modules/**",
@@ -20,7 +20,7 @@
         "badge", 
         "html"
     ],
-    "output": "./log",
+    "output": "./log/jscpd",
     "mode": "mild",
     "format": [
         "javascript",
