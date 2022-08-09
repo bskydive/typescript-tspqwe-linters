@@ -1,6 +1,0 @@
-
-> lint@1.1.0 lint:spell ./typescript-tspqwe-linters
-> cspell -c ${LINTER_PATH}/.cspell.json '**/*.{js,ts}'
-
-./typescript-tspqwe-linters/src/index.ts:1:28 - Unknown word (stylelint)
-./typescript-tspqwe-linters/src/index.ts:3:31 - Unknown word (stylelint)

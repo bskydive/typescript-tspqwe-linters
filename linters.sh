@@ -2,6 +2,17 @@
 mkdir log
 rm -rf log/*
 
+############################################## PACKAGE
+# run in project folder
+# edit file after copying
+
+echo -e "\n# PACKAGE" >> log/package.md
+
+echo -e "\n## Dependencies" >> log/package.md
+cat package.json >> log/package.md
+
+cat log/dependencies.md >> log/log.md
+
 ############################################## CODE LINES
 echo -e "\n# SIZE" >> log/log.md
 
@@ -57,15 +68,20 @@ grep --include=\*.{less,scss,css,ts,html} -RiEn '/\**' src/ | wc -l >> log/comme
 
 
 ############################################# GIT
+# run in project folder
 
 echo -e "\n## GIT" >> log/git.md
 
 echo -e "\n### first commits" >> log/git.md
-# run in project folder
 git log --reverse --pretty=oneline --format='DEV: %cd #%h %s' --date=format:'%c' | head -10 >> log/git.md
 
 echo -e "\n### current commit" >> log/git.md
 git log --pretty=oneline --format='DEV: %cd #%h %s' --date=format:'%c' | head -1 >> log/git.md
+git log --pretty=oneline --format='DEV: %cd #%h %s' --date=format:'%c' | wc -l >> log/git.md
+
+echo -e "\n### 1 year ago commit" >> log/git.md
+git log --pretty=oneline --format='DEV: %cd #%h %s' --date=format:'%c' --before="2021-08-02 8:00" | head -1 >> log/git.md
+git log --pretty=oneline --format='DEV: %cd #%h %s' --date=format:'%c' --before="2021-08-02 8:00" | wc -l >> log/git.md
 
 echo -e "\n### authors stats" >> log/git.md
 git shortlog --summary --numbered --email 
@@ -79,6 +95,7 @@ cat log/git.md >> log/log.md
 
 
 ############################################# ES LINT
+# copy project src folder to linter repo folder
 
 npm run lint:es
 # grep ' warning ' log/eslint.log | awk -F '  warning  ' '{print $2}' | tr -s " " | sort | uniq | less
