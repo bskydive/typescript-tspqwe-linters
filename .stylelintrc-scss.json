@@ -7,6 +7,7 @@
 	"defaultSeverity": "warning",
 	"ignoreFiles": [
 		"**/*.min.css",
+		"./src.*",
 		"**/dist/",
 		"**/vendor/",
 		"/_gh_pages/",
