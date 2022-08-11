@@ -109,17 +109,22 @@ npm run lint:es
 echo -e "\n# eslint" >> log/log.md
 echo -e "" >> log/log.md
 
+# all rules
 cat log/eslint.log | awk -F'(' '{print $1}' | sort | uniq > log/eslint.files.log
+tail -n1 log/eslint.log >> log/log.md
 wc -l log/eslint.files.log >> log/log.md
 cat log/eslint.log | awk -F':' '{print $3}' | sort | uniq > log/eslint.issues.log
 wc -l log/eslint.issues.log >> log/log.md
 cat log/eslint.log | awk -F':' '{print $2}' | sort | uniq > log/eslint.rules.log 
 wc -l log/eslint.rules.log  >> log/log.md
 
+# max-lines
 cat log/eslint.log | grep -i max-lines > log/eslint.max-lines.log
+wc -l log/eslint.max-lines.log >> log/log.md
 cat log/eslint.max-lines.log | awk -F'(' '{print $1}' | sort | uniq > log/eslint.max-lines.files.log
 wc -l log/eslint.max-lines.files.log >> log/log.md
 
+# complexity
 cat log/eslint.log | grep -i complexity > log/eslint.complexity.log
 wc -l log/eslint.complexity.log >> log/log.md
 cat log/eslint.complexity.log | awk -F'(' '{print $1}' | sort | uniq > log/eslint.complexity.files.log
