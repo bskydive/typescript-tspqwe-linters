@@ -216,12 +216,24 @@ grep -iE 'Path|Low|Moderate|High|Critical' log/audit.log > log/audit.parsed.log
 # edit file
 exit
 
-echo -e "\n# NPM AUDIT" >> log/log.md
-cat log/audit.parsed.log >> log/log.md
+echo -e "\n# NPM AUDIT" >> log/audit.md
+tail -n3 log/audit.log > log/audit.md
+cat log/audit.md >> log/log.md
 
 ############################################# ANGULAR
 
-echo -e "\n# ANGULAR" >> log/log.md
+#find src/ -type f \( -name '*component*.ts' -o -name '*pipe*.ts' -o -name '*directive*.ts' \) -exec wc -l {} \; | awk '{ total += $1 } END {print total " component|pipe|directive"}' >> log/angular.md
+echo -e "\n# ANGULAR" > log/angular.md
+
+grep --include=\*.ts -RiE '@component\(' src/ > log/angular.components.files.md
+grep --include=\*.ts -RiE '@component\(' src/ | sort | uniq -d > log/angular.components.duplicated.files.md
+grep --include=\*.ts -RiE '@component\(' src/ | grep -iE '\.onpush' > log/angular.components.onpush.files.md
+
+wc -l log/angular.components.files.md >> log/angular.md
+wc -l log/angular.components.duplicated.files.md >> log/angular.md
+wc -l log/angular.components.onpush.files.md >> log/angular.md
+
+
 exit
 
 # tslint
@@ -234,16 +246,16 @@ exit
 # logs output don't work because all errors in stderr, copied manually
 # clear console
 clear
-npm run build 2>&1 > log/ngbuild.log
+npm run build 2>&1 > log/build.log
 # save console output to log/build.log
 grep -iE 'error TS' log/build.log > log/build.errors.log
-wc -l log/build.errors.log >> log/log.md
+wc -l log/build.errors.log >> log/angular.md
 
 cat log/build.errors.log | awk -F':' '{print$1}' | sort | uniq > log/build.errors.files.log
-wc -l log/build.errors.files.log >> log/log.md
+wc -l log/build.errors.files.log >> log/angular.md
 
 grep -iE 'error TS' log/build.log | awk -F' TS' '{print$2}' | awk -F':' '{print$1}' | sort | uniq > log/build.ts-numbers.ts
-wc -l log/build.ts-numbers.ts >> log/log.md
+wc -l log/build.ts-numbers.ts >> log/angular.md
 #less log/build.ts-numbers.ts
 
 
@@ -255,7 +267,13 @@ wc -l log/build.ts-numbers.ts >> log/log.md
 
 echo -e "\n# UNIT TEST COVERAGE" >> log/test.md
 find src/ -type f -name '*spec.ts' -exec wc -l {} \; | awk '{ total += $1 } END {print total " spec.ts"}' >> log/test.md
-find src/ -type f \( -name '*component*.ts' -o -name '*service*.ts' -o -name '*directive*.ts' \) -exec wc -l {} \; | awk '{ total += $1 } END {print total " component|service|directive"}' >> log/test.md
+#find src/ -type f \( -name '*component*.ts' -o -name '*service*.ts' -o -name '*directive*.ts' \) -exec wc -l {} \; | awk '{ total += $1 } END {print total " component|service|directive"}' >> log/test.md
+echo -e "`find src/ -type f -name '*spec.ts' | wc -l` *spec.ts" >> log/log.md
+
+
+echo -e "\n## disabled" >> log/comments.md
+grep --include=\*spec.ts -RiE 'xit\(|xdescribe\(' src/ >> test.disabled.log
+cat test.disabled.log | wc -l >> log/comments.md
 
 cat log/test.md >> log/log.md
 
