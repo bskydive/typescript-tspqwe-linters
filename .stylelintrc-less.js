@@ -9,6 +9,7 @@ module.exports = {
 	ignoreFiles: [
 		"**/*.min.*",
 		"**/dist/",
+		"./src.*",
 		"**/vendor/",
 		"/_gh_pages/",
 		"node_modules",
