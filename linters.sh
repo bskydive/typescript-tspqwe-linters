@@ -4,21 +4,19 @@
 
 less scripts/linter_folder/README.md
 
-npm i
+# npm i
 mkdir log
 # rm -rf log/*
 
-cd scripts/linter_folder/
-
 # ls scripts/linter_folder/
-./lines.sh
-./comments.sh
-./eslint.sh
-./css.sh
-./tests.sh
-./angular.sh
-./duplicates.sh
-./spell.sh
+./scripts/linter_folder/lines.sh
+./scripts/linter_folder/comments.sh
+./scripts/linter_folder/eslint.sh
+./scripts/linter_folder/css.sh
+./scripts/linter_folder/tests.sh
+./scripts/linter_folder/angular.sh
+./scripts/linter_folder/duplicates.sh
+./scripts/linter_folder/spell.sh
 # ./tslint.sh
 
 exit
@@ -33,8 +31,8 @@ mkdir log
 # rm -rf log/*
 
 # ls scripts/project_folder/
-./npm.sh
-./git.sh
-./build.angular.sh
-./webpack.sh
+./scripts/project_folder/npm.sh
+./scripts/project_folder/git.sh
+./scripts/project_folder/build.angular.sh
+./scripts/project_folder/webpack.sh
 # ./lint.angular.sh
