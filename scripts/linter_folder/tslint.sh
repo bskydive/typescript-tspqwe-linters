@@ -1,7 +1,7 @@
 ############################################# TS LINT
 
 echo -e "\n# TSLINT" > log/tslint.md
-exit
+
 npm run lint:ts > log/tslint.log
 # grep WARNING: log/tslint.log | colrm 1 16 | sort | uniq | less
 # grep WARNING: log/tslint.log | colrm 1 16 | sort | uniq > log/tslint.uniq.log
