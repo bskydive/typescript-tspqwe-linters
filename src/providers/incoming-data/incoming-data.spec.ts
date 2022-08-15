@@ -169,7 +169,7 @@ describe('Provider: Incoming Data Provider', () => {
         );
       });
     });
-    xit('Should parse valid BitPay Invoice Url if selectedtransactionCurrency exists with different coins', fakeAsync(() => {
+    it('Should parse valid BitPay Invoice Url if selectedtransactionCurrency exists with different coins', fakeAsync(() => {
       const data = [
         {
           expires: '2019-11-05T16:29:31.754Z',
@@ -302,7 +302,7 @@ describe('Provider: Incoming Data Provider', () => {
         expect(eventsSpy).toHaveBeenCalledWith('IncomingDataRedir', nextView);
       });
     }));
-    xit('Should parse valid BitPay Invoice Url if !selectedtransactionCurrency', fakeAsync(() => {
+    it('Should parse valid BitPay Invoice Url if !selectedtransactionCurrency', fakeAsync(() => {
       const data = [
         {
           expires: '2019-11-05T16:29:31.754Z',

@@ -374,25 +374,10 @@ page-wallet-details {
     color: color($colors, warning);
     font-size: 44px;
   }
-  .info-background {
-    background-color: color($background-colors, info);
-  }
   .warning-background {
     background-color: color($background-colors, warning);
   }
   .danger-background {
     background-color: color($background-colors, danger);
-  }
-  action-card {
-    .main-label {
-      display: flex;
-      justify-content: space-between;
-    }
-    .action-card__body {
-      text-align: left !important;
-    }
-    .button-standard {
-      margin: 5px auto;
-    }
   }
 }

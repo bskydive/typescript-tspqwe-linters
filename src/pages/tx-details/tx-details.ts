@@ -22,8 +22,6 @@ import { TxConfirmNotificationProvider } from '../../providers/tx-confirm-notifi
 import { TxFormatProvider } from '../../providers/tx-format/tx-format';
 import { WalletProvider } from '../../providers/wallet/wallet';
 
-// Pages
-import { ConfirmPage } from '../send/confirm/confirm';
 @Component({
   selector: 'page-tx-details',
   templateUrl: 'tx-details.html'
@@ -101,19 +99,19 @@ export class TxDetailsModal {
     this.events.unsubscribe('bwsEvent', this.bwsEventHandler);
   }
 
-  private bwsEventHandler: any = data => {
+  private bwsEventHandler: any = (_, type: string, n) => {
     let match = false;
     if (
+      type == 'NewBlock' &&
+      n &&
+      n.data &&
       this.wallet &&
-      data &&
-      (data.notification_type == 'NewBlock' ||
-        data.notification_type == 'TxConfirmation') &&
-      data.notification &&
-      data.notification.network == this.wallet.network &&
-      data.notification.coin == this.wallet.coin
+      n.data &&
+      n.data.network == this.wallet.network &&
+      n.data.coin == this.wallet.coin
     ) {
       match = true;
-      this.updateTxDebounced({ hideLoading: true, force: true });
+      this.updateTxDebounced({ hideLoading: true });
     }
     this.logger.debug('bwsEvent handler @tx-details. Matched: ' + match);
   };
@@ -193,8 +191,8 @@ export class TxDetailsModal {
   }
 
   private updateTxDebounced = _.debounce(
-    async ({ hideLoading, force }) => {
-      this.updateTx({ hideLoading, force });
+    async hideLoading => {
+      this.updateTx({ hideLoading });
     },
     1000,
     {
@@ -206,7 +204,7 @@ export class TxDetailsModal {
     opts = opts ? opts : {};
     if (!opts.hideLoading) this.onGoingProcess.set('loadingTxInfo');
     this.walletProvider
-      .getTx(this.wallet, this.txId, { force: opts.force })
+      .getTx(this.wallet, this.txId)
       .then(tx => {
         this.retryGetTx = 0;
         if (!opts.hideLoading) this.onGoingProcess.clear();
@@ -237,13 +235,11 @@ export class TxDetailsModal {
         }
 
         if (this.btx.action != 'invalid') {
-          if (this.wallet.coin === 'eth' && this.btx.error)
-            this.title = this.translate.instant('Failed');
-          else if (this.btx.action == 'sent')
+          if (this.btx.action == 'sent')
             this.title = this.translate.instant('Sent');
-          else if (this.btx.action == 'received')
+          if (this.btx.action == 'received')
             this.title = this.translate.instant('Received');
-          else if (this.btx.action == 'moved')
+          if (this.btx.action == 'moved')
             this.title = this.translate.instant('Sent to self');
         }
 
@@ -392,77 +388,5 @@ export class TxDetailsModal {
 
   close() {
     this.viewCtrl.dismiss();
-  }
-
-  private async getTransaction(): Promise<any> {
-    try {
-      const txp = await this.walletProvider.getTxp(
-        this.wallet,
-        this.btx.proposalId
-      );
-      return txp;
-    } catch (error) {
-      this.logger.warn(error);
-    }
-  }
-
-  public async goToConfirm() {
-    const txp = await this.getTransaction(); // only way to get actual inputs and ouputs
-    const inputs = txp.inputs;
-    const multiRecipients = [];
-
-    if (this.btx.hasMultiplesOutputs) {
-      txp.outputs.forEach(output => {
-        let amountToShow: string = +output.amount
-          ? this.txFormatProvider.formatAmount(this.wallet.coin, +output.amount)
-          : null;
-
-        let altAmountStr = this.txFormatProvider.formatAlternativeStr(
-          this.wallet.coin,
-          +output.amount
-        );
-
-        multiRecipients.push({
-          amount: output.amount,
-          amountToShow,
-          altAmountStr: altAmountStr ? altAmountStr : null,
-          toAddress: output.toAddress,
-          recipientType: 'address'
-        });
-      });
-      let totalAmount = 0;
-      multiRecipients.forEach(recipient => {
-        totalAmount += recipient.amount;
-      });
-      this.navCtrl.push(ConfirmPage, {
-        walletId: this.wallet.credentials.walletId,
-        fromMultiSend: true,
-        fromReplaceByFee: true,
-        totalAmount,
-        recipientType: 'multi',
-        color: this.wallet.color,
-        coin: this.wallet.coin,
-        network: this.wallet.network,
-        useSendMax: false,
-        recipients: multiRecipients,
-        description: this.btx.message,
-        inputs
-      });
-    } else {
-      const toAddress = this.btx.outputs[0].address;
-      const amount = this.btx.amount;
-      this.navCtrl.push(ConfirmPage, {
-        walletId: this.wallet.credentials.walletId,
-        fromReplaceByFee: true,
-        amount,
-        toAddress,
-        coin: this.wallet.coin,
-        network: this.wallet.network,
-        useSendMax: false,
-        description: this.btx.message,
-        inputs
-      });
-    }
-    this.close();
   }
 }

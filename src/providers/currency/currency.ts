@@ -15,7 +15,6 @@ export class CurrencyProvider {
   public blockExplorerUrlsTestnet = {} as CoinsMap<string>;
   public availableCoins: string[];
   public availableTokens: Token[];
-  public bitpaySupportedTokens: Token[];
   public availableCustomTokens: Token[];
   public customERC20CoinsData;
   public customERC20Opts;
@@ -31,38 +30,8 @@ export class CurrencyProvider {
     DAI: 'dai',
     WBTC: 'wbtc',
     DOGE: 'doge',
-    LTC: 'ltc',
-    SHIB: 'shib'
+    LTC: 'ltc'
   };
-
-  public popularERC20TokensSymbols: string[] = [
-    'USDC',
-    'WBTC',
-    'USDT',
-    'DAI',
-    'UNI',
-    'PAX',
-    'LINK',
-    'COMP',
-    'MKR',
-    'DYDX',
-    'WDOGE',
-    'renBTC',
-    'BAT',
-    'WETH',
-    'SHIB',
-    'SUSHI',
-    '1INCH',
-    'EURT',
-    'MATIC',
-    'YGG',
-    'CRO',
-    'AAVE',
-    'GRT',
-    'YFI',
-    'CRV',
-    'RUNE'
-  ];
 
   constructor(
     private persistenceProvider: PersistenceProvider,
@@ -70,7 +39,6 @@ export class CurrencyProvider {
   ) {
     this.coinOpts = availableCoins;
     this.availableTokens = Object.values(TokenOpts);
-    this.bitpaySupportedTokens = Object.values(TokenOpts);
     this.availableCoins = Object.keys(this.coinOpts);
     this.retreiveInfo();
     this.setCustomTokens();
@@ -99,20 +67,8 @@ export class CurrencyProvider {
           .getCustomTokenOpts()
           .then(customERC20Opts => {
             this.customERC20Opts = customERC20Opts;
-
-            // Workaround to keep the initial order of the tokens and replace any custom tokens that have failed during creation in the past
-            // TODO: review amount.ts how the alternative amounts works, and make a refactor if necessary
-            this.coinOpts = {
-              ...availableCoins,
-              ...this.customERC20CoinsData,
-              ...availableCoins
-            };
-            const tokenOpts = {
-              ...TokenOpts,
-              ...this.customERC20Opts,
-              ...TokenOpts
-            };
-
+            this.coinOpts = { ...availableCoins, ...this.customERC20CoinsData };
+            const tokenOpts = { ...TokenOpts, ...this.customERC20Opts };
             this.availableTokens = Object.values(tokenOpts);
             this.availableCoins = Object.keys(this.coinOpts) as string[];
             this.retreiveInfo();
@@ -121,56 +77,53 @@ export class CurrencyProvider {
       });
   }
 
-  public async addCustomToken(customTokens) {
+  public async addCustomToken(customToken) {
     const customTokenData = {};
+    customTokenData[customToken.symbol] = {
+      name: customToken.name,
+      chain: 'ETH',
+      coin: customToken.symbol,
+      unitInfo: {
+        unitName: customToken.symbol.toUpperCase(),
+        unitToSatoshi: 10 ** customToken.decimals,
+        unitDecimals: customToken.decimals,
+        unitCode: customToken.symbol
+      },
+      properties: {
+        hasMultiSig: false,
+        hasMultiSend: false,
+        isUtxo: false,
+        isERCToken: true,
+        isStableCoin: true,
+        singleAddress: true,
+        isCustom: true
+      },
+      paymentInfo: {
+        paymentCode: 'EIP681b',
+        protocolPrefix: { livenet: 'ethereum', testnet: 'ethereum' },
+        ratesApi: '',
+        blockExplorerUrls: 'etherscan.io/',
+        blockExplorerUrlsTestnet: 'kovan.etherscan.io/'
+      },
+      feeInfo: {
+        feeUnit: 'Gwei',
+        feeUnitAmount: 1e9,
+        blockTime: 0.2,
+        maxMerchantFee: 'urgent'
+      },
+      theme: {
+        coinColor: '#2775ca',
+        backgroundColor: '#2775c9',
+        gradientBackgroundColor: '#2775c9'
+      }
+    };
     const customERC20Opts = {};
-    [].concat(customTokens).forEach(customToken => {
-      customTokenData[customToken.symbol] = {
-        name: customToken.name,
-        chain: 'ETH',
-        coin: customToken.symbol,
-        logoURI: customToken.logoURI,
-        unitInfo: {
-          unitName: customToken.symbol.toUpperCase(),
-          unitToSatoshi: 10 ** customToken.decimals,
-          unitDecimals: customToken.decimals,
-          unitCode: customToken.symbol
-        },
-        properties: {
-          hasMultiSig: false,
-          hasMultiSend: false,
-          isUtxo: false,
-          isERCToken: true,
-          isStableCoin: false,
-          singleAddress: true,
-          isCustom: true
-        },
-        paymentInfo: {
-          paymentCode: 'EIP681b',
-          protocolPrefix: { livenet: 'ethereum', testnet: 'ethereum' },
-          ratesApi: '',
-          blockExplorerUrls: 'etherscan.io/',
-          blockExplorerUrlsTestnet: 'kovan.etherscan.io/'
-        },
-        feeInfo: {
-          feeUnit: 'Gwei',
-          feeUnitAmount: 1e9,
-          blockTime: 0.2,
-          maxMerchantFee: 'urgent'
-        },
-        theme: {
-          coinColor: '#2775ca',
-          backgroundColor: '#2775c9',
-          gradientBackgroundColor: '#2775c9'
-        }
-      };
-      customERC20Opts[customToken.address] = {
-        name: customToken.name,
-        symbol: customToken.symbol.toUpperCase(),
-        decimal: customToken.decimals,
-        address: customToken.address
-      };
-    });
+    customERC20Opts[customToken.address] = {
+      name: customToken.name,
+      symbol: customToken.symbol.toUpperCase(),
+      decimal: customToken.decimals,
+      address: customToken.address
+    };
     let storedCustomTokenData = await this.persistenceProvider.getCustomTokenData();
     await this.persistenceProvider.setCustomTokenData({
       ...storedCustomTokenData,
@@ -191,15 +144,6 @@ export class CurrencyProvider {
     });
   }
 
-  getLogoURI(coin: string): string {
-    return this.coinOpts[coin].logoURI || 'assets/img/default-token.svg';
-  }
-
-  defaultLogoURI(img) {
-    img.onerror = null;
-    img.src = 'assets/img/default-token.svg';
-  }
-
   isUtxoCoin(coin: string): boolean {
     return !!this.coinOpts[coin].properties.isUtxo;
   }
@@ -216,20 +160,8 @@ export class CurrencyProvider {
     return !!this.coinOpts[coin].properties.isERCToken;
   }
 
-  isStableCoin(coin: string): boolean {
-    return !!this.coinOpts[coin].properties.isStableCoin;
-  }
-
-  isCustomERCToken(coin: string) {
-    let isBitpaySupportedToken: boolean =
-      this.getBitpaySupportedTokens().filter(token => {
-        return token.symbol.toLowerCase() === coin.toLowerCase();
-      }).length > 0;
-    return (
-      this.coinOpts[coin] &&
-      this.coinOpts[coin].properties.isCustom &&
-      !isBitpaySupportedToken
-    );
+  isCustomERCToken(coin) {
+    return this.coinOpts[coin] && this.coinOpts[coin].properties.isCustom;
   }
 
   getLinkedEthWallet(coin: string, walletId: string, m: number): string {
@@ -260,17 +192,10 @@ export class CurrencyProvider {
   }
 
   getAvailableTokens(): Token[] {
-    // Tokens previously supported by Bitpay + custom tokens
     return this.availableTokens;
   }
 
-  getBitpaySupportedTokens(): Token[] {
-    // Tokens previously supported by Bitpay that allow the payment of invoices
-    return this.bitpaySupportedTokens;
-  }
-
   getAvailableCustomTokens(): Token[] {
-    // Custom tokens
     return this.availableCustomTokens;
   }
 
@@ -327,9 +252,5 @@ export class CurrencyProvider {
     const token = tokens.find(x => x.symbol == coin.toUpperCase());
     const tokenAddress = token && token.address;
     return tokenAddress.toLowerCase();
-  }
-
-  getPopularErc20Tokens() {
-    return _.orderBy(this.popularERC20TokensSymbols);
   }
 }

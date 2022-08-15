@@ -12,7 +12,6 @@ import { AppIdentityProvider } from '../app-identity/app-identity';
 import { InAppBrowserProvider } from '../in-app-browser/in-app-browser';
 import { Network, PersistenceProvider } from '../persistence/persistence';
 import { PlatformProvider } from '../platform/platform';
-declare var AppboyPlugin: any;
 
 @Injectable()
 export class BitPayIdProvider {
@@ -150,7 +149,6 @@ export class BitPayIdProvider {
                   network,
                   token.data
                 ),
-                this.setBrazeUser(user),
                 this.persistenceProvider.setBitPayIdUserInfo(network, data),
                 this.persistenceProvider.setBitpayAccount(network, {
                   email,
@@ -215,20 +213,6 @@ export class BitPayIdProvider {
     const userInfo = await this.apiCall('getBasicInfo');
     const network = Network[this.getEnvironment().network];
     await this.persistenceProvider.setBitPayIdUserInfo(network, userInfo);
-  }
-
-  public async setBrazeUser(user: User) {
-    const {
-      data: { email, eid }
-    } = user;
-
-    AppboyPlugin.changeUser(eid);
-    AppboyPlugin.setEmail(email);
-
-    await this.persistenceProvider.setBrazeUser(
-      Network[this.getEnvironment().network]
-    );
-    this.logger.debug('Braze: user set');
   }
 
   public async unlockInvoice(invoiceId: string): Promise<string> {

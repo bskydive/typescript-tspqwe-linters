@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ViewController } from 'ionic-angular';
 import _ from 'lodash';
 import { AppProvider } from '../app/app';
@@ -43,6 +44,7 @@ export class NewFeatureData {
     private appProv: AppProvider,
     private locationProv: LocationProvider,
     private platProv: PlatformProvider,
+    private translate: TranslateService,
     private persistenceProvider: PersistenceProvider,
     private logger: Logger
   ) {
@@ -53,7 +55,33 @@ export class NewFeatureData {
       this.logger.log(`persistence initialized with ${this.NETWORK}`);
     });
 
-    this.feature_list = [];
+    this.feature_list = [
+      {
+        major: 12,
+        minor: 7,
+        patch: 6,
+        app: ['*'],
+        platform: ['*', 'android'],
+        dummy: this.translate.instant('dummy'),
+        features: [
+          {
+            title: 'Litecoin',
+            details:
+              'Now you can store, send and receive Litecoin, a low cost, instant peer-to-peer Internet currency, in your BitPay App.',
+            image: {
+              path: 'assets/img/new-feature/12.7/12.7-1-ltc.svg'
+            }
+          },
+          {
+            title: 'Connect with Google Pay',
+            details: `Now it's easy to use your BitPay Card with Google Pay. Make payments in stores, in apps, and online.`,
+            image: {
+              path: 'assets/img/new-feature/12.7/12.7-2-google-pay.svg'
+            }
+          }
+        ]
+      }
+    ];
   }
 
   async get() {
@@ -67,6 +95,7 @@ export class NewFeatureData {
       }
 
       return (
+        this.appProv.meetsVersion(vs, this.appProv.version) &&
         (vs.app.length == 0 ||
           vs.app[0] === '*' ||
           vs.app.find(

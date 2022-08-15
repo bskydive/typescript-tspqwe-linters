@@ -117,16 +117,6 @@ page-bitpay-card-topup {
         }
       }
     }
-    button.item {
-      &.item-ios,
-      &.item-md {
-        ion-note {
-          span {
-            margin-right: 0px;
-          }
-        }
-      }
-    }
   }
   .background-content {
     display: flex;
@@ -217,16 +207,5 @@ page-bitpay-card-topup {
   }
   .item.item-input input {
     width: 80px;
-  }
-  .wc-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 8px;
-    &-sm {
-      border-radius: 50%;
-      @media (max-width: 381px) {
-        display: none;
-      }
-    }
   }
 }

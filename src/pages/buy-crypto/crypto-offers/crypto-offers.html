@@ -9,11 +9,7 @@
           </ion-col>
           <ion-col>
             <div class="summary-title" translate>Crypto</div>
-            <div class="summary-description" [ngClass]="{'testnet': wallet.network === 'testnet'}">
-              <img class="coin-icon" *ngIf="currencyProvider.COIN[coin | uppercase]" src="assets/img/currencies/{{coin.toLowerCase()}}.svg" />
-              <img class="coin-icon" *ngIf="!currencyProvider.COIN[coin | uppercase]" [src]="currencyProvider.getLogoURI(coin.toLowerCase())" (error)="currencyProvider.defaultLogoURI(img)" #img/>
-              {{coin | uppercase}}
-            </div>
+            <div class="summary-description"><img class="coin-icon" src="assets/img/currencies/{{coin}}.svg" /> {{coin | uppercase}}</div>
           </ion-col>
           <ion-col col-4>
             <div class="summary-title" translate>Payment Method</div>
@@ -34,11 +30,11 @@
       <div translate class="offer-btn" *ngIf="offer.value.fiatMoney" (click)="goTo(offer.key)">
         Buy
       </div>
-      <div class="offer-card" [ngClass]="{'disabled': offer.value.outOfLimitMsg}" (click)="expandCard(offer)" tappable *ngIf="offer.value.showOffer">
-        <div class="content" *ngIf="!offer.value.fiatMoney && !offer.value.errorMsg && !offer.value.outOfLimitMsg" class="loader">
+      <div class="offer-card" (click)="expandCard(offer)" tappable *ngIf="offer.value.showOffer">
+        <div class="content" *ngIf="!offer.value.fiatMoney && !offer.value.errorMsg" class="loader">
           <ion-spinner></ion-spinner>
         </div>
-        <div class="content" translate *ngIf="offer.value.fiatMoney || offer.value.errorMsg || offer.value.outOfLimitMsg">
+        <div class="content" translate *ngIf="offer.value.fiatMoney || offer.value.errorMsg">
           <div *ngIf="offer.value.errorMsg">
             <div class="main-label error-label">
               <span class="error-title">Error: </span>
@@ -48,17 +44,9 @@
             </div>
           </div>
 
-          <div *ngIf="offer.value.outOfLimitMsg">
-            <div class="main-label error-label">
-              <span class="out-of-limit-msg">
-                {{offer.value.outOfLimitMsg}}
-              </span>
-            </div>
-          </div>
-
           <div class="visible-container">
             <div class="visible-info">
-              <div *ngIf="offer.value.fiatMoney && !offer.value.errorMsg && !offer.value.outOfLimitMsg">
+              <div *ngIf="offer.value.fiatMoney && !offer.value.errorMsg">
                 <div class="main-label">{{offer.value.amountReceiving }} {{coin | uppercase}}</div>
                 <div class="secondary-label">1 {{coin | uppercase}} = <span *ngIf="fiatCurrency?.toUpperCase() === 'USD'">$</span>{{offer.value.fiatMoney | number:'1.2-2'}} <span *ngIf="fiatCurrency?.toUpperCase() !== 'USD'">{{fiatCurrency}}</span></div>
               </div>

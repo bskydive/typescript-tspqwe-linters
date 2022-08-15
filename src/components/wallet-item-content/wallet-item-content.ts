@@ -10,17 +10,7 @@ export class WalletItemContent {
   @Input()
   wallet: any;
 
-  @Input()
-  useFadeEffect?: boolean;
-
-  @Input()
-  context?: string;
-
   constructor(public currencyProvider: CurrencyProvider) {}
-
-  get notSupported() {
-    return this.context === 'topup' && ['xrp'].includes(this.wallet.coin);
-  }
 
   getBalance(wallet, currency) {
     const lastKnownBalance = this.getLastKownBalance(wallet, currency);

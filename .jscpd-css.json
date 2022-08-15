@@ -1,6 +1,6 @@
 {
 	"": "https://www.npmjs.com/package/jscpd#options",
-	"threshold": 2.1,
+	"threshold": 20.1,
 	"ignore": [
 		"**/__snapshots__/**",
 		"**/node_modules/**",

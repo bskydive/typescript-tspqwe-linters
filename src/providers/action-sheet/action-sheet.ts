@@ -49,7 +49,6 @@ export type InfoSheetType =
   | 'print-required'
   | 'send-max-min-amount'
   | 'sensitive-info'
-  | 'slippage-info'
   | 'in-app-notification'
   | 'request-feature'
   | 'report-issue'
@@ -59,7 +58,6 @@ export type InfoSheetType =
   | 'bch-legacy-warning-2'
   | 'network-coin-warning'
   | 'speed-up-tx'
-  | 'speed-up-eth-tx'
   | 'speed-up-notice'
   | 'unconfirmed-inputs'
   | 'rbf-tx'
@@ -80,14 +78,7 @@ export type InfoSheetType =
   | 'unsupported-alt-currency'
   | 'custom-fee-warning'
   | 'sync-wallets'
-  | 'custom-tokens-warning'
-  | 'testnet-warning-1'
-  | 'multisig-instantiation'
-  | 'exchange-crypto-disclaimer'
-  | 'join-wallet-warning'
-  | 'token-added'
-  | 'pairing-required'
-  | '1inch-disabled-warning';
+  | 'custom-tokens-warning';
 
 export type OptionsSheetType =
   | 'wallet-options'
@@ -98,15 +89,12 @@ export type OptionsSheetType =
 
 export interface WalletSelectorParams {
   wallets: any[];
+  selectedWalletId: string;
   title: string;
-  selectedWalletId?: string;
   coinbaseData?: {
     user: any[];
     availableAccounts: any[];
   };
-  fromWalletConnect?: boolean;
-  token?: any;
-  linkEthTokens?: boolean;
 }
 
 export interface WalletReceiveParams {

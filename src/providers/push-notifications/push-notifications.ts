@@ -83,7 +83,7 @@ export class PushNotificationsProvider {
 
         this.fcmInterval = setInterval(() => {
           this.renewSubscription();
-        }, 3 * 60 * 1000); // 3 min
+        }, 5 * 60 * 1000); // 5 min
       });
     });
   }
@@ -124,9 +124,8 @@ export class PushNotificationsProvider {
           }
         } else {
           const wallet = this.findWallet(data.walletId, data.tokenAddress);
-          if (!wallet && data.notification_type !== 'NewBlock') return;
-          const walletId = wallet ? wallet.credentials.walletId : null;
-          this.newBwsEvent(data, walletId);
+          if (!wallet) return;
+          this.newBwsEvent(data, wallet.credentials.walletId);
           this.showInappNotification(data);
         }
       });
@@ -139,12 +138,12 @@ export class PushNotificationsProvider {
       id = walletId + '-' + notification.tokenAddress.toLowerCase();
       this.logger.debug(`event for token wallet: ${id}`);
     }
-    let eventData = {
-      walletId: id,
-      notification_type: notification.notification_type,
+    this.events.publish(
+      'bwsEvent',
+      id,
+      notification.notification_type,
       notification
-    };
-    this.events.publish('bwsEvent', eventData);
+    );
   }
 
   public updateSubscription(walletClient): void {
@@ -322,7 +321,7 @@ export class PushNotificationsProvider {
     return verificationResult;
   }
 
-  public showInappNotification(data) {
+  private showInappNotification(data) {
     if (!data.body || data.notification_type === 'NewOutgoingTx') return;
 
     this.notifications.unshift(data);
@@ -340,11 +339,9 @@ export class PushNotificationsProvider {
             title: data.title,
             message: data.body,
             customButton: {
-              closeButtonText: data.closeButtonText
-                ? data.closeButtonText
-                : this.translate.instant('Open Wallet'),
+              closeButtonText: this.translate.instant('Open Wallet'),
               data: {
-                action: data.action ? data.action : 'openWallet'
+                action: 'openWallet'
               }
             }
           },
@@ -358,39 +355,14 @@ export class PushNotificationsProvider {
         );
 
         this.currentNotif.onDidDismiss(dismissData => {
-          if (
-            dismissData &&
-            dismissData.action &&
-            dismissData.action === 'openWallet'
-          )
+          if (dismissData.action && dismissData.action === 'openWallet')
             this._openWallet(data);
-          else if (
-            dismissData &&
-            dismissData.action &&
-            dismissData.action === 'goToWalletconnect'
-          ) {
-            const nextView = {
-              name: 'WalletConnectRequestDetailsPage',
-              params: {
-                force: true,
-                request: data.request,
-                params: data.request.params
-              }
-            };
-            this.events.publish('IncomingDataRedir', nextView);
-          }
 
           this.currentNotif = null;
           this.runNotificationsQueue();
         });
 
-        this.currentNotif.present().then(() => {
-          if (data.autoDismiss) {
-            setTimeout(() => {
-              this.currentNotif && this.currentNotif.dismiss();
-            }, 2000);
-          }
-        });
+        this.currentNotif.present();
         data.showDone = true;
         return true;
       }

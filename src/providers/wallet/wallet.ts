@@ -24,7 +24,6 @@ import { PopupProvider } from '../popup/popup';
 import { RateProvider } from '../rate/rate';
 import { TouchIdProvider } from '../touchid/touchid';
 import { TxFormatProvider } from '../tx-format/tx-format';
-import { ZceProvider } from '../zce/zce';
 
 export interface HistoryOptionsI {
   limitTx?: string;
@@ -61,9 +60,6 @@ export interface TransactionProposal {
   chain: string;
   amount: any;
   from: string;
-  nonce?: number;
-  enableRBF?: boolean;
-  replaceTxByFee?: boolean;
   toAddress: any;
   outputs: Array<{
     toAddress: any;
@@ -79,7 +75,6 @@ export interface TransactionProposal {
     service?: string;
     giftCardName?: string;
     changelly?: string;
-    oneInch?: string;
     shapeShift?: string;
     toWalletName?: any;
   };
@@ -93,8 +88,6 @@ export interface TransactionProposal {
   invoiceID?: string;
   multisigGnosisContractAddress?: string;
   multisigContractAddress?: string;
-  instantAcceptanceEscrow?: number;
-  isTokenSwap?: boolean;
 }
 
 @Injectable()
@@ -140,8 +133,7 @@ export class WalletProvider {
     private keyProvider: KeyProvider,
     private platformProvider: PlatformProvider,
     private logsProvider: LogsProvider,
-    private appProvider: AppProvider,
-    private zceProvider: ZceProvider
+    private appProvider: AppProvider
   ) {
     this.logger.debug('WalletProvider initialized');
     this.isPopupOpen = false;
@@ -818,24 +810,19 @@ export class WalletProvider {
       this.getSavedTxs(walletId)
         .then(txsFromLocal => {
           fixTxsUnit(txsFromLocal);
-          const nonEscrowReclaimTxs = this.removeEscrowReclaimTransactions(
-            wallet,
-            txsFromLocal
-          );
-          const confirmedTxs = this.removeAndMarkSoftConfirmedTx(
-            nonEscrowReclaimTxs
-          );
+
+          const confirmedTxs = this.removeAndMarkSoftConfirmedTx(txsFromLocal);
           const endingTxid = confirmedTxs[0] ? confirmedTxs[0].txid : null;
           const endingTs = confirmedTxs[0] ? confirmedTxs[0].time : null;
 
           // First update
           WalletProvider.progressFn[walletId](txsFromLocal, 0);
-          wallet.completeHistory = nonEscrowReclaimTxs;
+          wallet.completeHistory = txsFromLocal;
 
           // send update
           this.events.publish('Local/WalletHistoryUpdate', {
             walletId: wallet.id,
-            finished: false
+            complete: false
           });
 
           const getNewTxs = (
@@ -986,10 +973,7 @@ export class WalletProvider {
                   });
                   // Final update
                   if (walletId == wallet.credentials.walletId) {
-                    wallet.completeHistory = this.removeEscrowReclaimTransactions(
-                      wallet,
-                      newHistory
-                    );
+                    wallet.completeHistory = newHistory;
                   }
 
                   return this.persistenceProvider
@@ -1073,19 +1057,6 @@ export class WalletProvider {
     return _.filter(txs, tx => {
       if (tx.confirmations >= this.SOFT_CONFIRMATION_LIMIT) return tx;
       tx.recent = true;
-    });
-  }
-
-  public removeEscrowReclaimTransactions(wallet, txs): any[] {
-    if (!this.isZceCompatible(wallet)) return txs;
-    return txs.filter(tx => {
-      if (tx.action !== 'moved') {
-        return true;
-      }
-      const sendTxAtSameTimeAsMove = txs.find(
-        tx2 => tx2.action === 'sent' && Math.abs(tx.time - tx2.time) < 100
-      );
-      return !sendTxAtSameTimeAsMove;
     });
   }
 
@@ -1219,9 +1190,8 @@ export class WalletProvider {
     return wallet.completeHistory && wallet.completeHistoryIsValid;
   }
 
-  public getTx(wallet, txid: string, opts: HistoryOptionsI = {}): Promise<any> {
+  public getTx(wallet, txid: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      opts = opts || {};
       const finish = list => {
         const tx = _.find(list, {
           txid
@@ -1231,11 +1201,13 @@ export class WalletProvider {
         return tx;
       };
 
-      if (this.isHistoryCached(wallet) && !opts.force) {
+      if (this.isHistoryCached(wallet)) {
         const tx = finish(wallet.completeHistory);
         return resolve(tx);
       } else {
-        opts.limitTx = txid;
+        const opts = {
+          limitTx: txid
+        };
         this.fetchTxHistory(wallet, null, opts)
           .then(txHistory => {
             const tx = finish(txHistory);
@@ -1294,10 +1266,13 @@ export class WalletProvider {
     return new Promise((resolve, reject) => {
       if (_.isEmpty(txp) || _.isEmpty(wallet))
         return reject('MISSING_PARAMETER');
+
       wallet.createTxProposal(txp, (err, createdTxp) => {
         if (err) return reject(err);
-        this.logger.debug('Transaction created');
-        return resolve(createdTxp);
+        else {
+          this.logger.debug('Transaction created');
+          return resolve(createdTxp);
+        }
       });
     });
   }
@@ -1321,12 +1296,7 @@ export class WalletProvider {
     });
   }
 
-  public signTx(
-    wallet,
-    txp,
-    password: string,
-    localOnly = false
-  ): Promise<any> {
+  public signTx(wallet, txp, password: string): Promise<any> {
     return new Promise((resolve, reject) => {
       if (!wallet || !txp) return reject('MISSING_PARAMETER');
 
@@ -1360,9 +1330,7 @@ export class WalletProvider {
           this.logsProvider.get(this.appProvider.info.nameCase, platform);
         });
       }
-      if (localOnly) {
-        return resolve({ ...txp, signatures });
-      }
+
       try {
         wallet.pushSignatures(txp, signatures, (err, signedTxp) => {
           if (err) {
@@ -1450,7 +1418,7 @@ export class WalletProvider {
         this.logger.debug('Transaction removed');
 
         this.invalidateCache(wallet);
-        this.events.publish('Local/WalletFocus', {
+        this.events.publish('Local/TxAction', {
           walletId: wallet.id
         });
         return resolve();
@@ -1660,7 +1628,7 @@ export class WalletProvider {
       this.rejectTx(wallet, txp)
         .then(txpr => {
           this.invalidateCache(wallet);
-          this.events.publish('Local/WalletFocus', {
+          this.events.publish('Local/TxAction', {
             walletId: wallet.id
           });
           return resolve(txpr);
@@ -1676,7 +1644,7 @@ export class WalletProvider {
       this.publishTx(wallet, txp)
         .then(() => {
           this.invalidateCache(wallet);
-          this.events.publish('Local/WalletFocus', {
+          this.events.publish('Local/TxAction', {
             walletId: wallet.id
           });
           return resolve();
@@ -1707,36 +1675,6 @@ export class WalletProvider {
     });
   }
 
-  public isZceCompatible(wallet) {
-    const isSingleSigBch =
-      wallet.coin === 'bch' && wallet.credentials.addressType === 'P2PKH';
-    const isNotDuplicatedFromAnotherChain =
-      wallet.credentials.rootPath.split('/')[2] === "145'";
-    return (
-      isSingleSigBch &&
-      (isNotDuplicatedFromAnotherChain || wallet.network === 'testnet')
-    );
-  }
-
-  private async generateEscrowReclaimTx(wallet, signedTxp, password) {
-    const reclaimTxp = this.zceProvider.generateEscrowReclaimTxp(
-      wallet,
-      signedTxp
-    );
-    const signedReclaimTxp = await this.signTx(
-      wallet,
-      reclaimTxp,
-      password,
-      true
-    );
-    const reclaimSignatureString = signedReclaimTxp.signatures[0];
-    return this.zceProvider.generateEscrowReclaimRawTx(
-      signedTxp,
-      reclaimTxp,
-      reclaimSignatureString
-    );
-  }
-
   private signAndBroadcast(wallet, publishedTxp, password): Promise<any> {
     return new Promise((resolve, reject) => {
       this.onGoingProcessProvider.set('signingTx');
@@ -1746,24 +1684,15 @@ export class WalletProvider {
         publishedTxp.amount -
         publishedTxp.fee;
       this.signTx(wallet, publishedTxp, password)
-        .then(async signedTxp => {
+        .then(signedTxp => {
           this.invalidateCache(wallet);
-          if (signedTxp.escrowAddress) {
-            const escrowReclaimTx = await this.generateEscrowReclaimTx(
-              wallet,
-              signedTxp,
-              password
-            );
-            signedTxp.escrowReclaimTx = escrowReclaimTx;
-          }
           if (signedTxp.status == 'accepted') {
             this.onGoingProcessProvider.set('broadcastingTx');
             this.broadcastTx(wallet, signedTxp)
               .then(broadcastedTxp => {
-                this.events.publish('Local/WalletFocus', {
+                this.events.publish('Local/TxAction', {
                   walletId: wallet.id,
-                  until: { totalAmount: expected },
-                  alsoUpdateHistory: true
+                  until: { totalAmount: expected }
                 });
                 return resolve(broadcastedTxp);
               })
@@ -1771,9 +1700,8 @@ export class WalletProvider {
                 return reject(this.bwcErrorProvider.msg(err));
               });
           } else {
-            this.events.publish('Local/WalletFocus', {
-              walletId: wallet.id,
-              alsoUpdateHistory: true
+            this.events.publish('Local/TxAction', {
+              walletId: wallet.id
             });
             return resolve(signedTxp);
           }
@@ -1786,10 +1714,9 @@ export class WalletProvider {
                   'The payment was created but could not be completed. Please try again from home screen'
                 );
           this.logger.error('Sign error: ' + msg);
-          this.events.publish('Local/WalletFocus', {
+          this.events.publish('Local/TxAction', {
             walletId: wallet.id,
-            until: { totalAmount: expected },
-            alsoUpdateHistory: true
+            until: { totalAmount: expected }
           });
           return reject(msg);
         });
@@ -2000,11 +1927,11 @@ export class WalletProvider {
     });
   }
 
-  public getNonce(wallet, coin: string, address: string): Promise<any> {
+  public getNonce(wallet, address: string): Promise<any> {
     return new Promise((resolve, reject) => {
       wallet.getNonce(
         {
-          coin,
+          coin: wallet.coin,
           network: wallet.network,
           address
         },

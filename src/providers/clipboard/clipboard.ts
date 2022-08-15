@@ -4,7 +4,6 @@ import { Clipboard } from '@ionic-native/clipboard';
 import * as _ from 'lodash';
 
 // providers
-import { CurrencyProvider } from '../../providers/currency/currency';
 import { ElectronProvider } from '../../providers/electron/electron';
 import { Logger } from '../../providers/logger/logger';
 import { PlatformProvider } from '../../providers/platform/platform';
@@ -29,7 +28,6 @@ export class ClipboardProvider {
     public platformProvider: PlatformProvider,
     public logger: Logger,
     private clipboard: Clipboard,
-    private currencyProvider: CurrencyProvider,
     private electronProvider: ElectronProvider,
     private incomingDataProvider: IncomingDataProvider
   ) {
@@ -102,12 +100,7 @@ export class ClipboardProvider {
           // Check crypto/paypro uri
           if (
             validDataByCoin['paypro'].indexOf(dataFromClipboard.type) > -1 ||
-            (coin &&
-              validDataByCoin[coin] &&
-              validDataByCoin[coin].indexOf(dataFromClipboard.type) > -1) ||
-            (coin &&
-              this.currencyProvider.isERCToken(coin) &&
-              validDataByCoin['eth'].indexOf(dataFromClipboard.type) > -1)
+            validDataByCoin[coin].indexOf(dataFromClipboard.type) > -1
           ) {
             return resolve(dataFromClipboard.data);
           }

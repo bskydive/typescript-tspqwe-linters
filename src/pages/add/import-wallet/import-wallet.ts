@@ -302,7 +302,6 @@ export class ImportWalletPage {
       .importMnemonic(words, opts)
       .then((wallets: any[]) => {
         this.onGoingProcessProvider.clear();
-        if (!wallets) return;
         this.finish(wallets);
       })
       .catch(err => {

@@ -20,9 +20,9 @@ import { WalletProvider } from '../../../providers/wallet/wallet';
 // Pages
 import { SelectCurrencyPage } from '../../../pages/add/select-currency/select-currency';
 import { CountrySelectorPage } from '../../../pages/buy-crypto/country-selector/country-selector';
+import { CryptoCoinSelectorPage } from '../../../pages/buy-crypto/crypto-coin-selector/crypto-coin-selector';
 import { CryptoOffersPage } from '../../../pages/buy-crypto/crypto-offers/crypto-offers';
 import { CryptoPaymentMethodPage } from '../../../pages/buy-crypto/crypto-payment-method/crypto-payment-method';
-import { CoinAndWalletSelectorPage } from '../../../pages/coin-and-wallet-selector/coin-and-wallet-selector';
 import { AmountPage } from '../../../pages/send/amount/amount';
 import { WalletDetailsPage } from '../../wallet-details/wallet-details';
 
@@ -43,7 +43,6 @@ export class CryptoOrderSummaryPage {
   public countryList: any[] = [];
   public selectedCountry;
   public isSimplexPromotionActive: boolean;
-  public isOpenSelector;
 
   constructor(
     private logger: Logger,
@@ -65,11 +64,6 @@ export class CryptoOrderSummaryPage {
     this.amount = this.navParams.data.amount;
     this.currency = this.navParams.data.currency;
     this.coin = this.navParams.data.coin;
-    this.isOpenSelector = {
-      country: false,
-      destination: false,
-      paymentMethod: false
-    };
   }
 
   ionViewDidLoad() {
@@ -236,33 +230,15 @@ export class CryptoOrderSummaryPage {
     });
   }
 
-  public openCoinAndWalletSelectorModal() {
-    this.isOpenSelector.destination = true;
-    // TODO: We temporarily remove Wyre from European Union countries. When the Simplex promotion ends we have to remove this condition
-    const supportedCoins = this.isPromotionActiveForCountry(
-      this.selectedCountry
-    )
-      ? _.clone(this.buyCryptoProvider.getExchangeCoinsSupported('simplex'))
-      : _.clone(this.buyCryptoProvider.getExchangeCoinsSupported());
-
-    if (this.selectedCountry.shortCode == 'US') {
-      const coinsToRemove = ['xrp'];
-      coinsToRemove.forEach((coin: string) => {
-        const index = supportedCoins.indexOf(coin);
-        if (index > -1) {
-          this.logger.debug(
-            `Removing ${coin.toUpperCase()} from Buy crypto supported coins`
-          );
-          supportedCoins.splice(index, 1);
-        }
-      });
-    }
-
+  public openCryptoCoinSelectorModal() {
     let modal = this.modalCtrl.create(
-      CoinAndWalletSelectorPage,
+      CryptoCoinSelectorPage,
       {
         useAsModal: true,
-        supportedCoins
+        country: this.selectedCountry,
+        isPromotionActiveForCountry: this.isPromotionActiveForCountry(
+          this.selectedCountry
+        )
       },
       {
         showBackdrop: true,
@@ -271,7 +247,6 @@ export class CryptoOrderSummaryPage {
     );
     modal.present();
     modal.onDidDismiss(data => {
-      this.isOpenSelector.destination = false;
       if (data) {
         this.coin = data.coin;
         this.setWallet(data.walletId);
@@ -281,7 +256,6 @@ export class CryptoOrderSummaryPage {
   }
 
   public openCountrySelectorModal() {
-    this.isOpenSelector.country = true;
     let modal = this.modalCtrl.create(
       CountrySelectorPage,
       {
@@ -295,7 +269,6 @@ export class CryptoOrderSummaryPage {
     );
     modal.present();
     modal.onDidDismiss(data => {
-      this.isOpenSelector.country = false;
       if (data) {
         this.selectedCountry = data.selectedCountry;
         if (this.isCoinSupportedByCountry()) {
@@ -380,12 +353,11 @@ export class CryptoOrderSummaryPage {
 
   private isCoinSupportedByCountry(): boolean {
     if (
-      (this.isPromotionActiveForCountry(this.selectedCountry) &&
-        !_.includes(
-          this.buyCryptoProvider.getExchangeCoinsSupported('simplex'),
-          this.coin
-        )) ||
-      (this.coin == 'xrp' && this.selectedCountry.shortCode == 'US')
+      this.isPromotionActiveForCountry(this.selectedCountry) &&
+      !_.includes(
+        this.buyCryptoProvider.getExchangeCoinsSupported('simplex'),
+        this.coin
+      )
     ) {
       this.logger.debug(
         `Selected coin: ${this.coin} is not currently available for selected country: ${this.selectedCountry.name}. Show warning.`
@@ -419,14 +391,12 @@ export class CryptoOrderSummaryPage {
   }
 
   public openCryptoPaymentMethodModal() {
-    this.isOpenSelector.paymentMethod = true;
     if (!this.coin) {
       const title = this.translate.instant('Error');
       const subtitle = this.translate.instant(
         `You must first select a wallet to deposit.`
       );
       this.errorsProvider.showDefaultError(subtitle, title);
-      this.isOpenSelector.paymentMethod = false;
       return;
     }
     let modal = this.modalCtrl.create(
@@ -448,7 +418,6 @@ export class CryptoOrderSummaryPage {
     );
     modal.present();
     modal.onDidDismiss(data => {
-      this.isOpenSelector.paymentMethod = false;
       if (data) {
         this.paymentMethod = data.paymentMethod;
       }
@@ -476,7 +445,7 @@ export class CryptoOrderSummaryPage {
   }
 
   public goToCoinSelector(): void {
-    this.navCtrl.push(CoinAndWalletSelectorPage, {
+    this.navCtrl.push(CryptoCoinSelectorPage, {
       country: this.selectedCountry,
       isPromotionActiveForCountry: this.isPromotionActiveForCountry(
         this.selectedCountry

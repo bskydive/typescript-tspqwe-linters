@@ -75,9 +75,6 @@ export class AltCurrencyPage {
       },
       {
         isoCode: 'WBTC'
-      },
-      {
-        isoCode: 'SHIB'
       }
     ];
   }

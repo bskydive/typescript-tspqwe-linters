@@ -23,7 +23,7 @@ export class SelectInvoicePage {
   ) {
     this.paymentOptions = this.navParams.data.payProOptions.paymentOptions
       .reverse()
-      .filter(a => !a.disabled);
+      .sort(a => (a.disabled ? 1 : -1));
     this.payProUrl = this.navParams.data.payProOptions.payProUrl;
     this.hasWallets = this.navParams.data.hasWallets;
   }

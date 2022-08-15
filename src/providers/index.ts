@@ -65,7 +65,6 @@ export { LogsProvider } from '../providers/logs/logs';
 export { ElectronProvider } from '../providers/electron/electron';
 export { MerchantProvider } from '../providers/merchant/merchant';
 export { OnGoingProcessProvider } from '../providers/on-going-process/on-going-process';
-export { OneInchProvider } from '../providers/one-inch/one-inch';
 export { PayproProvider } from '../providers/paypro/paypro';
 export { PersistenceProvider } from '../providers/persistence/persistence';
 export { PlatformProvider } from '../providers/platform/platform';
@@ -89,5 +88,3 @@ export { ReleaseProvider } from '../providers/release/release';
 export { NewFeatureData } from '../providers/new-feature-data/new-feature-data';
 
 export { CardPhasesProvider } from '../providers/card-phases/card-phases';
-export { AbiDecoderProvider } from '../providers/abi-decoder/abi-decoder';
-export { ZceProvider } from '../providers/zce/zce';

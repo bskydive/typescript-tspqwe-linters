@@ -12,7 +12,6 @@ interface FeeOpts {
   feeUnit: string;
   feeUnitAmount: number;
   blockTime: number;
-  disabled?: boolean;
 }
 
 enum ethAvgTime {
@@ -54,8 +53,6 @@ export class ChooseFeeLevelModal {
   public okText: string;
   public cancelText: string;
   public isERCToken: boolean;
-  public isSpeedUpTx: boolean;
-  private speedUpMinFeePerKb: number;
 
   constructor(
     private currencyProvider: CurrencyProvider,
@@ -75,7 +72,6 @@ export class ChooseFeeLevelModal {
     this.coin = this.navParams.data.coin;
     this.isERCToken = this.currencyProvider.isERCToken(this.coin);
     this.feeLevel = this.navParams.data.feeLevel;
-    this.isSpeedUpTx = this.navParams.data.isSpeedUpTx;
     this.setFeeUnits();
 
     // IF usingCustomFee
@@ -104,9 +100,7 @@ export class ChooseFeeLevelModal {
           );
           return;
         }
-
         this.feeLevels = response.levels;
-        if (this.isSpeedUpTx) this.setSpeedUpMinFee();
         this.setFeeRates();
         if (this.customFeePerKB) this._setCustomFee();
       })
@@ -145,10 +139,6 @@ export class ChooseFeeLevelModal {
         this.feePerSatByte = (
           this.feeOpts[i].feePerKb / this.feeUnitAmount
         ).toFixed();
-
-      if (this.isSpeedUpTx) {
-        this.feeOpts[i].disabled = this.speedUpMinFeePerKb > feeLevel.feePerKb;
-      }
     });
 
     // Warnings
@@ -189,15 +179,10 @@ export class ChooseFeeLevelModal {
   }
 
   private getMinRecommended(): number {
-    let minValue;
-    if (this.isSpeedUpTx) {
-      minValue = this.speedUpMinFeePerKb;
-    } else {
-      const value = _.map(this.feeLevels, feeLevel => {
-        return feeLevel.feePerKb;
-      });
-      minValue = Math.min(...value);
-    }
+    let value = _.map(this.feeLevels, feeLevel => {
+      return feeLevel.feePerKb;
+    });
+    const minValue = Math.min(...value);
     return parseInt((minValue / this.feeUnitAmount).toFixed(), 10);
   }
 
@@ -238,23 +223,5 @@ export class ChooseFeeLevelModal {
 
   public openExternalLink(url: string): void {
     this.externalLinkProvider.open(url);
-  }
-
-  private setSpeedUpMinFee() {
-    const minFeeLevel: string = this.coin === 'btc' ? 'custom' : 'priority';
-    if (this.coin === 'btc') {
-      const feeLevesAllowed = _.filter(
-        this.feeLevels,
-        f => f.feePerKb >= this.customFeePerKB
-      );
-      this.speedUpMinFeePerKb = feeLevesAllowed.length
-        ? _.minBy(feeLevesAllowed, 'feePerKb').feePerKb
-        : this.customFeePerKB;
-    } else {
-      this.speedUpMinFeePerKb = _.find(this.feeLevels, [
-        'level',
-        minFeeLevel
-      ]).feePerKb;
-    }
   }
 }

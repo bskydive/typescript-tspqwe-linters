@@ -41,68 +41,62 @@ page-bitpay-card-intro {
       /*  TODO  border-radius: 0 0 65% 25%;*/
       overflow: hidden;
       text-align: center;
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      margin: 0 16px;
-      align-items: center;
-      &-title {
-        font-size: 25px;
-        font-weight: 700;
-        line-height: 34px;
-        text-align: start;
+      &--new {
+        border-radius: 0 0 65% 25%;
       }
-      &-img {
-        height: 306px;
-        justify-self: end;
+    }
+    &-img {
+      height: 306px;
+      img {
+        margin-top: 38px;
+        /* TODO width: 232px; */
+      }
+      &--new {
         img {
-          margin-top: 38px;
-          /* TODO width: 232px; */
+          width: 232px;
         }
       }
     }
     &-content {
-      margin: 0 16px;
+      padding: 0 40px;
       .title {
-        margin-top: 32px;
-        font-size: 16px;
-        font-weight: normal;
-        line-height: 25px;
-        color: #252525;
+        margin-top: 20px;
+        font-size: 28px;
+        font-weight: bold;
+        letter-spacing: -0.2px;
+        line-height: 33px;
       }
       p {
-        color: #252525;
+        color: #565d6d;
         font-size: 16px;
         line-height: 25px;
       }
     }
-    &-items-container {
-      margin-bottom: 45px;
-    }
     &-item {
-      margin-top: 20px;
+      margin-top: 50px;
       &-header {
         display: flex;
         align-items: center;
         img {
-          height: 45px;
-          width: 45px;
+          height: 48px;
+          width: 48px;
         }
       }
       &-title {
+        width: 175px;
         font-size: 21px;
         font-weight: bold;
         line-height: 31px;
         margin-left: 1.5rem;
       }
       p {
-        padding-left: 60px;
-        margin-top: 0px;
+        padding-left: 64px;
       }
     }
     &__agreement {
-      margin: 20px 0 150px 0;
+      margin: 50px 0 150px 0;
       font-size: 11px;
-      color: #434d5a;
+      color: #626262;
     }
     &__link-button {
       cursor: pointer;

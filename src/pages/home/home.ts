@@ -1,10 +1,11 @@
-import { Component, ComponentRef, NgZone, ViewChild } from '@angular/core';
+import { Component, NgZone, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { Events, ModalController, NavController, Slides } from 'ionic-angular';
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import { FormatCurrencyPipe } from '../../pipes/format-currency';
+
 // Providers
 import {
   AppProvider,
@@ -20,23 +21,16 @@ import {
   Logger,
   MerchantProvider,
   NewFeatureData,
-  OnGoingProcessProvider,
   PersistenceProvider,
   PlatformProvider,
   PopupProvider,
   ProfileProvider,
-  PushNotificationsProvider,
   RateProvider,
-  ReleaseProvider,
-  WalletConnectProvider
+  ReleaseProvider
 } from '../../providers';
-import {
-  ActionSheetProvider,
-  InfoSheetType
-} from '../../providers/action-sheet/action-sheet';
+import { ActionSheetProvider } from '../../providers/action-sheet/action-sheet';
 import { AnalyticsProvider } from '../../providers/analytics/analytics';
 import { ConfigProvider } from '../../providers/config/config';
-import { DomProvider } from '../../providers/dom/dom';
 import {
   hasPromotion,
   hasVisibleDiscount
@@ -44,10 +38,8 @@ import {
 import { CardConfig } from '../../providers/gift-card/gift-card.types';
 
 // Pages
-import { ActionSheetParent } from '../../components/action-sheet/action-sheet-parent';
-import { InfoSheetComponent } from '../../components/info-sheet/info-sheet';
+import { SplashScreen } from '@ionic-native/splash-screen';
 import { User } from '../../models/user/user.model';
-import { IncomingDataProvider } from '../../providers/incoming-data/incoming-data';
 import { Network } from '../../providers/persistence/persistence';
 import { ExchangeCryptoPage } from '../exchange-crypto/exchange-crypto';
 import { BitPayCardIntroPage } from '../integrations/bitpay-card/bitpay-card-intro/bitpay-card-intro';
@@ -58,7 +50,6 @@ import { CardCatalogPage } from '../integrations/gift-cards/card-catalog/card-ca
 import { WalletConnectPage } from '../integrations/wallet-connect/wallet-connect';
 import { NewFeaturePage } from '../new-feature/new-feature';
 import { AddFundsPage } from '../onboarding/add-funds/add-funds';
-import { ScanPage } from '../scan/scan';
 import { AmountPage } from '../send/amount/amount';
 import { AltCurrencyPage } from '../settings/alt-currency/alt-currency';
 import { BitPayIdPage } from '../settings/bitpay-id/bitpay-id';
@@ -114,15 +105,12 @@ export class HomePage {
   public bitPayIdUserInfo: any;
   public accountInitials: string;
   public isCopay: boolean;
-  public showSurveyCard: boolean = false;
-  public testModeEnabled: boolean;
-  private bitPaySurveyCardChecked: boolean = false;
   private user$: Observable<User>;
   private network = Network[this.bitPayIdProvider.getEnvironment().network];
   private hasOldCoinbaseSession: boolean;
   private newReleaseVersion: string;
   private pagesMap: any;
-  private newWalletConnectSessionUri: string;
+
   private isCordova: boolean;
   private zone;
 
@@ -151,14 +139,10 @@ export class HomePage {
     private newFeatureData: NewFeatureData,
     private emailProvider: EmailNotificationsProvider,
     private popupProvider: PopupProvider,
+    private splashScreen: SplashScreen,
     private iabCardProvider: IABCardProvider,
     private bitPayIdProvider: BitPayIdProvider,
-    private walletConnectProvider: WalletConnectProvider,
-    private incomingDataProvider: IncomingDataProvider,
-    private rateProvider: RateProvider,
-    private domProvider: DomProvider,
-    private pushNotificationProvider: PushNotificationsProvider,
-    private onGoingProcessProvider: OnGoingProcessProvider
+    private rateProvider: RateProvider
   ) {
     this.logger.info('Loaded: HomePage');
     this.isCopay = this.appProvider.info.name === 'copay';
@@ -184,9 +168,6 @@ export class HomePage {
         this.accountInitials = this.getBitPayIdInitials(user);
       }
     });
-    this.persistenceProvider
-      .getNetwork()
-      .then(network => (this.testModeEnabled = network === 'testnet'));
   }
 
   private showNewFeatureSlides() {
@@ -203,11 +184,7 @@ export class HomePage {
       return;
     }
     this.persistenceProvider.getNewFeatureSlidesFlag().then(value => {
-      // if no flag or if current build major minor !== flag major and minor
-      if (
-        !value ||
-        !this.appProvider.meetsMajorMinorVersion(currentVs, value.split('_')[1])
-      ) {
+      if (!value || value !== dismissFlag) {
         this.newFeatureData.get().then(feature_list => {
           if (feature_list && feature_list.features.length > 0) {
             const modal = this.modalCtrl.create(NewFeaturePage, {
@@ -225,7 +202,7 @@ export class HomePage {
               }
             });
           } else {
-            this.persistenceProvider.setNewFeatureSlidesFlag(dismissFlag);
+            this.persistenceProvider.setNewFeatureSlidesFlag(currentVs);
           }
         });
       }
@@ -259,7 +236,6 @@ export class HomePage {
     this.loadAds();
     this.fetchAdvertisements();
     this.fetchGiftCardAdvertisement();
-    this.checkBitPaySurveyCard();
     this.persistenceProvider.getDynamicLink().then((deepLink: string) => {
       if (deepLink) {
         this.persistenceProvider.setOnboardingFlowFlag('disabled');
@@ -475,15 +451,6 @@ export class HomePage {
     this.events.subscribe('Local/AccessDenied', () => {
       this.accessDenied = true;
     });
-
-    this.events.subscribe(
-      'WalletConnectAdvertisementUpdate',
-      (status: 'connected' | 'disconnected') => {
-        status === 'connected'
-          ? this.removeAdvertisement('walletConnect')
-          : this.addWalletConnect();
-      }
-    );
     this.events.subscribe(
       'CardAdvertisementUpdate',
       ({ status, cards, cardExperimentEnabled }) => {
@@ -516,13 +483,6 @@ export class HomePage {
     this.events.subscribe('Local/showNewFeaturesSlides', () => {
       this.showNewFeatureSlides();
     });
-    this.events.subscribe(
-      'Update/WalletConnectNewSessionRequest',
-      newSessionUri => this.onWalletConnectNewSessionRequest(newSessionUri)
-    );
-    this.events.subscribe('OpenWalletConnect', () =>
-      this.goToWalletConnectPage()
-    );
   }
 
   private preFetchWallets() {
@@ -549,7 +509,6 @@ export class HomePage {
           break;
         case 'exchangecrypto':
           this.showExchangeCryptoOption = true;
-          this.addSwapTokensAdvertisement();
           break;
         case 'giftcards':
           this.showShoppingOption = true;
@@ -563,7 +522,6 @@ export class HomePage {
           break;
         case 'newWalletConnect':
           this.showWalletConnect = x.show;
-          if (this.showWalletConnect) this.addWalletConnect();
           break;
       }
     });
@@ -683,49 +641,6 @@ export class HomePage {
         dismissible: true,
         isTesting: false,
         imgSrc: 'assets/img/coinbase/coinbase-icon.png'
-      });
-    this.showAdvertisements = true;
-  }
-
-  private async addWalletConnect() {
-    const session = await this.persistenceProvider.getWalletConnect();
-
-    const alreadyVisible = this.advertisements.find(
-      a => a.name === 'walletConnect'
-    );
-    !session &&
-      !alreadyVisible &&
-      this.advertisements.unshift({
-        name: 'walletConnect',
-        title: this.translate.instant('Connect to Defi'),
-        body: this.translate.instant(
-          'Use WalletConnect to access your favorite dApps.'
-        ),
-        app: 'bitpay',
-        linkText: this.translate.instant('Get Started'),
-        link: 'wallet-connect-page',
-        dismissible: true,
-        isTesting: false,
-        imgSrc: 'assets/img/wallet-connect/advertisement.svg'
-      });
-    this.showAdvertisements = true;
-  }
-
-  private async addSwapTokensAdvertisement() {
-    const alreadyVisible = this.advertisements.find(
-      a => a.name === 'swapTokens'
-    );
-    !alreadyVisible &&
-      this.advertisements.unshift({
-        name: 'swapTokens',
-        title: this.translate.instant('Swap Tokens'),
-        body: this.translate.instant('Choose from hundreds of ERC-20 tokens.'),
-        app: 'bitpay',
-        linkText: this.translate.instant('Get Started'),
-        link: 'swap-tokens-page',
-        dismissible: true,
-        isTesting: false,
-        imgSrc: 'assets/img/exchange-crypto/icon-swap.svg'
       });
     this.showAdvertisements = true;
   }
@@ -915,21 +830,12 @@ export class HomePage {
         this.advertisements,
         adv => adv.name !== name
       );
-      if (this.advertisements && this.advertisements.length == 0)
-        this.showAdvertisements = false;
+      if (this.advertisements.length == 0) this.showAdvertisements = false;
     }
     if (this.slides) this.slides.slideTo(0, 500);
   }
 
   public goTo(page, params: any = {}) {
-    if (page === 'wallet-connect-page') {
-      this.goToWalletConnectPage();
-      return;
-    }
-    if (page === 'swap-tokens-page') {
-      this.checkSwapCryptoDisclaimer();
-      return;
-    }
     if (page === 'card-referral') {
       this.iabCardProvider.loadingWrapper(async () => {
         const cards = await this.persistenceProvider.getBitpayDebitCards(
@@ -980,41 +886,7 @@ export class HomePage {
     });
   }
 
-  private createInfoSheet(type: InfoSheetType, params?): InfoSheetComponent {
-    return this.setupSheet<InfoSheetComponent>(InfoSheetComponent, type, params)
-      .instance;
-  }
-
-  private setupSheet<T extends ActionSheetParent>(
-    componentType: { new (...args): T },
-    sheetType?: string,
-    params?
-  ): ComponentRef<T> {
-    const sheet = this.domProvider.appendComponentToBody<T>(componentType);
-    sheet.instance.componentRef = sheet;
-    sheet.instance.sheetType = sheetType;
-    sheet.instance.params = params;
-    return sheet;
-  }
-
-  public async checkSwapCryptoDisclaimer() {
-    const hasAcceptedDisclaimer =
-      (await this.persistenceProvider.getSwapCryptoDisclaimer()) === 'accepted';
-    if (hasAcceptedDisclaimer) {
-      this.goToSwapCryptoPage();
-    } else {
-      const infoSheet = this.createInfoSheet('exchange-crypto-disclaimer');
-      await infoSheet.present();
-      infoSheet.onDidDismiss((hasAcceptedDisclaimer: boolean) => {
-        if (hasAcceptedDisclaimer) {
-          this.persistenceProvider.setSwapCryptoDisclaimer('accepted');
-          this.goToSwapCryptoPage();
-        }
-      });
-    }
-  }
-
-  private goToSwapCryptoPage() {
+  public goToExchangeCryptoPage() {
     this.analyticsProvider.logEvent('exchange_crypto_button_clicked', {
       from: 'homePage'
     });
@@ -1024,9 +896,7 @@ export class HomePage {
   }
 
   public goToWalletConnectPage() {
-    this.persistenceProvider.getWalletConnect().then(session => {
-      session ? this.navCtrl.push(WalletConnectPage) : this.showWallets();
-    });
+    this.navCtrl.push(WalletConnectPage);
   }
 
   private checkNewRelease() {
@@ -1097,20 +967,20 @@ export class HomePage {
               ? Network.testnet
               : Network.livenet;
           this.persistenceProvider.setNetwork(newNetwork);
-          this.testModeEnabled = newNetwork === 'testnet';
-          const notificationConfig = {
-            title: `Test Mode ${this.testModeEnabled ? 'Enabled' : 'Disabled'}`,
-            body: `Network changed to ${
-              this.testModeEnabled ? 'testnet' : 'mainnet'
-            }. Close and restart the app.`,
-            action: 'notifyOnly',
-            closeButtonText: ' ',
-            autoDismiss: false
-          };
-          this.pushNotificationProvider.showInappNotification(
-            notificationConfig
+          const infoSheet = this.actionSheetProvider.createInfoSheet(
+            'in-app-notification',
+            {
+              title: 'Network Changed',
+              body: `Network changed to ${newNetwork}. Restarting app.`
+            }
           );
-          this.onGoingProcessProvider.set('Restart the app');
+          infoSheet.present();
+          infoSheet.onDidDismiss(() => {
+            window.location.reload();
+            if (this.platformProvider.isCordova) this.splashScreen.show();
+          });
+
+          this.tapped = 0;
         });
     }
   }
@@ -1212,115 +1082,6 @@ export class HomePage {
     return [givenName, familyName]
       .map(name => name && name.charAt(0).toUpperCase())
       .join('');
-  }
-
-  private checkBitPaySurveyCard() {
-    if (!this.bitPaySurveyCardChecked) {
-      this.persistenceProvider.getBitPayCardOrderStarted().then(ts => {
-        this.showBitPaySurveyCard(ts);
-      });
-    }
-  }
-
-  private async showBitPaySurveyCard(ts: number) {
-    if (!ts || this.bitPaySurveyCardChecked) return;
-
-    this.bitPaySurveyCardChecked = true;
-    const cards = await this.persistenceProvider.getBitpayDebitCards(
-      this.network
-    );
-    if (cards.length) return;
-
-    const lastSurveyCardDismissed = await this.persistenceProvider.getBitPaySurveyCardDismissed();
-    // show for the first time after 24 hours
-    if (
-      moment().diff(moment.unix(ts), 'hours') >= 24 &&
-      !lastSurveyCardDismissed
-    ) {
-      this.showSurveyCard = true;
-    }
-
-    // show every two weeks until the user gets the card
-    if (moment().diff(moment.unix(lastSurveyCardDismissed), 'days') >= 14) {
-      this.showSurveyCard = true;
-    }
-  }
-
-  public dismissBitPaySurveyCard(): void {
-    this.logger.debug(`BitPay survey card dismissed`);
-    this.showSurveyCard = false;
-    const now = moment().unix();
-    this.persistenceProvider.setBitPaySurveyCardDismissed(now);
-  }
-
-  public openBitPaySurveyLink(): void {
-    const url = 'https://payux.typeform.com/to/PbI7b2ZB';
-    this.externalLinkProvider.open(url);
-  }
-
-  private showWallets(): void {
-    const wallets = this.profileProvider.getWallets({
-      coin: 'eth',
-      onlyComplete: true,
-      backedUp: true,
-      m: 1,
-      n: 1
-    });
-
-    const params = {
-      wallets,
-      selectedWalletId: null,
-      title: this.translate.instant('Select a wallet'),
-      fromWalletConnect: true
-    };
-    const walletSelector = this.actionSheetProvider.createWalletSelector(
-      params
-    );
-    walletSelector.present();
-    walletSelector.onDidDismiss(wallet => {
-      this.onSelectWalletEvent(wallet);
-    });
-  }
-
-  private async onSelectWalletEvent(wallet): Promise<void> {
-    if (!_.isEmpty(wallet)) {
-      await this.walletConnectProvider.setAccountInfo(wallet);
-
-      let params: {
-        fromWalletConnect: true;
-        walletId: string;
-        force?: boolean;
-        updateURI?: boolean;
-      } = {
-        fromWalletConnect: true,
-        walletId: wallet.credentials.walletId
-      };
-
-      if (this.newWalletConnectSessionUri) {
-        this.logger.log(
-          'WalletConnect - New Session Request URI',
-          this.newWalletConnectSessionUri
-        );
-        const redirParams = {
-          ...params,
-          force: true
-        };
-        this.incomingDataProvider.redir(
-          this.newWalletConnectSessionUri,
-          redirParams
-        );
-        setTimeout(() => (this.newWalletConnectSessionUri = null));
-      } else {
-        this.isCordova
-          ? this.navCtrl.push(ScanPage, params, { animate: false })
-          : this.navCtrl.push(WalletConnectPage, params);
-      }
-    }
-  }
-
-  private onWalletConnectNewSessionRequest(newSession) {
-    this.newWalletConnectSessionUri = newSession;
-    this.showWallets();
   }
 }
 

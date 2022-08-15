@@ -30,8 +30,6 @@ export class CoinbaseWithdrawPage {
   public data: object = {};
   public amount: string;
   public currency: string;
-  public nativeBalance: string;
-  public nativeCurrency: string;
   public description: string;
   public destinationTag: number;
 
@@ -68,12 +66,6 @@ export class CoinbaseWithdrawPage {
 
     this.wallet = this.profileProvider.getWallet(
       this.navParams.data.toWalletId
-    );
-
-    this.nativeCurrency = this.coinbaseProvider.getNativeCurrency();
-    this.nativeBalance = this.coinbaseProvider.getNativeCurrencyBalance(
-      this.amount,
-      this.currency
     );
 
     this.buttonText = this.isCordova

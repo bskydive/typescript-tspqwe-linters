@@ -48,11 +48,8 @@
               <balance-to-show [balance]="getBalance()"></balance-to-show>
               <img *ngIf="wallet.coin === 'xrp'" width="21" (click)="openBalanceDetails()" src="assets/img/icon-info-blue.svg">
             </div>
-            <div class="balance-alt-str" *ngIf="wallet?.cachedStatus && wallet?.cachedStatus.totalBalanceAlternative && !currencyProvider.isCustomERCToken(wallet?.coin) && wallet?.network !== 'testnet'">
+            <div class="balance-alt-str" *ngIf="wallet?.cachedStatus && wallet?.cachedStatus.totalBalanceAlternative && !currencyProvider.isCustomERCToken(wallet?.coin)">
               {{getAlternativeBalance()}} {{wallet?.cachedStatus.alternativeIsoCode}}
-            </div>
-            <div class="balance-alt-str" *ngIf="wallet?.network === 'testnet'">
-              {{ 'Test Only - No Value' | translate }}
             </div>
           </div>
 
@@ -142,7 +139,7 @@
 
           <div class="action-btn" *ngIf="showExchangeCrypto" (click)="goToExchangeCryptoPage()">
             <img [src]="themeProvider.currentAppTheme == 'dark' ? 'assets/img/wallet-details/wd-exchange-dm.svg': 'assets/img/wallet-details/wd-exchange.svg'" width="50">
-            <div class="ellipsis">{{ 'Swap' | translate }}</div>
+            <div class="ellipsis">{{ 'Exchange' | translate }}</div>
           </div>
 
           <div class="action-btn" (click)="goToReceivePage()">
@@ -192,18 +189,16 @@
       <div class="title-icon larger-icon" *ngIf="!wallet?.credentials.multisigEthInfo">
         <img *ngIf="wallet.coin === 'xrp' && wallet.cachedStatus && !wallet.cachedStatus.lockedBalanceSat; else ghostTongue" width="42" src="assets/img/icon-warning-circled.svg" />
         <ng-template #ghostTongue>
-          <img *ngIf="wallet.network === 'testnet'" src="assets/img/icon-warning-circled.svg">
-          <img *ngIf="wallet.coin !== 'doge' && wallet.network === 'livenet'" src="assets/img/ghost-tongue-out.svg">
-          <img *ngIf="wallet.coin === 'doge' && wallet.network === 'livenet'" src="assets/img/sad-doge.svg">
+          <img *ngIf="wallet.coin !== 'doge'" src="assets/img/ghost-tongue-out.svg">
+          <img *ngIf="wallet.coin === 'doge'" src="assets/img/sad-doge.svg">
         </ng-template>
       </div>
       <div class="title-info">
         <span translate *ngIf="wallet?.coin === 'xrp' && wallet?.cachedStatus && !wallet?.cachedStatus.lockedBalanceSat; else ghostTown">XRP Minimum Balance</span>
         <ng-template #ghostTown>
-          <span translate *ngIf="wallet.network === 'testnet'">Someone asked you to create this wallet?</span>
-          <span translate *ngIf="!wallet?.credentials.multisigEthInfo && wallet.coin !== 'doge' && wallet.network === 'livenet'">It's a ghost town in here</span>
-          <span translate *ngIf="!wallet?.credentials.multisigEthInfo && wallet.coin === 'doge' && wallet.network === 'livenet'">A dog without funds is a sad dog</span>
-          <span translate *ngIf="wallet?.credentials.multisigEthInfo && wallet.network === 'livenet'">Join more Copayers</span>
+          <span translate *ngIf="!wallet?.credentials.multisigEthInfo && wallet.coin !== 'doge'">It's a ghost town in here</span>
+          <span translate *ngIf="!wallet?.credentials.multisigEthInfo && wallet.coin === 'doge' ">A dog without funds is a sad dog</span>
+          <span translate *ngIf="wallet?.credentials.multisigEthInfo">Join more Copayers</span>
         </ng-template>
       </div>
       <div class="subtitle-info">
@@ -211,13 +206,10 @@
           The XRP ledger requires that all wallets maintain a minimum balance of 20 XRP. This non-refundable 20 XRP will remain permanently locked in your wallet. Please first deposit no less than 20 XRP to activate your wallet.
         </span>
         <ng-template #noFunds>
-          <span *ngIf="wallet.network === 'testnet'">
-            {{ 'Testnet is an alternative {coinName} block chain meant for testing. This allows application developers and testers to experiment without having to use real {coinName}. Testnet coins are different from actual {coinName}, and do not have any value. They cannot be converted into "real" coins and cannot be exchanged or sold as they have no value.' | translate : {coinName: currencyProvider.getCoinName(wallet.credentials.coin) } }}
-          </span>
-          <span translate *ngIf="!wallet?.credentials.multisigEthInfo && !wallet.network === 'livenet'">
+          <span translate *ngIf="!wallet?.credentials.multisigEthInfo">
             If you have funds stored on a website then you should move them into a secure wallet... like this one!
           </span>
-          <span translate *ngIf="wallet?.credentials.multisigEthInfo && !wallet.network === 'livenet'">
+          <span translate *ngIf="wallet?.credentials.multisigEthInfo">
             Share this invitation with the Copayers who join this wallet.
           </span>
         </ng-template>
@@ -242,56 +234,6 @@
       <span translate *ngIf="updatingTxHistoryProgress>4">{{updatingTxHistoryProgress}} transactions downloaded</span>
     </div>
 
-    <ion-list *ngIf="multisigPendingWallets && multisigPendingWallets[0]" class="bp-list">
-      <ion-item-divider sticky class="tx-history-header">
-        <span>{{'Pending multisig wallet' | translate }} </span>
-      </ion-item-divider>
-      <div *ngFor="let multisigPendingWallet of multisigPendingWallets">
-        <action-card>
-          <div action-card-title class="main-label">
-            <div>
-              {{ 'Name' }}
-              <ion-note item-end>
-                {{ multisigPendingWallet.walletName }}
-              </ion-note>
-            </div>
-          </div>
-          <div action-card-body>
-            <div class="item">{{ 'Required Confirmations - Total Copayers' | translate }}</div>
-            <ion-note item-end>
-              {{ multisigPendingWallet.m }} - {{multisigPendingWallet.n}}
-            </ion-note>
-            <div (click)="viewTxOnBlockchain(multisigPendingWallet.txId)" class="item">
-              <div>{{ 'Instantiation transaction ID' | translate }}</div>
-              <ion-note item-end>
-                {{ multisigPendingWallet.txId }}
-              </ion-note>
-            </div>
-            <div (click)="viewAddressOnBlockchain(multisigPendingWallet.multisigContractAddress)" class="item">
-              <div>{{ 'Contract Address' | translate }}</div>
-              <ion-note item-end>
-                {{ multisigPendingWallet.multisigContractAddress }}
-              </ion-note>
-            </div>
-          </div>
-          <div action-card-button>
-            <ion-row>
-              <ion-col>
-                <button (click)="removeMultisigWallet(multisigPendingWallet.txId)" ion-button class="button-standard" color="primary" outline>
-                  {{ 'Remove' | translate }}
-                </button>
-              </ion-col>
-              <ion-col>
-                <button (click)="createMultisigWallet(multisigPendingWallet)" ion-button class="button-standard" color="primary" outline>
-                  {{ 'Create' | translate }}
-                </button>
-              </ion-col>
-            </ion-row>
-          </div>
-        </action-card>
-      </div>
-    </ion-list>
-
     <ion-list *ngIf="history && history[0]" class="tx-history">
       <ion-item-group *ngFor="let group of groupedHistory; trackBy: trackByFn; let i = index;">
 
@@ -302,40 +244,33 @@
 
         <div class="item-wrapper" *ngFor="let tx of group; trackBy: trackByFn; let i = index">
 
-          <button ion-item (click)="itemTapped(tx)" [ngClass]="{'info-background': tx.isRBF && (tx.action === 'sent' || tx.action === 'moved'), 'warning-background': canSpeedUpTx(tx), 'danger-background': (tx.hasUnconfirmedInputs || tx.isRBF) && (tx.action === 'received' || tx.action === 'moved')}">
+          <button ion-item (click)="itemTapped(tx)" [ngClass]="{'warning-background': canSpeedUpTx(tx), 'danger-background': tx.hasUnconfirmedInputs || tx.isRBF}">
             <ion-icon class="item-img" item-start>
               <div *ngIf="tx.confirmations <= 0">
                 <img src="assets/img/tx-action/icon-confirming.svg" width="40">
               </div>
               <div *ngIf="tx.confirmations > 0">
-                <span *ngIf="(wallet?.coin === 'eth' || currencyProvider.isERCToken(wallet?.coin)) && tx.error; else noError">
-                  <img src="assets/img/failed-icon.svg">
+                <span *ngIf="tx.customData && tx.customData.service">
+                  <img class="icon-services" src="assets/img/shapeshift/icon-shapeshift.svg" *ngIf="tx.customData.service == 'shapeshift'" width="40">
+                  <img class="icon-services" src="assets/img/exchange-crypto/changelly-icon.svg" *ngIf="tx.customData.service == 'changelly'" width="40">
+                  <img-loader class="icon-services" *ngIf="tx.customData.service === 'amazon'" src="https://bitpay.com/gift-cards/assets/amazoncom/icon.svg" width="40" fallbackUrl="assets/img/gift-cards/gift-cards-icon.svg"></img-loader>
+                  <img-loader class="icon-services" *ngIf="tx.customData.service === 'mercadolibre'" src="https://bitpay.com/gift-cards/assets/mercadolivre/icon.svg" width="40" fallbackUrl="assets/img/gift-cards/gift-cards-icon.svg"></img-loader>
+                  <img-loader class="icon-services" *ngIf="tx.customData.service === 'coinbase'" src="assets/img/coinbase/coinbase-icon.png" width="40" fallbackUrl="assets/img/gift-cards/gift-cards-icon.svg"></img-loader>
+                  <ng-container *ngIf="supportedCards | async as cardConfig">
+                    <img-loader class="icon-services" *ngIf="tx.customData.service === 'giftcards'" [src]="cardConfig[tx.customData.giftCardName]?.icon" width="40" fallbackUrl="assets/img/gift-cards/gift-cards-icon.svg"></img-loader>
+                  </ng-container>
+                  <img class="icon-services" src="assets/img/bitpay-card/icon-bitpay.svg" *ngIf="tx.customData.service == 'debitcard'" width="40">
                 </span>
-                <ng-template #noError>
-                  <span *ngIf="tx.customData && tx.customData.service && tx.action == 'sent'">
-                    <img class="icon-services" style="padding: 5px;" src="assets/img/wallet-connect/wallet-connect-grey.svg" *ngIf="tx.customData.service == 'walletConnect'" width="15">
-                    <img class="icon-services" src="assets/img/shapeshift/icon-shapeshift.svg" *ngIf="tx.customData.service == 'shapeshift'" width="40">
-                    <img class="icon-services" src="assets/img/exchange-crypto/changelly-icon.svg" *ngIf="tx.customData.service == 'changelly'" width="40">
-                    <img class="icon-services" src="assets/img/exchange-crypto/1inch-icon.svg" *ngIf="tx.customData.service == 'oneInch'" width="40">
-                    <img-loader class="icon-services" *ngIf="tx.customData.service === 'amazon'" src="https://bitpay.com/gift-cards/assets/amazoncom/icon.svg" width="40" fallbackUrl="assets/img/gift-cards/gift-cards-icon.svg"></img-loader>
-                    <img-loader class="icon-services" *ngIf="tx.customData.service === 'mercadolibre'" src="https://bitpay.com/gift-cards/assets/mercadolivre/icon.svg" width="40" fallbackUrl="assets/img/gift-cards/gift-cards-icon.svg"></img-loader>
-                    <img-loader class="icon-services" *ngIf="tx.customData.service === 'coinbase'" src="assets/img/coinbase/coinbase-icon.png" width="40" fallbackUrl="assets/img/gift-cards/gift-cards-icon.svg"></img-loader>
-                    <ng-container *ngIf="supportedCards | async as cardConfig">
-                      <img-loader class="icon-services" *ngIf="tx.customData.service === 'giftcards'" [src]="cardConfig[tx.customData.giftCardName]?.icon" width="40" fallbackUrl="assets/img/gift-cards/gift-cards-icon.svg"></img-loader>
-                    </ng-container>
-                    <img class="icon-services" src="assets/img/bitpay-card/icon-bitpay.svg" *ngIf="tx.customData.service == 'debitcard'" width="40">
-                  </span>
-                  <span *ngIf="tx.customData && tx.customData.toWalletName && !tx.customData.service">
-                    <img class="icon-services" src="assets/img/icon-wallet-reverse.svg" *ngIf="tx.action == 'sent'" width="40">
-                  </span>
-                  <span *ngIf="!tx.customData || (tx.customData && !tx.customData.service && !tx.customData.toWalletName)">
-                    <img src="assets/img/tx-action/icon-sent.svg" *ngIf="tx.action == 'sent'" width="40">
-                  </span>
-                  <span>
-                    <img src="assets/img/tx-action/icon-received.svg" *ngIf="tx.action == 'received'" width="40">
-                    <img src="assets/img/tx-action/icon-moved.svg" *ngIf="tx.action == 'moved'" width="40">
-                  </span>
-                </ng-template>
+                <span *ngIf="tx.customData && tx.customData.toWalletName && !tx.customData.service">
+                  <img class="icon-services" src="assets/img/icon-wallet-reverse.svg" *ngIf="tx.action == 'sent'" width="40">
+                </span>
+                <span *ngIf="!tx.customData || (tx.customData && !tx.customData.service && !tx.customData.toWalletName)">
+                  <img src="assets/img/tx-action/icon-sent.svg" *ngIf="tx.action == 'sent'" width="40">
+                </span>
+                <span>
+                  <img src="assets/img/tx-action/icon-received.svg" *ngIf="tx.action == 'received'" width="40">
+                  <img src="assets/img/tx-action/icon-moved.svg" *ngIf="tx.action == 'moved'" width="40">
+                </span>
               </div>
             </ion-icon>
 

@@ -5,8 +5,7 @@ export interface Token {
   address: string;
 }
 
-export const TokensListAPIUrl =
-  'https://bitpay.api.enterprise.1inch.exchange/v3.0/1/tokens';
+export const TokensListAPIUrl = 'https://api.1inch.exchange/v3.0/1/tokens';
 
 export const TokenOpts = {
   '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48': {
@@ -44,11 +43,5 @@ export const TokenOpts = {
     symbol: 'WBTC',
     decimal: 9,
     address: '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599'
-  },
-  '0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce': {
-    name: 'SHIBA INU',
-    symbol: 'SHIB',
-    decimal: 18,
-    address: '0x95ad61b0a150d79219dcf64e1e6cc01f0b64c4ce'
   }
 };

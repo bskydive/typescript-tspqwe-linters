@@ -32,7 +32,6 @@ interface CryptoOffer {
   amountLimits?: any;
   errorMsg?: string;
   quoteData?: any; // Simplex
-  outOfLimitMsg?: string;
 }
 @Component({
   selector: 'page-crypto-offers',
@@ -233,8 +232,7 @@ export class CryptoOffersPage {
   // SIMPLEX
 
   public goToSimplexBuyPage() {
-    if (this.offers.simplex.errorMsg || this.offers.simplex.outOfLimitMsg)
-      return;
+    if (this.offers.simplex.errorMsg) return;
     this.openPopUpConfirmation('simplex');
   }
 
@@ -332,7 +330,7 @@ export class CryptoOffersPage {
       this.amount < this.offers.simplex.amountLimits.min ||
       this.amount > this.offers.simplex.amountLimits.max
     ) {
-      this.offers.simplex.outOfLimitMsg = `There are no Simplex offers available, as the current purchase limits for this exchange must be between ${this.offers.simplex.amountLimits.min} ${this.fiatCurrency} and ${this.offers.simplex.amountLimits.max} ${this.fiatCurrency}`;
+      this.offers.simplex.errorMsg = `The ${this.fiatCurrency} amount must be between ${this.offers.simplex.amountLimits.min} and ${this.offers.simplex.amountLimits.max}`;
       return;
     } else {
       let paymentMethod: string[] = [];
@@ -345,9 +343,7 @@ export class CryptoOffersPage {
           break;
       }
       const data = {
-        digital_currency: this.simplexProvider.checkSimplexCoin(
-          this.wallet.coin.toUpperCase()
-        ),
+        digital_currency: this.wallet.coin.toUpperCase(),
         fiat_currency: this.fiatCurrency,
         requested_currency: this.fiatCurrency,
         requested_amount: this.amount,
@@ -418,7 +414,7 @@ export class CryptoOffersPage {
   // WYRE
 
   public goToWyreBuyPage() {
-    if (this.offers.wyre.errorMsg || this.offers.wyre.outOfLimitMsg) return;
+    if (this.offers.wyre.errorMsg) return;
     this.onGoingProcessProvider.set('processingOrderReservation');
     this.walletProvider
       .getAddress(this.wallet, false)
@@ -500,7 +496,7 @@ export class CryptoOffersPage {
       this.amount < this.offers.wyre.amountLimits.min ||
       this.amount > this.offers.wyre.amountLimits.max
     ) {
-      this.offers.wyre.outOfLimitMsg = `There are no Wyre offers available, as the current daily purchase limits for this exchange must be between ${this.offers.wyre.amountLimits.min} ${this.fiatCurrency} and ${this.offers.wyre.amountLimits.max} ${this.fiatCurrency}`;
+      this.offers.wyre.errorMsg = `The ${this.fiatCurrency} daily amount must be between ${this.offers.wyre.amountLimits.min} and ${this.offers.wyre.amountLimits.max}`;
       return;
     } else {
       this.walletProvider

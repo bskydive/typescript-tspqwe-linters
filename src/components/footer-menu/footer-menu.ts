@@ -45,7 +45,7 @@ export class FooterMenuComponent extends ActionSheetParent {
       },
       exchange: {
         imgSrc: `assets/img/footer-menu/exchange.svg`,
-        mainLabel: this.translate.instant('Swap'),
+        mainLabel: this.translate.instant('Exchange'),
         secondaryLabel: this.translate.instant('Swap crypto for another'),
         showOption: this.appName === 'bitpay' && this.isCordova ? true : false,
         nextView: {
@@ -65,11 +65,9 @@ export class FooterMenuComponent extends ActionSheetParent {
         ),
         showOption: true,
         nextView: {
-          name: 'CoinAndWalletSelectorPage',
+          name: 'CryptoCoinSelectorPage',
           params: {
-            walletSelectorTitle: this.translate.instant(
-              'Select destination wallet'
-            ),
+            title: this.translate.instant('Select destination wallet'),
             action: 'receive',
             fromFooterMenu: true
           }
@@ -82,9 +80,9 @@ export class FooterMenuComponent extends ActionSheetParent {
         secondaryLabel: this.translate.instant('Send crypto to another wallet'),
         showOption: true,
         nextView: {
-          name: 'CoinAndWalletSelectorPage',
+          name: 'CryptoCoinSelectorPage',
           params: {
-            walletSelectorTitle: this.translate.instant('Select source wallet'),
+            title: this.translate.instant('Select source wallet'),
             action: 'send',
             fromFooterMenu: true
           }

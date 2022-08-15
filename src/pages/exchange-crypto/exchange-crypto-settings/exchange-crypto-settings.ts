@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 import * as _ from 'lodash';
 
 // Pages
 import { ChangellyPage } from '../../../pages/integrations/changelly/changelly';
-import { OneInchPage } from '../../../pages/integrations/one-inch/one-inch';
 
 // Providers
 import { ConfigProvider } from '../../../providers/config/config';
@@ -22,9 +21,7 @@ export class ExchangeCryptoSettingsPage {
 
   public showInHome;
   public service;
-  public fromExchangeCryptoPage: boolean;
   public changellySwapTxs: any[];
-  public oneInchSwapTxs: any[];
 
   constructor(
     private configProvider: ConfigProvider,
@@ -32,10 +29,8 @@ export class ExchangeCryptoSettingsPage {
     private logger: Logger,
     public themeProvider: ThemeProvider,
     private exchangeCryptoProvider: ExchangeCryptoProvider,
-    private navCtrl: NavController,
-    private navParams: NavParams
+    private navCtrl: NavController
   ) {
-    this.fromExchangeCryptoPage = this.navParams.data.fromExchangeCryptoPage;
     this.service = _.filter(this.homeIntegrationsProvider.get(), {
       name: this.serviceName
     });
@@ -49,7 +44,7 @@ export class ExchangeCryptoSettingsPage {
   ionViewWillEnter() {
     this.exchangeCryptoProvider.getSwapTxs().then(res => {
       this.changellySwapTxs = res.changellySwapTxs;
-      this.oneInchSwapTxs = res.oneInchSwapTxs;
+      // this.shpeshiftSwapTxs = res.shpeshiftSwapTxs;
     });
   }
 
@@ -66,9 +61,5 @@ export class ExchangeCryptoSettingsPage {
 
   public goToChangellyPage(): void {
     this.navCtrl.push(ChangellyPage);
-  }
-
-  public goToOneInchPage(): void {
-    this.navCtrl.push(OneInchPage);
   }
 }

@@ -44,9 +44,6 @@
             </span>
           </ion-icon>
         </button>
-        <div class="test-mode"*ngIf="testModeEnabled">
-          <ion-badge>Test Mode</ion-badge>
-        </div>
         {{ 'Home' | translate }}
       </expandable-header-primary>
     </ion-toolbar>
@@ -91,30 +88,6 @@
       <div class="message-body" translate>
         An update to this app is available.
       </div>
-    </div>
-  </div>
-
-  <div class="message-background" *ngIf="showSurveyCard">
-    <div class="message-header">
-      <ion-row justify-content-end>
-        <button float-right ion-button clear icon-only color="grey" (click)="dismissBitPaySurveyCard()">
-          <ion-icon name="close"></ion-icon>
-        </button>
-      </ion-row>
-    </div>
-    <div class="message-content">
-      <ion-row align-items-center>
-        <div class="message-icon"><img src="assets/img/icon-heart.svg" /></div>
-        <div class="message-title">
-          {{ 'Help BitPay Improve' | translate }}
-        </div>
-      </ion-row>
-      <div class="message-body">
-        {{ "You didn't finish your card application." | translate }} <br>
-        {{ 'Help us by answering 3 quick questions.' | translate }}
-      </div>
-      <div class="line-divider"></div>
-      <span class="message-button" (click)="openBitPaySurveyLink()" translate>Take the survey</span>
     </div>
   </div>
 
@@ -184,11 +157,18 @@
       </ion-label>
     </button>
     <div class="line-divider" *ngIf="showBuyCryptoOption"></div>
-    <button ion-item *ngIf="showExchangeCryptoOption" (click)="checkSwapCryptoDisclaimer()">
+    <button ion-item *ngIf="showExchangeCryptoOption" (click)="goToExchangeCryptoPage()">
       <ion-label>
-        <div class="services-list-label" translate>Swap Crypto</div>
+        <div class="services-list-label" translate>Exchange Crypto</div>
       </ion-label>
     </button>
+    <div class="line-divider" *ngIf="showExchangeCryptoOption"></div>
+    <button ion-item *ngIf="showWalletConnect" (click)="goToWalletConnectPage()">
+      <ion-label>
+        <div class="services-list-label" translate>WalletConnect</div>
+      </ion-label>
+    </button>
+    <div class="line-divider" *ngIf="showWalletConnect"></div>
   </ion-list>
 
   <ion-slides *ngIf="showAdvertisements && advertisements && advertisements[0] && !testingAdsEnabled" pager="true" (ionSlideDidChange)="slideChanged()">

@@ -12,12 +12,10 @@ import { BwcProvider } from '../bwc/bwc';
 import { CurrencyProvider } from '../currency/currency';
 import { ExternalLinkProvider } from '../external-link/external-link';
 import { IABCardProvider } from '../in-app-browser/card';
-import { InvoiceProvider } from '../invoice/invoice';
 import { Logger } from '../logger/logger';
 import { OnGoingProcessProvider } from '../on-going-process/on-going-process';
 import { PayproProvider } from '../paypro/paypro';
 import { PersistenceProvider } from '../persistence/persistence';
-import { PlatformProvider } from '../platform/platform';
 import { ProfileProvider } from '../profile/profile';
 
 export interface RedirParams {
@@ -26,11 +24,6 @@ export interface RedirParams {
   coin?: string;
   fromHomeCard?: boolean;
   fromFooterMenu?: boolean;
-  fromWalletConnect?: boolean;
-  force?: boolean;
-  walletId?: string;
-  wcRequest?: any;
-  fromSettings?: boolean;
 }
 
 @Injectable()
@@ -53,9 +46,7 @@ export class IncomingDataProvider {
     private onGoingProcessProvider: OnGoingProcessProvider,
     private iabCardProvider: IABCardProvider,
     private persistenceProvider: PersistenceProvider,
-    private bitPayIdProvider: BitPayIdProvider,
-    private invoiceProvider: InvoiceProvider,
-    private platformProvider: PlatformProvider
+    private bitPayIdProvider: BitPayIdProvider
   ) {
     this.logger.debug('IncomingDataProvider initialized');
     this.events.subscribe('unlockInvoice', paymentUrl =>
@@ -95,10 +86,8 @@ export class IncomingDataProvider {
     );
   }
 
-  public isValidBitPayInvoice(data: string): boolean {
-    return !!/^https:\/\/(www\.|link\.)?(test\.|staging\.)?bitpay\.com\/i\/\w+/.exec(
-      data
-    );
+  private isValidBitPayInvoice(data: string): boolean {
+    return !!/^https:\/\/(www.)?(test.|staging.)?bitpay.com\/i\/\w+/.exec(data);
   }
 
   private isValidBitPayUri(data: string): boolean {
@@ -145,11 +134,7 @@ export class IncomingDataProvider {
   }
 
   private isValidWalletConnectUri(data: string): boolean {
-    return !!/(wallet\/wc|wc:)/g.exec(data);
-  }
-
-  private isValidInvoiceIntentUri(data: string): boolean {
-    return !!/^bitpay:\/\/(test\.|staging\.)?bitpay\.com\/i\/\w+/.exec(data);
+    return !!/^(wc)?:/.exec(data);
   }
 
   public isValidBitcoinCashUriWithLegacyAddress(data: string): boolean {
@@ -524,40 +509,20 @@ export class IncomingDataProvider {
     } else this.goSend(address, amount, message, coin);
   }
 
-  private handleWalletConnectUri(
-    uri: string,
-    redirParams: RedirParams = {}
-  ): void {
+  private handleWalletConnectUri(uri: string): void {
     // Disable Wallet Connect
     if (!this.appProvider.info._enabledExtensions.walletConnect) {
       this.logger.warn('Wallet Connect has been disabled for this build');
       return;
     }
 
-    const {
-      force,
-      walletId,
-      fromWalletConnect,
-      wcRequest: request,
-      fromSettings
-    } = redirParams;
-
     let stateParams = {
-      uri,
-      force,
-      walletId,
-      fromWalletConnect,
-      activePage: this.activePage,
-      request,
-      isDeepLink: uri && !redirParams,
-      fromSettings
+      uri
     };
     let nextView = {
       name: 'WalletConnectPage',
       params: stateParams
     };
-
-    this.logger.log(JSON.stringify(nextView));
 
     this.analyticsProvider.logEvent('wallet_connect_camera_scan_attempt', {});
     this.incomingDataRedir(nextView);
@@ -919,21 +884,17 @@ export class IncomingDataProvider {
   }
 
   public redir(data: string, redirParams?: RedirParams): boolean {
-    this.activePage =
-      redirParams && redirParams.activePage ? redirParams.activePage : null;
-
+    if (redirParams && redirParams.activePage)
+      this.activePage = redirParams.activePage;
     if (redirParams && redirParams.activePage)
       this.fromFooterMenu = redirParams.fromFooterMenu;
 
     //  Handling of a bitpay invoice url
     if (this.isValidBitPayInvoice(data)) {
-      this.handleUnlock(data);
+      this.handleBitPayInvoice(data);
       return true;
-    } else if (
-      this.platformProvider.isElectron &&
-      this.isValidInvoiceIntentUri(data)
-    ) {
-      this.handleDesktopUnlock(data);
+    } else if (data.includes('unlock')) {
+      this.handleUnlock(data);
       return true;
 
       // Payment Protocol
@@ -973,10 +934,7 @@ export class IncomingDataProvider {
 
       // Wallet Connect URI
     } else if (this.isValidWalletConnectUri(data)) {
-      if (data.includes('?uri')) {
-        data = data.split('?uri=')[1];
-      }
-      this.handleWalletConnectUri(data, redirParams);
+      this.handleWalletConnectUri(data);
       return true;
 
       // Bitcoin Cash URI using Bitcoin Core legacy address
@@ -1082,31 +1040,16 @@ export class IncomingDataProvider {
       switch (switchExp) {
         case 'pairing':
           const secret = payload.split('=')[1].split('&')[0];
-          const withNotification = !payload.includes('paymentUrl');
           const params = {
             secret,
-            withNotification
+            withNotification: true
           };
           if (payload.includes('&code=')) {
             params['code'] = payload.split('&code=')[1];
           }
 
-          if (payload.includes('&paymentUrl=')) {
-            params['paymentUrl'] = payload
-              .split('&paymentUrl=')[1]
-              .split('&')[0];
-            if (payload.includes('t=hv')) {
-              params['paymentUrl'] = params['paymentUrl'] + '?t=hv';
-            }
-          }
-
           if (payload.includes('dashboardRedirect')) {
             params['dashboardRedirect'] = true;
-          }
-
-          if (payload.includes('&vcd=')) {
-            const currency = payload.split('&vcd=')[1];
-            this.persistenceProvider.setCustomVirtualCardDesign(currency);
           }
 
           this.iabCardProvider.pairing({ data: { params } });
@@ -1555,44 +1498,35 @@ export class IncomingDataProvider {
     }
   }
 
-  public async handleUnlock(data) {
+  private async handleUnlock(data) {
     try {
-      const network = data.includes('test') ? 'testnet' : 'livenet';
-      const invoiceId = data.split('i/')[1].split('?')[0];
+      const url = data.split('?r=')[1];
+      const invoiceId = url.split('i/')[1];
 
-      if (data.includes('link.')) {
-        data = data.replace('link.', '');
-      }
-
-      const { host } = new URL(data);
       const result = await this.bitPayIdProvider.unlockInvoice(invoiceId);
 
-      if (result === 'unlockSuccess') {
-        await this.handleBitPayInvoice(data);
-        return;
-      }
-
-      const fetchData = await this.invoiceProvider.canGetInvoiceData(
-        invoiceId,
-        network
-      );
-
-      if (fetchData) {
-        await this.handleBitPayInvoice(data);
-        return;
-      }
-
       switch (result) {
+        case 'unlockSuccess':
+          await this.handleBitPayInvoice(`unlock:?${url}`);
+          break;
+
         // call IAB and attempt pairing
         case 'pairingRequired':
           const authRequiredInfoSheet = this.actionSheetProvider.createInfoSheet(
-            'pairing-required'
+            'auth-required'
           );
           await authRequiredInfoSheet.present();
-          authRequiredInfoSheet.onDidDismiss(async () => {
-            await this.externalLinkProvider.open(
-              `https://${host}/id/verify?context=unlockv&id=${invoiceId}`
-            );
+          authRequiredInfoSheet.onDidDismiss(() => {
+            this.iabCardProvider.show();
+            setTimeout(() => {
+              this.iabCardProvider.sendMessage(
+                {
+                  message: 'pairingOnly',
+                  payload: { paymentUrl: data }
+                },
+                () => {}
+              );
+            }, 100);
           });
           break;
 
@@ -1604,6 +1538,9 @@ export class IncomingDataProvider {
           );
           await verificationRequiredInfoSheet.present();
           verificationRequiredInfoSheet.onDidDismiss(async () => {
+            const host = url.includes('test')
+              ? 'test.bitpay.com'
+              : 'bitpay.com';
             await this.externalLinkProvider.open(
               `https://${host}/id/verify?context=unlockv&id=${invoiceId}`
             );
@@ -1619,27 +1556,6 @@ export class IncomingDataProvider {
           title: this.translate.instant('Error')
         })
         .present();
-    }
-  }
-
-  public async handleDesktopUnlock(data: string) {
-    const invoiceId = data.split('i/')[1];
-    const url = data.replace('bitpay://', 'https://');
-    const { host } = new URL(url);
-    try {
-      // setting attempt 4 as a check to see if invoice is locked
-      await this.payproProvider.getPayProOptions(url, true, 4);
-      await this.handleBitPayInvoice(url);
-    } catch (err) {
-      const verificationRequiredInfoSheet = this.actionSheetProvider.createInfoSheet(
-        'auth-required'
-      );
-      await verificationRequiredInfoSheet.present();
-      verificationRequiredInfoSheet.onDidDismiss(async () => {
-        await this.externalLinkProvider.open(
-          `https://${host}/id/verify?context=unlockvd&id=${invoiceId}`
-        );
-      });
     }
   }
 }

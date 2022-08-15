@@ -27,10 +27,7 @@ import { PayproProvider } from '../../../../providers/paypro/paypro';
 import { PlatformProvider } from '../../../../providers/platform/platform';
 import { PopupProvider } from '../../../../providers/popup/popup';
 import { ProfileProvider } from '../../../../providers/profile/profile';
-import {
-  Coin,
-  TxFormatProvider
-} from '../../../../providers/tx-format/tx-format';
+import { TxFormatProvider } from '../../../../providers/tx-format/tx-format';
 import {
   TransactionProposal,
   WalletProvider
@@ -138,7 +135,7 @@ export class BitPayCardTopUpPage {
     this.currency = this.navParams.data.currency;
     this.amount = this.navParams.data.amount;
 
-    let coin = Coin[this.currency] ? Coin[this.currency] : null;
+    let coin = this.currency ? this.currency.toLowerCase() : null;
 
     this.bitPayCardProvider
       .get({
@@ -169,11 +166,10 @@ export class BitPayCardTopUpPage {
           onlyComplete: true,
           coin,
           network,
-          hasFunds: true,
-          noEthMultisig: true
+          hasFunds: true
         };
 
-        if (Coin[this.currency]) {
+        if (this.currency.toLowerCase()) {
           const { amountSat } = this.txFormatProvider.parseAmount(
             this.currency.toLowerCase(),
             this.amount,
@@ -224,8 +220,7 @@ export class BitPayCardTopUpPage {
   private setCoinbase(network) {
     this.showCoinbase =
       this.homeIntegrationsProvider.shouldShowInHome('coinbase') &&
-      this.coinbaseProvider.isLinked() &&
-      this.coinbaseProvider.isTokenValid();
+      this.coinbaseProvider.isLinked();
     if (!this.showCoinbase && network != 'livenet') return;
     this.coinbaseProvider.preFetchAllData();
     this.coinbaseAccounts = this.coinbaseProvider.coinbaseData
@@ -263,6 +258,7 @@ export class BitPayCardTopUpPage {
     return new Promise(resolve => {
       if (this.isCordova) this.slideButton.isConfirmed(false);
       title = title || this.translate.instant('Error');
+      this.logger.error(msg);
       msg = msg && msg.errors ? msg.errors[0].message : msg;
       this.popupProvider.ionicAlert(title, msg).then(() => {
         return resolve();
@@ -885,7 +881,7 @@ export class BitPayCardTopUpPage {
     this.logCardTopUpEvent(account.currency.code, false);
 
     this.logger.debug(
-      `Creating invoice. amount: ${this.parsedAmount.amount} - currency: ${this.parsedAmount.currency}`
+      `Creating invoice. amount: ${dataSrc.amount} - currency: ${dataSrc.currency}`
     );
     this.createInvoice(dataSrc)
       .then(invoice => {
@@ -1133,7 +1129,6 @@ export class BitPayCardTopUpPage {
       wallets: this.wallets,
       selectedWalletId: id,
       title: this.translate.instant('From'),
-      context: 'topup',
       coinbaseData
     };
     const walletSelector = this.actionSheetProvider.createWalletSelector(

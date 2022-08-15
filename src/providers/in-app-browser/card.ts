@@ -352,20 +352,6 @@ export class IABCardProvider {
           break;
         }
 
-        case 'getCustomVirtualCardDesign': {
-          this.sendMessage({
-            message: 'customVirtualCardDesign',
-            payload: this.getCustomVirtualCardDesign()
-          });
-          break;
-        }
-
-        case 'setCustomVirtualCardDesign': {
-          const { currency } = event.data.params;
-          this.persistenceProvider.setCustomVirtualCardDesign(currency);
-          break;
-        }
-
         default:
           break;
       }
@@ -981,18 +967,6 @@ export class IABCardProvider {
             await infoSheet.present();
             // close in app browser
             this.hide();
-          } else if (paymentUrl) {
-            // resets inappbrowser connect state
-            this.cardIAB_Ref.executeScript(
-              {
-                code: `window.postMessage(${JSON.stringify({
-                  message: 'reset'
-                })}, '*')`
-              },
-              () => this.logger.log(`card -> reset iab state`)
-            );
-
-            this.events.publish('unlockInvoice', paymentUrl);
           }
 
           // publish new user
@@ -1053,20 +1027,6 @@ export class IABCardProvider {
     });
   }
 
-  async setCustomVirtualCardDesign() {
-    let message = 'customVirtualCardDesign';
-    const currency = await this.getCustomVirtualCardDesign();
-    this.sendMessage({
-      message,
-      payload: currency
-    });
-  }
-
-  async getCustomVirtualCardDesign() {
-    const currency = await this.persistenceProvider.getCustomVirtualCardDesign();
-    return currency;
-  }
-
   sendMessage(message: object, cb?: (...args: any[]) => void): void {
     const script = {
       code: `window.postMessage(${JSON.stringify({ ...message })}, '*')`
@@ -1092,7 +1052,6 @@ export class IABCardProvider {
       }
 
       this.setTheme();
-      this.setCustomVirtualCardDesign();
       this.sendMessage({ message });
       this.cardIAB_Ref.show();
       this._isHidden = false;

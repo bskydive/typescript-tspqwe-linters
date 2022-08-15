@@ -17,7 +17,6 @@ export class RecoveryKeyPage {
   private unregisterBackButtonAction;
   public isOnboardingFlow: boolean;
   public hideBackButton: boolean;
-  public isKeyEncrypted: boolean;
 
   constructor(
     public navCtrl: NavController,
@@ -30,7 +29,6 @@ export class RecoveryKeyPage {
     this.isOnboardingFlow = this.navParams.data.isOnboardingFlow;
     this.hideBackButton =
       this.isOnboardingFlow || this.navParams.data.hideBackButton;
-    this.isKeyEncrypted = this.navParams.data.isKeyEncrypted;
   }
 
   ionViewDidLoad() {

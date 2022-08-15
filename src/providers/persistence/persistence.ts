@@ -94,12 +94,7 @@ const Keys = {
   TEMP_MDES_CERT_ONLY_DEBUG_FLAG: 'tempMdesCertOnlyDebugFlag',
   NETWORK: 'network',
   CUSTOMTOKENSDATA: 'customTokensData',
-  CUSTOMTOKENSOPTS: 'customTokensOpts',
-  BITPAY_CARD_ORDER_STARTED: `bitPayCardOrderStarted`,
-  BITPAY_SURVEY_CARD_DISMISSED: `bitPaySurveyCardDismissed`,
-  ACCEPTED_SWAP_CRYPTO_DISCLAIMER: 'acceptedSwapCryptoDisclaimer',
-  CUSTOM_VIRTUAL_CARD_DESIGN: `customVirtualCardDesign`,
-  BRAZE_USER_SET: network => `brazeUserSet-${network}`
+  CUSTOMTOKENSOPTS: 'customTokensOpts'
 };
 
 interface Storage {
@@ -764,30 +759,6 @@ export class PersistenceProvider {
     return this.storage.remove('changelly-' + env);
   }
 
-  setOneInch(env: string, tx) {
-    return this.storage.set('oneinch-' + env, tx);
-  }
-
-  getOneInch(env: string) {
-    return this.storage.get('oneinch-' + env);
-  }
-
-  removeOneInch(env: string) {
-    return this.storage.remove('oneinch-' + env);
-  }
-
-  setOneInchApprove(env: string, tx) {
-    return this.storage.set('oneinch-approve-' + env, tx);
-  }
-
-  getOneInchApprove(env: string) {
-    return this.storage.get('oneinch-approve-' + env);
-  }
-
-  removeOneInchApprove(env: string) {
-    return this.storage.remove('oneinch-approve-' + env);
-  }
-
   setSimplex(env: string, paymentRequests) {
     return this.storage.set('simplex-' + env, paymentRequests);
   }
@@ -1090,57 +1061,6 @@ export class PersistenceProvider {
 
   getCustomTokenOpts() {
     return this.storage.get(Keys.CUSTOMTOKENSOPTS);
-  }
-
-  setEthMultisigPendingInstantiation(walletId, instantiationInfo) {
-    return this.storage.set(
-      `eth-multisig-instantiation-${walletId}`,
-      instantiationInfo
-    );
-  }
-
-  getEthMultisigPendingInstantiation(walletId) {
-    return this.storage.get(`eth-multisig-instantiation-${walletId}`);
-  }
-
-  setSwapCryptoDisclaimer(option: 'accepted') {
-    return this.storage.set(Keys.ACCEPTED_SWAP_CRYPTO_DISCLAIMER, option);
-  }
-
-  getSwapCryptoDisclaimer() {
-    return this.storage.get(Keys.ACCEPTED_SWAP_CRYPTO_DISCLAIMER);
-  }
-
-  setBitPayCardOrderStarted(ts: number) {
-    return this.storage.set(Keys.BITPAY_CARD_ORDER_STARTED, ts);
-  }
-
-  getBitPayCardOrderStarted() {
-    return this.storage.get(Keys.BITPAY_CARD_ORDER_STARTED);
-  }
-
-  setBitPaySurveyCardDismissed(ts: number) {
-    return this.storage.set(Keys.BITPAY_SURVEY_CARD_DISMISSED, ts);
-  }
-
-  getBitPaySurveyCardDismissed() {
-    return this.storage.get(Keys.BITPAY_SURVEY_CARD_DISMISSED);
-  }
-
-  getCustomVirtualCardDesign() {
-    return this.storage.get(Keys.CUSTOM_VIRTUAL_CARD_DESIGN);
-  }
-
-  setCustomVirtualCardDesign(currency) {
-    return this.storage.set(Keys.CUSTOM_VIRTUAL_CARD_DESIGN, currency);
-  }
-
-  getBrazeUserSet(network: Network) {
-    return this.storage.get(Keys.BRAZE_USER_SET(network));
-  }
-
-  setBrazeUser(network: Network) {
-    return this.storage.set(Keys.BRAZE_USER_SET(network), true);
   }
 }
 

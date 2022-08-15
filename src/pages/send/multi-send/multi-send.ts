@@ -124,7 +124,7 @@ export class MultiSendPage {
     let modal = this.modalCtrl.create(
       AmountPage,
       {
-        walletId: this.wallet.id,
+        wallet: this.wallet,
         useAsModal: true
       },
       {

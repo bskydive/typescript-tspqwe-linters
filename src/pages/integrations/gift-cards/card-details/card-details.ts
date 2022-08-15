@@ -98,8 +98,8 @@ export class CardDetailsPage {
     this.updateGiftCardsSubject.unsubscribe();
   }
 
-  private bwsEventHandler: any = data => {
-    if (data && data.notification_type == 'NewBlock') {
+  private bwsEventHandler: any = (_, type: string) => {
+    if (type == 'NewBlock') {
       this.updateGiftCard();
     }
   };

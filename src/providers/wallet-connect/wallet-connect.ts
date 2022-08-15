@@ -13,7 +13,11 @@ import { Logger } from '../../providers/logger/logger';
 import { AnalyticsProvider } from '../analytics/analytics';
 import { BwcProvider } from '../bwc/bwc';
 import { ErrorsProvider } from '../errors/errors';
+import { OnGoingProcessProvider } from '../on-going-process/on-going-process';
 import { PersistenceProvider } from '../persistence/persistence';
+import { PopupProvider } from '../popup/popup';
+import { ProfileProvider } from '../profile/profile';
+import { ReplaceParametersProvider } from '../replace-parameters/replace-parameters';
 import { WalletProvider } from '../wallet/wallet';
 import {
   IProviderData,
@@ -26,9 +30,7 @@ import {
 } from '../../providers/wallet-connect/web3-providers/web3-providers';
 
 import * as _ from 'lodash';
-import { AbiDecoderProvider } from '../abi-decoder/abi-decoder';
 import { IncomingDataProvider } from '../incoming-data/incoming-data';
-import { OneInchProvider } from '../one-inch/one-inch';
 
 @Injectable()
 export class WalletConnectProvider {
@@ -45,16 +47,6 @@ export class WalletConnectProvider {
   private address: string;
   private activeChainId: number = 1;
   private walletId: string;
-  private supportedMethods: string[] = [
-    'eth_sendTransaction',
-    'eth_sign',
-    'eth_signTransaction',
-    'eth_signTypedData',
-    'eth_signTypedData_v1',
-    'eth_signTypedData_v3',
-    'eth_signTypedData_v4',
-    'personal_sign'
-  ];
 
   constructor(
     private logger: Logger,
@@ -62,60 +54,48 @@ export class WalletConnectProvider {
     private homeIntegrationsProvider: HomeIntegrationsProvider,
     private configProvider: ConfigProvider,
     private analyticsProvider: AnalyticsProvider,
+    private replaceParametersProvider: ReplaceParametersProvider,
+    private popupProvider: PopupProvider,
     private persistenceProvider: PersistenceProvider,
+    private profileProvider: ProfileProvider,
     private errorsProvider: ErrorsProvider,
+    private onGoingProcessProvider: OnGoingProcessProvider,
     private walletProvider: WalletProvider,
     private events: Events,
     private incomingDataProvider: IncomingDataProvider,
     private keyProvider: KeyProvider,
-    private bwcProvider: BwcProvider,
-    private abiDecoderProvider: AbiDecoderProvider,
-    private oneInchProvider: OneInchProvider
+    private bwcProvider: BwcProvider
   ) {
     this.logger.debug('WalletConnect Provider initialized');
   }
 
-  public async signTypedData(data: any, wallet) {
-    try {
-      const password = await this.keyProvider.handleEncryptedWallet(
-        wallet.keyId
-      );
-      const key = this.keyProvider.get(wallet.keyId, password);
-      const bitcore = this.bwcProvider.getBitcore();
-      const xpriv = new bitcore.HDPrivateKey(key.xPrivKey);
-      const priv = xpriv.deriveChild("m/44'/60'/0'/0/0").privateKey;
-      const result = signTypedData_v4(Buffer.from(priv.toString(), 'hex'), {
-        data
-      });
-      return result;
-    } catch (err) {
-      throw err;
-    }
+  public signTypedData(data: any, wallet) {
+    const key = this.keyProvider.getKey(wallet.keyId).get();
+    const bitcore = this.bwcProvider.getBitcore();
+    const xpriv = new bitcore.HDPrivateKey(key.xPrivKey);
+    const priv = xpriv.deriveChild("m/44'/60'/0'/0/0").privateKey;
+    const result = signTypedData_v4(Buffer.from(priv.toString(), 'hex'), {
+      data
+    });
+    return result;
   }
 
-  public async personalSign(data: any, wallet) {
-    try {
-      const password = await this.keyProvider.handleEncryptedWallet(
-        wallet.keyId
-      );
-      const key = this.keyProvider.get(wallet.keyId, password);
-      const bitcore = this.bwcProvider.getBitcore();
-      const xpriv = new bitcore.HDPrivateKey(key.xPrivKey);
-      const priv = xpriv.deriveChild("m/44'/60'/0'/0/0").privateKey;
-      const result = personalSign(Buffer.from(priv.toString(), 'hex'), {
-        data
-      });
-      return result;
-    } catch (err) {
-      throw err;
-    }
+  public personalSign(data: any, wallet) {
+    const key = this.keyProvider.getKey(wallet.keyId).get();
+    const bitcore = this.bwcProvider.getBitcore();
+    const xpriv = new bitcore.HDPrivateKey(key.xPrivKey);
+    const priv = xpriv.deriveChild("m/44'/60'/0'/0/0").privateKey;
+    const result = personalSign(Buffer.from(priv.toString(), 'hex'), {
+      data
+    });
+    return result;
   }
 
   public register(): void {
     this.homeIntegrationsProvider.register({
       name: 'newWalletConnect',
       title: 'WalletConnect',
-      icon: 'assets/img/wallet-connect/wallet-connect.svg',
+      icon: 'assets/img/wallet-connect.svg',
       showIcon: true,
       logo: null,
       logoWidth: '110',
@@ -152,6 +132,7 @@ export class WalletConnectProvider {
 
   public async initWalletConnect(uri): Promise<void> {
     try {
+      this.onGoingProcessProvider.set('Initializing');
       this.walletConnector = new WalletConnect({
         uri
       });
@@ -159,40 +140,25 @@ export class WalletConnectProvider {
         this.logger.debug('walletConnector.createSession');
         await this.walletConnector.createSession();
       }
-      await this.subscribeToEvents();
-    } catch (error) {
-      this.errorsProvider.showDefaultError(
-        error,
-        this.translate.instant('Could not connect')
-      );
-    }
-  }
-
-  public checkDappStatus(): Promise<void> {
-    return new Promise((resolve, reject) => {
-      let retry = 0;
-      const interval = setInterval(() => {
-        this.logger.log(JSON.stringify(this.peerMeta));
-        if (this.peerMeta) {
-          clearInterval(interval);
-          return resolve();
-        }
-
-        retry++;
-
-        if (retry >= 10) {
-          clearInterval(interval);
-          const error = this.translate.instant(
-            'Dapp not responding. Try scanning a new QR code'
-          );
+      setTimeout(() => {
+        if (!this.peerMeta) {
           this.errorsProvider.showDefaultError(
-            error,
+            this.translate.instant(
+              'Dapp not responding. Try scanning a new QR code'
+            ),
             this.translate.instant('Could not connect')
           );
-          return reject(error);
         }
-      }, 1000);
-    });
+        this.onGoingProcessProvider.clear();
+      }, 10000);
+      this.subscribeToEvents();
+    } catch (error) {
+      this.onGoingProcessProvider.clear();
+      this.errorsProvider.showDefaultError(
+        error,
+        this.translate.instant('Error')
+      );
+    }
   }
 
   public async getConnectionData() {
@@ -206,19 +172,10 @@ export class WalletConnectProvider {
     };
   }
 
-  public getReduceConnectionData() {
-    return {
-      peerMeta: this.peerMeta,
-      walletId: this.walletId
-    };
-  }
-
-  public resetConnectionData() {
-    this.peerMeta = null;
-  }
-
-  public getPendingRequests() {
-    return this.persistenceProvider.getWalletConnectPendingRequests();
+  public async getPendingRequests() {
+    return _.isEmpty(this.requests)
+      ? this.persistenceProvider.getWalletConnectPendingRequests()
+      : this.requests;
   }
 
   public async setAccountInfo(wallet) {
@@ -245,7 +202,7 @@ export class WalletConnectProvider {
       }
 
       this.peerMeta = payload.params[0].peerMeta;
-      this.events.publish('Update/ConnectionData');
+      this.openConnectPopUpConfirmation(this.peerMeta);
     });
 
     this.walletConnector.on('session_update', (error, _payload) => {
@@ -256,7 +213,7 @@ export class WalletConnectProvider {
       }
     });
 
-    this.walletConnector.on('call_request', async (error, payload) => {
+    this.walletConnector.on('call_request', (error, payload) => {
       this.logger.debug('walletConnector.on("call_request")');
       if (error) {
         throw error;
@@ -275,49 +232,30 @@ export class WalletConnectProvider {
       // }
 
       this.analyticsProvider.logEvent('wallet_connect_call_request', {});
-      const _payload = await this.refEthereumRequests(payload);
+      const _payload = this.refEthereumRequests(payload);
 
       const alreadyExist = _.some(this.requests, request => {
-        return request.id === _payload.id;
+        return request.id === _payload;
       });
 
       if (!alreadyExist) {
-        this.requests = (await this.getPendingRequests()) || [];
         this.requests.push(_payload);
         this.requests = _.uniqBy(this.requests, 'id');
-        await this.persistenceProvider.setWalletConnectPendingRequests(
-          this.requests
-        );
-        const incoming = this.requests;
-        this.events.publish(
-          'Update/Requests',
-          this.requests,
-          incoming.slice(-1)[0]
-        );
-        this.incomingDataProvider.redir('wc:', {
-          wcRequest: payload
-        });
+        this.persistenceProvider.setWalletConnectPendingRequests(this.requests);
+        this.events.publish('Update/Requests', this.requests);
+        this.incomingDataProvider.redir('wc:');
       }
     });
 
-    this.walletConnector.on('connect', async (error, _payload) => {
+    this.walletConnector.on('connect', (error, _payload) => {
       this.logger.debug('walletConnector.on("connect")');
       if (error) {
         throw error;
       }
-      const walletConnectData = {
-        session: this.walletConnector.session,
-        walletId: this.walletId
-      };
-      await this.persistenceProvider.setWalletConnect(walletConnectData);
 
       this.analyticsProvider.logEvent('wallet_connect_connection_success', {});
       this.connected = true;
       this.events.publish('Update/ConnectionData');
-      this.events.publish('WalletConnectAdvertisementUpdate', 'connected');
-      setTimeout(() => {
-        this.events.publish('Update/GoBackToBrowserNotification');
-      }, 300);
     });
 
     this.walletConnector.on('disconnect', (error, _payload) => {
@@ -325,7 +263,8 @@ export class WalletConnectProvider {
       if (error) {
         throw error;
       }
-      this.killSession();
+      this.connected = false;
+      this.events.publish('Update/ConnectionData');
     });
   }
 
@@ -340,6 +279,32 @@ export class WalletConnectProvider {
     return chainData;
   }
 
+  public openConnectPopUpConfirmation(peerMeta): void {
+    const wallet = this.profileProvider.getWallet(this.walletId);
+    const title = this.translate.instant('Session Request');
+    const message = this.replaceParametersProvider.replace(
+      this.translate.instant(
+        `{{peerMetaName}} ({{peerMetaUrl}}) is trying to connect to {{walletName}}`
+      ),
+      {
+        peerMetaName: peerMeta.name,
+        peerMetaUrl: peerMeta.url,
+        walletName: wallet.name
+      }
+    );
+    const okText = this.translate.instant('Approve');
+    const cancelText = this.translate.instant('Reject');
+    this.popupProvider
+      .ionicConfirm(title, message, okText, cancelText)
+      .then((res: boolean) => {
+        if (res) {
+          this.approveSession();
+        } else {
+          this.rejectSession();
+        }
+      });
+  }
+
   public async approveSession(): Promise<void> {
     if (this.walletConnector) {
       this.logger.debug('walletConnector.approveSession');
@@ -347,6 +312,11 @@ export class WalletConnectProvider {
         chainId: this.activeChainId,
         accounts: [this.address]
       });
+      const walletConnectData = {
+        session: this.walletConnector.session,
+        walletId: this.walletId
+      };
+      await this.persistenceProvider.setWalletConnect(walletConnectData);
     }
   }
 
@@ -357,11 +327,8 @@ export class WalletConnectProvider {
         id,
         result
       });
-      await this.closeRequest(id);
+      this.closeRequest(id);
       this.analyticsProvider.logEvent('wallet_connect_action_completed', {});
-      this.incomingDataProvider.redir('wc:', {
-        activePage: 'WalletConnectRequestDetailsPage'
-      });
     }
   }
 
@@ -372,39 +339,7 @@ export class WalletConnectProvider {
     }
   }
 
-  private async ping() {
-    this.logger.log('Wallet Connect - Ping Connection');
-    return new Promise(resolve => {
-      try {
-        this.walletConnector.approveSession({
-          chainId: this.activeChainId,
-          accounts: [this.address]
-        });
-      } catch (err) {
-        resolve(err.message === 'Session currently connected');
-      }
-    });
-  }
-
-  public async checkConnection() {
-    if (!this.walletConnector) return;
-
-    const isConnected = await this.ping();
-    if (isConnected) return;
-
-    // clear out storage
-    try {
-      localStorage.removeItem('walletconnect');
-      await this.persistenceProvider.removeWalletConnect();
-      await this.persistenceProvider.removeWalletConnectPendingRequests();
-    } catch (err) {
-      this.logger.error(err);
-    }
-
-    this.logger.log('Cleared Cached WalletConnect Session');
-  }
-
-  private async refEthereumRequests(payload) {
+  private refEthereumRequests(payload) {
     this.logger.debug(`refEthereumRequests ${payload.method}`);
     switch (payload.method) {
       case 'eth_sendTransaction':
@@ -423,27 +358,11 @@ export class WalletConnectProvider {
         payload.params[0].value = payload.params[0].value
           ? convertHexToNumber(payload.params[0].value)
           : 0;
-        // Decode ERC20 approve transaction
-        // For any other request the Dapp contract ABI will be needed for decoding the transaction data
-        payload.decodedData = this.abiDecoderProvider.decodeERC20Data(
-          payload.params[0].data
-        );
-
-        if (payload.decodedData && payload.decodedData.name === 'approve') {
-          try {
-            const allTokens = await this.oneInchProvider.getCurrencies1inch();
-            payload.tokenInfo = allTokens.tokens[payload.params[0].to];
-          } catch {
-            this.logger.warn('Wallet Connect - Token not found');
-          }
-        }
         break;
       case 'eth_signTypedData':
-      case 'eth_signTypedData_v1':
-      case 'eth_signTypedData_v3':
-      case 'eth_signTypedData_v4':
+        // nothing
+        break;
       case 'personal_sign':
-      case 'eth_sign':
         // nothing
         break;
       default:
@@ -453,67 +372,41 @@ export class WalletConnectProvider {
         );
         break;
     }
-    return Promise.resolve(payload);
+    return payload;
   }
 
   public async killSession(): Promise<void> {
     if (this.walletConnector) {
-      [
-        'session_request',
-        'session_update',
-        'call_request',
-        'connect',
-        'disconnect'
-      ].forEach(event => this.walletConnector.off(event));
-
-      this.walletConnector.off('disconnect');
       this.logger.debug('walletConnector.killSession');
-      this.events.publish('WalletConnectAdvertisementUpdate', 'disconnected');
-      try {
-        this.peerMeta = null;
-        this.connected = false;
-        localStorage.removeItem('walletconnect');
-        this.logger.debug('walletconnect - removed persistence');
-        await this.walletConnector.killSession();
-        this.walletConnector = null;
-        await this.persistenceProvider.removeWalletConnect();
-      } catch (error) {
-        this.logger.error(error);
-      }
-
-      try {
-        await this.persistenceProvider.removeWalletConnectPendingRequests();
-      } catch (error) {
-        this.logger.debug('no pending requests to purge');
-      }
-      this.events.publish('Update/WalletConnectDisconnected');
-      this.logger.debug('walletConnector.killSession complete');
+      this.walletConnector.killSession();
+      await this.persistenceProvider.removeWalletConnect();
+      await this.persistenceProvider.removeWalletConnectPendingRequests();
+      this.peerMeta = null;
+      this.connected = false;
     }
   }
 
-  public async closeRequest(id): Promise<void> {
-    try {
-      this.requests = (
-        await this.persistenceProvider.getWalletConnectPendingRequests()
-      ).filter(request => request.id !== id);
-      await this.persistenceProvider.setWalletConnectPendingRequests(
-        this.requests
-      );
-      this.events.publish('Update/Requests', this.requests);
-    } catch (error) {
-      this.logger.error(error);
-    }
+  public closeRequest(id): void {
+    const filteredRequests = this.requests.filter(request => request.id !== id);
+    this.requests = filteredRequests;
+    this.persistenceProvider
+      .getWalletConnectPendingRequests()
+      .then(requests => {
+        this.persistenceProvider.setWalletConnectPendingRequests(
+          _.reject(requests, { id })
+        );
+      });
+    this.events.publish('Update/Requests', this.requests);
   }
 
-  public async rejectRequest(requestId): Promise<void> {
+  public rejectRequest(request): void {
     if (this.walletConnector) {
       try {
         this.logger.debug('walletConnector.rejectRequest');
         this.walletConnector.rejectRequest({
-          id: requestId,
+          id: request.id,
           error: { message: 'Failed or Rejected Request' }
         });
-        await this.closeRequest(requestId);
       } catch (error) {
         this.errorsProvider.showDefaultError(
           error,
@@ -521,9 +414,6 @@ export class WalletConnectProvider {
         );
       }
     }
-  }
-
-  public isSupportedMethod(method: string): boolean {
-    return this.supportedMethods.indexOf(method) > -1;
+    this.closeRequest(request.id);
   }
 }

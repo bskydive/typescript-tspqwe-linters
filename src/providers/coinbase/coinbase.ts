@@ -13,7 +13,6 @@ import { PlatformProvider } from '../platform/platform';
 import { RateProvider } from '../rate/rate';
 
 import { CurrencyProvider } from '../currency/currency';
-import { Coin } from '../tx-format/tx-format';
 
 import * as _ from 'lodash';
 
@@ -34,7 +33,6 @@ export class CoinbaseProvider {
   private isRefreshingToken: boolean;
   private accessToken: string;
   private refreshToken: string;
-  private revokedToken: boolean;
 
   public coinbaseData;
   private coinbaseExchange;
@@ -72,10 +70,6 @@ export class CoinbaseProvider {
       str += characters[Math.floor(Math.random() * 16)];
     }
     return str;
-  }
-
-  public getNativeCurrency(): string {
-    return this.coinbaseData['user']['native_currency'];
   }
 
   public getCurrentState(): string {
@@ -151,7 +145,8 @@ export class CoinbaseProvider {
         'wallet:user:read,' +
         'wallet:user:email,' +
         'wallet:transactions:read,' +
-        'wallet:transactions:send';
+        'wallet:transactions:send,' +
+        'wallet:transactions:send:bypass-2fa';
 
       // Set Authorize URL
       this.oauthUrl =
@@ -164,7 +159,7 @@ export class CoinbaseProvider {
         this.credentials.STATE +
         '&scope=' +
         this.credentials.SCOPE +
-        '&meta[send_limit_amount]=10000&meta[send_limit_currency]=USD&meta[send_limit_period]=day';
+        '&meta[send_limit_amount]=1000&meta[send_limit_currency]=USD&meta[send_limit_period]=day';
     }
   }
 
@@ -199,7 +194,7 @@ export class CoinbaseProvider {
       this.logger.error('Coinbase:' + msg);
       return msg;
     } catch (e) {
-      this.logger.error('Coinbase: parsing error', e);
+      this.logger.error(e);
       return e;
     }
   }
@@ -358,14 +353,8 @@ export class CoinbaseProvider {
   }
 
   public getAccounts(data?) {
-    if (!this.isLinked() || !this.isTokenValid()) return;
-    // Filter custom ERC-20 token
-    const availableCoins = _.filter(
-      this.currencyProvider.getAvailableCoins(),
-      coin => {
-        return !this.currencyProvider.isCustomERCToken(coin);
-      }
-    );
+    if (!this.isLinked()) return;
+    const availableCoins = this.currencyProvider.getAvailableCoins();
     if (data) data['accounts'] = this.coinbaseData['accounts'] || [];
     // go to coinbase to update data
     this._getAccounts().then(remoteData => {
@@ -380,13 +369,14 @@ export class CoinbaseProvider {
           accounts.push(allAccounts[i]);
         }
       }
-      if (data) data['accounts'] = accounts;
-      this.setAccounts(accounts);
+      const orderedAccounts = _.orderBy(accounts, ['name'], ['asc']);
+      if (data) data['accounts'] = orderedAccounts;
+      this.setAccounts(orderedAccounts);
     });
   }
 
   public getAccount(id, data) {
-    if (!this.isLinked() || !this.isTokenValid()) return;
+    if (!this.isLinked()) return;
     const acObject = _.find(this.coinbaseData['accounts'], { id });
     data['account'] = acObject || {};
     this._getAccount(id).then(remoteData => {
@@ -397,7 +387,7 @@ export class CoinbaseProvider {
   }
 
   public getCurrentUser(data?) {
-    if (!this.isLinked() || !this.isTokenValid()) return;
+    if (!this.isLinked()) return;
     if (data) data['user'] = this.coinbaseData['user'] || {};
     this._getCurrentUser().then(remoteData => {
       const user = remoteData.data;
@@ -408,7 +398,7 @@ export class CoinbaseProvider {
   }
 
   public getTransactions(accountId, data) {
-    if (!this.isLinked() || !this.isTokenValid()) return;
+    if (!this.isLinked()) return;
     data['txs'] = this.coinbaseData['txs']
       ? this.coinbaseData['txs'][accountId]
       : [];
@@ -446,20 +436,8 @@ export class CoinbaseProvider {
     return false;
   }
 
-  private isRevokedTokenError(errors): boolean {
-    for (let i = 0; i < errors.length; i++) {
-      if (errors[i].id == 'revoked_token') {
-        this.logger.warn('Coinbase: Token was revoked');
-        this.revokedToken = true;
-        return true;
-      }
-    }
-    return false;
-  }
-
   private _getAccounts(): Promise<any> {
-    const url =
-      this.credentials.API + '/v2' + '/accounts?order=asc&limit=' + LIMIT;
+    const url = this.credentials.API + '/v2' + '/accounts?&limit=' + LIMIT;
     const headers = {
       'Content-Type': 'application/json',
       Accept: 'application/json',
@@ -486,11 +464,6 @@ export class CoinbaseProvider {
                   return this._getAccounts();
                 }, 5000);
               });
-          } else if (this.isRevokedTokenError(data.error.errors)) {
-            return reject(
-              this.parseErrorsAsString(data.error) +
-                'Please, log out and try to re-connect again.'
-            );
           } else {
             this.logger.error('Coinbase: Get Accounts ERROR ' + data.status);
             return reject(this.parseErrorsAsString(data.error));
@@ -528,11 +501,6 @@ export class CoinbaseProvider {
                   return this._getAccount(id);
                 }, 5000);
               });
-          } else if (this.isRevokedTokenError(data.error.errors)) {
-            return reject(
-              this.parseErrorsAsString(data.error) +
-                'Please, log out and try to re-connect again.'
-            );
           } else {
             this.logger.error('Coinbase: Get Account ERROR ' + data.status);
             return reject(this.parseErrorsAsString(data.error));
@@ -570,11 +538,6 @@ export class CoinbaseProvider {
                   return this._getCurrentUser();
                 }, 5000);
               });
-          } else if (this.isRevokedTokenError(data.error.errors)) {
-            return reject(
-              this.parseErrorsAsString(data.error) +
-                'Please, log out and try to re-connect again.'
-            );
           } else {
             this.logger.error(
               'Coinbase: Get Current User ERROR ' + data.status
@@ -615,11 +578,6 @@ export class CoinbaseProvider {
                   return this._getTransactions(accountId);
                 }, 5000);
               });
-          } else if (this.isRevokedTokenError(data.error.errors)) {
-            return reject(
-              this.parseErrorsAsString(data.error) +
-                'Please, log out and try to re-connect again.'
-            );
           } else {
             this.logger.error(
               'Coinbase: Get Transactions ERROR ' + data.status
@@ -659,15 +617,10 @@ export class CoinbaseProvider {
               })
               .catch(e => {
                 this.logger.warn(e);
-                return setTimeout(() => {
+                setTimeout(() => {
                   return this._createAddress(accountId, label);
                 }, 5000);
               });
-          } else if (this.isRevokedTokenError(data.error.errors)) {
-            return reject(
-              this.parseErrorsAsString(data.error) +
-                'Please, log out and try to re-connect again.'
-            );
           } else {
             this.logger.error('Coinbase: Create Address ERROR ' + data.status);
             return reject(this.parseErrorsAsString(data.error));
@@ -716,11 +669,6 @@ export class CoinbaseProvider {
           } else if (data.status == 402) {
             this.logger.error('Coinbase: 2FA is required ' + data.status);
             return reject('2fa'); // return string to identify
-          } else if (this.isRevokedTokenError(data.error.errors)) {
-            return reject(
-              this.parseErrorsAsString(data.error) +
-                'Please, log out and try to re-connect again.'
-            );
           } else {
             this.logger.error(
               'Coinbase: Send Transaction ERROR ' + data.status
@@ -764,14 +712,12 @@ export class CoinbaseProvider {
     this.accessToken = access_token;
     this.refreshToken = refresh_token;
     this.isRefreshingToken = false;
-    this.revokedToken = false;
     this.logger.info('Coinbase: Token registered');
   }
 
   public logout() {
     this.removeData();
     this.linkedAccount = this.accessToken = this.refreshToken = null;
-    this.revokedToken = false;
     this.coinbaseData = {
       token: {},
       accounts: [],
@@ -784,10 +730,6 @@ export class CoinbaseProvider {
   public isLinked(): boolean {
     if (!this.linkedAccount) this.logger.warn('Coinbase: Accounts not linked');
     return !!this.linkedAccount;
-  }
-
-  public isTokenValid(): boolean {
-    return !this.revokedToken;
   }
 
   public logEvent(eventParams: { [key: string]: any }) {
@@ -861,11 +803,8 @@ export class CoinbaseProvider {
       const accountCoin = ac.balance.currency.toLowerCase();
       if (minFiatCurrency) {
         // check if it's crypto currency
-        const coin = Coin[minFiatCurrency.currency]
-          ? Coin[minFiatCurrency.currency]
-          : null;
-        if (coin) {
-          return coin == accountCoin;
+        if (minFiatCurrency.currency.toLowerCase()) {
+          return minFiatCurrency.currency.toLowerCase() == accountCoin;
         }
         const availableBalanceFiat = this.rateProvider.toFiat(
           this.currencyProvider.getPrecision(accountCoin).unitToSatoshi *
@@ -929,15 +868,13 @@ export class CoinbaseProvider {
             data.error.errors &&
             data.error.errors[0].id == 'two_factor_required'
           ) {
-            this.logger.warn('Coinbase: 2FA is required ' + data.status);
+            this.logger.error('Coinbase: 2FA is required ' + data.status);
             return reject('2fa'); // return string to identify
           } else {
-            const dataError = JSON.stringify(data.error || data);
             this.logger.error(
-              'Coinbase: Pay Invoice ERROR ' + data.status,
-              dataError
+              'Coinbase: Send Transaction ERROR ' + data.status
             );
-            return reject(dataError);
+            return reject(this.parseErrorsAsString(data.error));
           }
         }
       );
@@ -972,8 +909,6 @@ export class CoinbaseProvider {
                   return this._checkAndRefreshExpiredToken();
                 }, 5000);
               });
-          } else if (this.isRevokedTokenError(data.error.errors)) {
-            return reject(false);
           } else {
             this.logger.error(
               'Coinbase: Could not refresh expired token. ' + data.status

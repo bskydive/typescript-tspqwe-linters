@@ -17,19 +17,11 @@ export class SatToFiatPipe implements PipeTransform {
   ) {
     this.walletSettings = this.configProvider.get().wallet.settings;
   }
-  transform(amount: number, coin: string, exchangeRates?: any) {
-    const lowercaseKeys = obj => {
-      return Object.keys(obj).reduce((destination, key) => {
-        destination[key.toLowerCase()] = obj[key];
-        return destination;
-      }, {});
-    };
-
+  transform(amount: number, coin: string) {
     let amount_ = this.rateProvider.toFiat(
       amount,
       this.walletSettings.alternativeIsoCode,
-      coin.toLowerCase(),
-      { rates: exchangeRates && lowercaseKeys(exchangeRates) }
+      coin.toLowerCase()
     );
     return (
       this.decimalPipe.transform(amount_ || 0, '1.2-2') +

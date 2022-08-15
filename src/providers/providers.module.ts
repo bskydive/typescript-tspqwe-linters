@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { DecimalPipe } from '@angular/common';
 
 import {
-  AbiDecoderProvider,
   ActionSheetProvider,
   AddressBookProvider,
   AddressProvider,
@@ -60,7 +59,6 @@ import {
   LogsProvider,
   MerchantProvider,
   NewFeatureData,
-  OneInchProvider,
   OnGoingProcessProvider,
   PayproProvider,
   PersistenceProvider,
@@ -88,8 +86,7 @@ import {
   Vibration,
   WalletConnectProvider,
   WalletProvider,
-  WyreProvider,
-  ZceProvider
+  WyreProvider
 } from './index';
 
 @NgModule({
@@ -146,7 +143,6 @@ import {
     LogsProvider,
     ElectronProvider,
     MerchantProvider,
-    OneInchProvider,
     OnGoingProcessProvider,
     PayproProvider,
     PlatformProvider,
@@ -179,9 +175,7 @@ import {
     DecimalPipe,
     PersistenceProvider,
     File,
-    CardPhasesProvider,
-    AbiDecoderProvider,
-    ZceProvider
+    CardPhasesProvider
   ]
 })
 export class ProvidersModule {}

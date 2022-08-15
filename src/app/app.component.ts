@@ -67,7 +67,6 @@ import { CoinbasePage } from '../pages/integrations/coinbase/coinbase';
 import { SelectInvoicePage } from '../pages/integrations/invoice/select-invoice/select-invoice';
 import { SimplexPage } from '../pages/integrations/simplex/simplex';
 import { WalletConnectPage } from '../pages/integrations/wallet-connect/wallet-connect';
-import { WalletConnectRequestDetailsPage } from '../pages/integrations/wallet-connect/wallet-connect-request-details/wallet-connect-request-details';
 import { WyrePage } from '../pages/integrations/wyre/wyre';
 import { DisclaimerPage } from '../pages/onboarding/disclaimer/disclaimer';
 import { FeatureEducationPage } from '../pages/onboarding/feature-education/feature-education';
@@ -79,7 +78,6 @@ import { AboutPage } from '../pages/settings/about/about';
 import { AddressbookAddPage } from '../pages/settings/addressbook/add/add';
 import { TabsPage } from '../pages/tabs/tabs';
 import { WalletDetailsPage } from '../pages/wallet-details/wallet-details';
-import { sleep } from '../utils';
 // As the handleOpenURL handler kicks in before the App is started,
 // declare the handler function at the top of app.component.ts (outside the class definition)
 // to track the passed Url
@@ -104,9 +102,6 @@ export class CopayApp {
   private onResumeSubscription: Subscription;
   private isCopayerModalOpen: boolean;
   private copayerModal: any;
-  private walletConnectMainActive: boolean;
-  private walletConnectDetailsActive: boolean;
-  private walletConnectConfirmActive: boolean;
 
   private pageMap = {
     AboutPage,
@@ -125,7 +120,6 @@ export class CopayApp {
     SimplexPage,
     SelectInvoicePage,
     WalletConnectPage,
-    WalletConnectRequestDetailsPage,
     WalletDetailsPage,
     WyrePage
   };
@@ -173,7 +167,6 @@ export class CopayApp {
     this.imageLoaderConfig.setFileNameCachedWithExtension(true);
     this.imageLoaderConfig.useImageTag(true);
     this.imageLoaderConfig.enableSpinner(false);
-    this.imageLoaderConfig.setImageReturnType('base64'); // Fix: Not allowed to load local resource
     this.initializeApp();
   }
 
@@ -321,6 +314,7 @@ export class CopayApp {
 
       // Clear all notifications
       this.pushNotificationsProvider.clearAllNotifications();
+
       // Firebase Dynamic link
       this.dynamicLinksProvider.init();
     }
@@ -401,21 +395,6 @@ export class CopayApp {
 
     await this.persistenceProvider.setTempMdesCertOnlyFlag('disabled');
 
-    // WalletConnect - not ideal - workaround for navCtrl issues
-    this.events.subscribe(
-      'Update/ViewingWalletConnectMain',
-      (status: boolean) => (this.walletConnectMainActive = status)
-    );
-    this.events.subscribe(
-      'Update/ViewingWalletConnectDetails',
-      (status: boolean) => (this.walletConnectDetailsActive = status)
-    );
-    this.events.subscribe(
-      'Update/ViewingWalletConnectConfirm',
-      (status: boolean) => (this.walletConnectConfirmActive = status)
-    );
-    this.platformProvider.platformReady.next(true);
-
     if (
       this.platformProvider.isCordova &&
       this.appProvider.info.name === 'bitpay'
@@ -464,20 +443,9 @@ export class CopayApp {
           this.logger.debug('Error creating IAB instance: ', err.message);
         }
       });
-
-      const user = await this.persistenceProvider.getBitPayIdUserInfo(
-        Network[this.NETWORK]
-      );
-      const brazeUserSet = await this.persistenceProvider.getBrazeUserSet(
-        Network[this.NETWORK]
-      );
-      if (user && !brazeUserSet) {
-        this.bitpayIdProvider.setBrazeUser(user);
-      }
     }
 
     this.addressBookProvider.migrateOldContacts();
-    this.walletConnectProvider.checkConnection();
   }
 
   private updateDesktopOnFocus() {
@@ -604,7 +572,7 @@ export class CopayApp {
       this.buyCryptoProvider.register();
     }
 
-    // Swap Crypto
+    // Exchange Crypto
     if (
       this.appProvider.info._enabledExtensions.exchangecrypto &&
       !this.platformProvider.isMacApp()
@@ -619,7 +587,10 @@ export class CopayApp {
     }
 
     // Wallet Connect
-    if (this.appProvider.info._enabledExtensions.walletConnect) {
+    if (
+      this.appProvider.info._enabledExtensions.walletConnect &&
+      !this.platformProvider.isMacApp()
+    ) {
       this.walletConnectProvider.register();
       this.persistenceProvider.getWalletConnect().then(walletConnectData => {
         this.walletConnectProvider.retrieveWalletConnector(walletConnectData);
@@ -631,177 +602,69 @@ export class CopayApp {
       this.bitPayCardProvider.register();
   }
 
-  private getGlobalTabs() {
-    return this.nav.getActiveChildNavs()[0].viewCtrl.instance.tabs;
-  }
-
-  private async selectGlobalTab(tab: number): Promise<void> {
-    const globalTabs = this.getGlobalTabs();
-    await globalTabs.goToRoot();
-    globalTabs.select(tab);
-  }
-
-  private incomingDataRedirEvent() {
-    this.events.subscribe(
-      'IncomingDataRedir',
-      async (nextView: { name: string; params; callback: () => void }) => {
-        try {
-          const { name, params = {} } = nextView;
-
-          this.logger.log('------- Incoming Data - params -------');
-          this.logger.log(JSON.stringify(params));
-
-          if (!name) {
-            if (params.fromFooterMenu) return;
-            await sleep(300);
-            await this.selectGlobalTab(2);
-            return;
-          }
-
-          switch (name) {
-            case 'CardsPage':
-              await this.selectGlobalTab(4);
-              break;
-
-            case 'WalletConnectPage':
-              const hasSession = !!(await this.persistenceProvider.getWalletConnect());
-
-              const {
-                walletId,
-                uri,
-                pasteURL,
-                fromSettings,
-                isDeepLink,
-                request,
-                force,
-                activePage
-              } = params;
-
-              // if coming from intent or scan -> no current session - has uri but wallet not selected
-              if (!walletId && uri && uri.includes('bridge') && !hasSession) {
-                this.events.publish(
-                  'Update/WalletConnectNewSessionRequest',
-                  uri
-                );
-                return;
-              }
-
-              // coming from intent/universalLink
-              if (uri && uri.startsWith('https')) return;
-              // if coming from scan -> pasteURL
-              if (pasteURL || fromSettings) {
-                await this.nav.push(this.pageMap[name], params);
-                return;
-              }
-              if (
-                force ||
-                (isDeepLink && !request && uri && uri.includes('bridge')) ||
-                [
-                  'WalletConnectRequestDetailsPage',
-                  'ConfirmPage',
-                  'ScanPage'
-                ].includes(activePage)
-              ) {
-                await this.selectGlobalTab(0);
-                await this.nav.popToRoot();
-                await this.nav.push(this.pageMap[name], params);
-                return;
-              }
-              // inApp notification
-              if (!isDeepLink) {
-                if (this.walletConnectMainActive) {
-                  return;
-                }
-
-                const notifyOnly =
-                  this.walletConnectMainActive ||
-                  this.walletConnectDetailsActive ||
-                  this.walletConnectConfirmActive;
-
-                const notificationConfig = {
-                  title: 'WalletConnect',
-                  body: `New Pending Request`,
-                  action: notifyOnly ? 'notifyOnly' : 'goToWalletconnect',
-                  closeButtonText: notifyOnly ? 'Dismiss' : 'View',
-                  autoDismiss: notifyOnly,
-                  request
-                };
-                this.pushNotificationsProvider.showInappNotification(
-                  notificationConfig
-                );
-              }
-              break;
-
-            case 'WalletConnectRequestDetailsPage':
-              await this.nav.push(this.pageMap['WalletConnectPage'], params);
-              await sleep(300);
-              if (
-                params.request &&
-                params.request.method === 'eth_sendTransaction'
-              ) {
-                const {
-                  walletId,
-                  peerMeta
-                } = this.walletConnectProvider.getReduceConnectionData();
-                const wallet = this.profileProvider.getWallet(walletId);
-                const isApproveRequest =
-                  params.request &&
-                  params.request.decodedData &&
-                  params.request.decodedData.name === 'approve';
-                // redirect to confirm page with navParams
-                let data = {
-                  amount: params.request.params[0].value,
-                  toAddress: params.request.params[0].to,
-                  coin: wallet.credentials.coin,
-                  walletId: wallet.credentials.walletId,
-                  network: wallet.network,
-                  data: params.request.params[0].data,
-                  gasLimit: params.request.params[0].gas,
-                  requestId: params.request.id,
-                  isApproveRequest,
-                  tokenInfo: null,
-                  peerMeta
-                };
-                this.logger.debug(
-                  'redirect to confirm page with data: ',
-                  JSON.stringify(data)
-                );
-
-                if (isApproveRequest) {
-                  data.tokenInfo = params.request.tokenInfo;
-                }
-                await this.nav.push(this.pageMap['ConfirmPage'], data);
-              } else {
-                await this.nav.push(this.pageMap[name], params);
-              }
-              break;
-
-            default:
-              if (params.deepLink) {
-                // No params -> return
-                if (name == 'DynamicLink') return;
-
-                // From deepLink
-                await sleep(1000);
-                await this.selectGlobalTab(0);
-                await this.nav.push(this.pageMap[name]);
-                return;
-              }
-              await this.closeScannerFromWithinWallet();
-              // wait for wallets status
-              await sleep(300);
-              const globalNav = this.getGlobalTabs().getSelected();
-              await globalNav.push(this.pageMap[name], params);
-
+  private incomingDataRedirEvent(): void {
+    this.events.subscribe('IncomingDataRedir', nextView => {
+      if (!nextView.name) {
+        if (nextView.params && nextView.params.fromFooterMenu) return;
+        setTimeout(() => {
+          this.getGlobalTabs()
+            .goToRoot()
+            .then(_ => {
+              this.getGlobalTabs().select(2);
+            });
+        }, 300);
+      } else if (nextView.name === 'CardsPage') {
+        this.getGlobalTabs()
+          .goToRoot()
+          .then(_ => {
+            this.getGlobalTabs().select(4);
+          });
+      } else if (nextView.name === 'WalletConnectPage') {
+        const currentIndex = this.nav.getActive().index;
+        const currentView = this.nav.getViews();
+        const views = this.nav.getActiveChildNavs()[0].getSelected()._views;
+        if (
+          (views[views.length - 1].name !== 'WalletConnectPage' &&
+            currentView[currentIndex].name !== 'WalletConnectPage') ||
+          nextView.params.uri.indexOf('bridge') !== -1
+        ) {
+          this.getGlobalTabs()
+            .goToRoot()
+            .then(_ => {
+              this.getGlobalTabs().select(5);
+              this.nav.push(this.pageMap[nextView.name], nextView.params);
+            });
+        }
+        return;
+      } else {
+        if (nextView.params && nextView.params.deepLink) {
+          // No params -> return
+          if (nextView.name == 'DynamicLink') return;
+          // From deepLink
+          setTimeout(() => {
+            this.getGlobalTabs()
+              .goToRoot()
+              .then(_ => {
+                this.getGlobalTabs().select(0);
+                this.nav.push(this.pageMap[nextView.name]);
+              });
+          }, 1000);
+          return;
+        }
+        this.closeScannerFromWithinWallet();
+        // wait for wallets status
+        setTimeout(() => {
+          const globalNav = this.getGlobalTabs().getSelected();
+          globalNav
+            .push(this.pageMap[nextView.name], nextView.params)
+            .then(() => {
               if (typeof nextView.callback === 'function') {
                 nextView.callback();
               }
-          }
-        } catch (err) {
-          this.logger.error(err);
-        }
+            });
+        }, 300);
       }
-    );
+    });
   }
 
   private showAdvertisingEvent(): void {
@@ -934,5 +797,9 @@ export class CopayApp {
       this.logger.debug('URL found');
       this.handleOpenUrl(pathData);
     }
+  }
+
+  private getGlobalTabs() {
+    return this.nav.getActiveChildNavs()[0].viewCtrl.instance.tabs;
   }
 }
