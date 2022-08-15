@@ -9,7 +9,7 @@
 		"**/dist/**"
 	],
 	"absolute": true,
-	"pattern": "./src/**/*.html",
+	"pattern": "**/*.html",
 	"min-tokens": 50,
 	"min-lines": 5,
 	"max-lines": 100,
