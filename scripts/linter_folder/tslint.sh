@@ -1,0 +1,14 @@
+############################################# TS LINT
+
+echo -e "\n# TSLINT" >> log/log.md
+exit
+npm run lint:ts > log/tslint.log
+# grep WARNING: log/tslint.log | colrm 1 16 | sort | uniq | less
+# grep WARNING: log/tslint.log | colrm 1 16 | sort | uniq > log/tslint.uniq.log
+cat log/tslint.log | awk -F'(' '{print $1}' | sort | uniq > log/tslint.files.log
+wc -l log/tslint.files.log >> log/log.md
+cat log/tslint.log | awk -F':' '{print $3}' | sort | uniq > log/tslint.issues.log
+wc -l log/tslint.issues.log >> log/log.md
+cat log/tslint.log | awk -F':' '{print $2}' | sort | uniq > log/tslint.rules.log 
+wc -l log/tslint.rules.log >> log/log.md
+
