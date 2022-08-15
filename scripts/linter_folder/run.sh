@@ -1,7 +1,8 @@
 
 
-mkdir log
+mkdir -p log
 # rm -rf log/*
+date > log/log.md
 
 # ls scripts/linter_folder/
 ./scripts/linter_folder/lines.sh

@@ -4,8 +4,8 @@
 # compiled output
 dist/
 tmp/
-log/
-log.*/
+log*/
+src*/
 .angular/
 
 # dependencies

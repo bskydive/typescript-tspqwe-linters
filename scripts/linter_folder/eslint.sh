@@ -8,12 +8,13 @@ echo -e "\n# eslint" > log/eslint.md
 
 # all rules
 cat log/eslint.log | awk -F'(' '{print $1}' | sort | uniq > log/eslint.files.log
-tail -n1 log/eslint.log >> log/eslint.md
+echo -e "`tail -n1 log/eslint.log`" >> log/eslint.md
+echo -e "`tail -n +2 log/eslint.log | wc -l ` log/eslint.log" >> log/eslint.md
 wc -l log/eslint.files.log >> log/eslint.md
 cat log/eslint.log | awk -F':' '{print $3}' | sort | uniq > log/eslint.issues.log
 wc -l log/eslint.issues.log >> log/eslint.md
-cat log/eslint.log | awk -F':' '{print $2}' | sort | uniq > log/eslint.rules.log 
-cat eslint.rules.log > eslint.rules.important.log
+cat log/eslint.log | awk -F':' '{print $2}' | awk -F' ' '{print $2}' | sort | uniq > log/eslint.rules.log 
+cat log/eslint.rules.log > log/eslint.rules.important.log
 wc -l log/eslint.rules.log  >> log/eslint.md
 
 # max-lines
