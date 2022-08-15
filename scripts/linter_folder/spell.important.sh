@@ -1,19 +1,14 @@
-echo -e "\n# SPELLING FIXED" >> log/spell.md
+echo -e "\n# SPELLING FIXED" >> log/spell.important.md
 
 # remove mistakes from log/spell.words.important.log
+cp .cspell-dict-exclude.txt .cspell-dict-exclude_`date +%H.%M.%S_%d.%m.%Y`.txt
 cat log/spell.words.important.log > .cspell-dict-exclude.txt
 
 # fill dictionary
-wc -l log/spell.words.important.log >> log/spell.md
+wc -l log/spell.words.important.log >> log/spell.important.md
 
 # run again
-npm run lint:spell > log/spell-excluded.log
-
-cat log/spell-excluded.log | grep -i word | awk -F'(' '{print$2}' | awk -F')' '{print $1}' | sort | uniq > log/spell-excluded.words.log
-wc -l log/spell-excluded.words.log >> log/spell.md
-
-cat log/spell-excluded.log | grep -i word | awk -F':' '{print$1}' | sort | uniq > log/spell-excluded.uniq-files.log
-wc -l  log/spell-excluded.uniq-files.log >> log/spell.md
+./scripts/linter_folder/spell.sh .important
 
 # external linter, run in project folder
 # export LINTER_PATH="coding/lint"
