@@ -13,6 +13,7 @@ wc -l log/eslint.files.log >> log/eslint.md
 cat log/eslint.log | awk -F':' '{print $3}' | sort | uniq > log/eslint.issues.log
 wc -l log/eslint.issues.log >> log/eslint.md
 cat log/eslint.log | awk -F':' '{print $2}' | sort | uniq > log/eslint.rules.log 
+cat eslint.rules.log > eslint.rules.important.log
 wc -l log/eslint.rules.log  >> log/eslint.md
 
 # max-lines
@@ -48,16 +49,4 @@ wc -l log/eslint.cycle.log >> log/eslint.md
 cat log/eslint.cycle.log | awk -F'(' '{print $1}' | sort | uniq > log/eslint.cycle.files.log
 wc -l log/eslint.cycle.files.log >> log/eslint.md
 
-
-# after manual editing of the eslint.rules.log > eslint.rules.important.log
-echo -e "\n## after manual editing of the eslint.rules.log" >> log/eslint.md
-grep -ef log/eslint.rules.important.log log/eslint.log > log/eslint.important.log
-wc -l  log/eslint.important.log >> log/eslint.md
-cat log/eslint.important.log | awk -F'(' '{print $1}' | sort | uniq > log/eslint.important.files.log
-wc -l log/eslint.important.files.log >> log/eslint.md
-
 cat log/eslint.md >> log/log.md
-
-# external linter, run in project folder
-# export LINTER_PATH="coding/lint"
-# eslint -c ${LINTER_PATH}/.eslintrc.js --resolve-plugins-relative-to ${LINTER_PATH}/ .
