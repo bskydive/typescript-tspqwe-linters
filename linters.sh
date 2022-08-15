@@ -37,4 +37,4 @@ mkdir log
 ./git.sh
 ./build.angular.sh
 ./webpack.sh
-# ./lint.sh
+# ./lint.angular.sh
