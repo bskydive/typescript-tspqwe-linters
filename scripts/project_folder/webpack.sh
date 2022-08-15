@@ -3,10 +3,10 @@
 # manually collect stats and make screenshots
 # disable fullTemplateTypeCheck in tsconfig.json
 
-echo -e "\n# WEBPACK" >> log/log.md
-echo -e "copy stats in dist/stats.json" >> log/log.md
-echo -e " * \![](webpack-stats.jpg)" >> log/log.md
-echo -e " * \![](webpack-stats1.jpg)" >> log/log.md
+echo -e "\n# WEBPACK" >> ../../log/log.md
+echo -e "copy stats in dist/stats.json" >> ../../log/log.md
+echo -e " * \![](webpack-stats.jpg)" >> ../../log/log.md
+echo -e " * \![](webpack-stats1.jpg)" >> ../../log/log.md
 
 # "build": "ng build  --aot --prod",
 # "build:analyze": "ng build --stats-json",
