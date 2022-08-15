@@ -4,3 +4,4 @@ execute in project folder or move `package.json` scripts and install all npm dep
 
 * run `npm i`
 * run `./scripts/project_folder/run.sh`
+
