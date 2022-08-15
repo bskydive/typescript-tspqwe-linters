@@ -2,7 +2,7 @@
 
 echo -e "\n# CSS" > log/css.md
 
-# !choose your file type or statistics will be doublesized
+# !choose your file type
 npm run lint:scss > log/css.log
 # npm run lint:less >> log/css.log
 
