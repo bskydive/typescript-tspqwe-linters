@@ -24,7 +24,7 @@ The full issues list is in the `log` folder: cspell.log, eslint.log, tslint.log
 
 ### What to do next?
 
-1. collect issues with `npm run lint:* > ../../log/*.log` commands
+1. collect issues with `npm run lint:* > log/*.log` commands
 1. filter log files with `linters.sh` example commands
 1. repeat collecting after `git checkout` to some one year ago commit
 1. introduce team with issues, collect feedback, discuss the typical issues and issues resolving methods

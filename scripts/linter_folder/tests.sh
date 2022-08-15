@@ -4,20 +4,20 @@
 #"test-coverage": "ng test --browsers=Chrome  --codeCoverage=true --watch=false",
 #"test-headless": "ng test --browsers=ChromeHeadlessNoSandbox --codeCoverage=true --progress=true",
 
-echo -e "\n# UNIT TEST COVERAGE" > ../../log/test.md
-find src/ -type f -name '*spec.ts' -exec wc -l {} \; | awk '{ total += $1 } END {print total " spec.ts"}' >> ../../log/test.md
-#find src/ -type f \( -name '*component*.ts' -o -name '*service*.ts' -o -name '*directive*.ts' \) -exec wc -l {} \; | awk '{ total += $1 } END {print total " component|service|directive"}' >> ../../log/test.md
-echo -e "`find src/ -type f -name '*spec.ts' | wc -l` *spec.ts" >> ../../log/test.md
+echo -e "\n# UNIT TEST COVERAGE" > log/test.md
+find src/ -type f -name '*spec.ts' -exec wc -l {} \; | awk '{ total += $1 } END {print total " spec.ts"}' >> log/test.md
+#find src/ -type f \( -name '*component*.ts' -o -name '*service*.ts' -o -name '*directive*.ts' \) -exec wc -l {} \; | awk '{ total += $1 } END {print total " component|service|directive"}' >> log/test.md
+echo -e "`find src/ -type f -name '*spec.ts' | wc -l` *spec.ts" >> log/test.md
 
 grep --include=\*spec.ts -RiE 'xit\(|xdescribe\(' src/ >> test.disabled.log
-cat test.disabled.log | wc -l >> ../../log/test.disabled.md
+cat test.disabled.log | wc -l >> log/test.disabled.md
 
-cat log/test.md >> ../../log/log.md
+cat log/test.md >> log/log.md
 
-# npm run test > ../../log/test.log
-# npm run test-headless > ../../log/test.log
+# npm run test > log/test.log
+# npm run test-headless > log/test.log
 
-# npm run e2e > ../../log/e2e.log > ../../log/test.log
+# npm run e2e > log/e2e.log > log/test.log
 
 # npm run test-coverage
 # see ./coverage/index.html
