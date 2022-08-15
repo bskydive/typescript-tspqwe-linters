@@ -6,20 +6,20 @@ less scripts/linter_folder/README.md
 
 npm i
 mkdir log
-rm -rf log/*
+# rm -rf log/*
 
 cd scripts/linter_folder/
 
 # ls scripts/linter_folder/
-./angular.sh
-./comments.sh
-./css.sh
-./duplicates.sh
-./eslint.sh
 ./lines.sh
-./spell.sh
+./comments.sh
+./eslint.sh
+./css.sh
 ./tests.sh
-./tslint.sh
+./angular.sh
+./duplicates.sh
+./spell.sh
+# ./tslint.sh
 
 exit
 
@@ -30,11 +30,11 @@ cd $project_folder
 
 npm i
 mkdir log
-rm -rf log/*
+# rm -rf log/*
 
 # ls scripts/project_folder/
-./build.angular.sh
-./git.sh
-./lint.sh
 ./npm.sh
+./git.sh
+./build.angular.sh
 ./webpack.sh
+# ./lint.sh

@@ -1,5 +1,6 @@
 ############################################## WEBPACK
 
+# manually collect stats and make screenshots
 # disable fullTemplateTypeCheck in tsconfig.json
 
 echo -e "\n# WEBPACK" >> log/log.md
