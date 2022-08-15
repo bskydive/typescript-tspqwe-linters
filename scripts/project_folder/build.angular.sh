@@ -2,6 +2,9 @@
 
 # enable fullTemplateTypeCheck or strictTemplates in tsconfig.json
 # logs output don't work because all errors in stderr, copied manually
+
+echo "\n# BUILD ANGULAR" > log/build.angular.md
+
 # clear console
 clear
 npm run build 2>&1 > log/build.angular.log
@@ -15,5 +18,7 @@ wc -l log/build.angular.errors.files.log >> log/build.angular.md
 grep -iE 'error TS' log/build.angular.log | awk -F' TS' '{print$2}' | awk -F':' '{print$1}' | sort | uniq > log/build.angular.ts-numbers.ts
 wc -l log/build.angular.ts-numbers.ts >> log/build.angular.md
 #less log/build.angular.ts-numbers.ts
+
+cat log/build.angular.md >> log/log.md
 
 
