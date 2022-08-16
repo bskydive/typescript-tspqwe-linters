@@ -14,7 +14,7 @@ echo -e "`grep --include=\*.html -Rl '' src/ | wc -l` html files\n" >> log/size.
 
 #find src/ -type f \( -name '*.less' -o -name '*.scss' -o -name '*.css' \) -exec wc -l {} \; | awk '{ total += $1 } END {print total " less|scss|css"}' >> log/size.md
 echo -e "`grep --include=\*\.{less,scss,css} -R '' src/ | wc -l` all styles" >> log/size.md
-echo -e "`grep --include=\*\.{less,scss,css} -Rl '' src/ | wc -l` all styles" >> log/size.md
+echo -e "`grep --include=\*\.{less,scss,css} -Rl '' src/ | wc -l` all styles\n" >> log/size.md
 
 
 #find src/ -type f -name '*.less' -exec wc -l {} \; | awk '{ total += $1 } END {print total " less"}' >> log/size.md

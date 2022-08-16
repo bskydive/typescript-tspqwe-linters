@@ -1,31 +1,31 @@
 ############################################# CSS
 
-echo -e "\n# CSS" > log/css.md
+echo -e "\n# CSS" > log/styles.md
 
 # !choose your file type
-npm run lint:scss > log/css.log
-# npm run lint:less >> log/css.log
+npm run lint:scss > log/styles.log
+# npm run lint:less >> log/styles.log
 
-wc -l log/css.log >> log/css.md
-cat log/css.log | grep '(' | awk -F'(' '{print $2}' |grep -E ')$'|tr -d ')' | sort | uniq > log/css.rules.uniq.log
-wc -l log/css.rules.uniq.log >> log/css.md
-cat log/css.log | awk -F' - ' '{print $2}' | sort | uniq |less > log/css.short.uniq.log
-wc -l log/css.short.uniq.log >> log/css.md
-cat log/css.log | grep ':' | awk -F':' '{print $1}' |sort|uniq |less > log/css.files.log
-wc -l log/css.files.log >> log/css.md
+wc -l log/styles.log >> log/styles.md
+cat log/styles.log | grep '(' | awk -F'(' '{print $2}' |grep -E ')$'|tr -d ')' | sort | uniq > log/styles.rules.uniq.log
+wc -l log/styles.rules.uniq.log >> log/styles.md
+cat log/styles.log | awk -F' - ' '{print $2}' | sort | uniq |less > log/styles.short.uniq.log
+wc -l log/styles.short.uniq.log >> log/styles.md
+cat log/styles.log | grep ':' | awk -F':' '{print $1}' |sort|uniq |less > log/styles.files.log
+wc -l log/styles.files.log >> log/styles.md
 
-cat log/css.md >> log/log.md
+cat log/styles.md >> log/log.md
 
 # win
-# grep ' ✖ ' log/css.log | colrm 1 9 | sort | uniq | less 
-# grep ' ✖ ' log/css.log | colrm 1 9 | sort | uniq > log/css.uniq.log
+# grep ' ✖ ' log/styles.log | colrm 1 9 | sort | uniq | less 
+# grep ' ✖ ' log/styles.log | colrm 1 9 | sort | uniq > log/styles.uniq.log
 # linux
-#grep ' × ' log/css.log | colrm 1 10 | tr -s ' ' | sort | uniq | less
-#grep ' × ' log/css.log | colrm 1 10 | tr -s ' ' | sort | uniq  > log/css.uniq.log
-#grep ' ⚠ ' log/css.log | colrm 1 10 | tr -s ' ' | sort | uniq | less
-#grep -i 'src' log/css.log | sort | uniq  > log/css.files.log
-#grep -i ' ⚠ ' log/css.log | colrm 1 10 | tr -s ' ' | sort | uniq  > log/css.uniq.log
-#grep -iE 'Expected|Expected|invalid|:' log/css.log | colrm 1 10 | tr -s ' ' | sort | uniq  > log/css.uniq.log
+#grep ' × ' log/styles.log | colrm 1 10 | tr -s ' ' | sort | uniq | less
+#grep ' × ' log/styles.log | colrm 1 10 | tr -s ' ' | sort | uniq  > log/styles.uniq.log
+#grep ' ⚠ ' log/styles.log | colrm 1 10 | tr -s ' ' | sort | uniq | less
+#grep -i 'src' log/styles.log | sort | uniq  > log/styles.files.log
+#grep -i ' ⚠ ' log/styles.log | colrm 1 10 | tr -s ' ' | sort | uniq  > log/styles.uniq.log
+#grep -iE 'Expected|Expected|invalid|:' log/styles.log | colrm 1 10 | tr -s ' ' | sort | uniq  > log/styles.uniq.log
 
 # external linter, run in project folder
 # export LINTER_PATH="coding/lint"
