@@ -6,7 +6,7 @@ echo -e "\n# COMMENTS" > log/comments.md
 grep --include=\*.{less,scss,css,ts,html} -RiEn 'TODO|FIX' src/ > log/comments.todo.log
 wc -l log/comments.todo.log >> log/comments.md
 
-grep --include=\*.{less,scss,css,ts,html} -RiEn 'TODO|FIX' src/ > log/comments.todo.files.log
+grep --include=\*.{less,scss,css,ts,html} -RiEl 'TODO|FIX' src/ > log/comments.todo.files.log
 wc -l log/comments.todo.files.log >> log/comments.md
 echo >> log/comments.md
 

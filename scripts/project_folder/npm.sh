@@ -11,4 +11,4 @@ grep -iE 'Path|Low|Moderate|High|Critical' log/audit.log > log/audit.parsed.log
 #wc -l log/audit.parsed.log >> log/audit.md
 tail -n3 log/audit.log >> log/npm.md
 
-cat log/npm.md >> log/log.md
+cat log/npm.md >> log/log.project.md

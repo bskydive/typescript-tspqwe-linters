@@ -19,6 +19,6 @@ grep -iE 'error TS' log/build.angular.log | awk -F' TS' '{print$2}' | awk -F':' 
 wc -l log/build.angular.ts-numbers.ts >> log/build.angular.md
 #less log/build.angular.ts-numbers.ts
 
-cat log/build.angular.md >> log/log.md
+cat log/build.angular.md >> log/log.project.md
 
 

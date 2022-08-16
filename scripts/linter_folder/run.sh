@@ -8,7 +8,7 @@ date > log/log.md
 ./scripts/linter_folder/size.sh
 ./scripts/linter_folder/comments.sh
 ./scripts/linter_folder/eslint.sh
-./scripts/linter_folder/css.sh
+./scripts/linter_folder/styles.sh
 ./scripts/linter_folder/tests.sh
 ./scripts/linter_folder/angular.sh
 ./scripts/linter_folder/duplicates.sh

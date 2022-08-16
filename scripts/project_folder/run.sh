@@ -3,7 +3,7 @@ cd $project_folder
 
 mkdir -p log
 # rm -rf log/*
-date > log/log.md
+date > log/log/log.project.md
 
 # ls scripts/project_folder/
 ./scripts/project_folder/npm.sh

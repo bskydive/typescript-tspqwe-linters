@@ -25,4 +25,4 @@ cat >> log/git.md
 # shift+ins
 # ctrl+c
 
-cat log/git.md >> log/log.md
+cat log/git.md >> log/log.project.md

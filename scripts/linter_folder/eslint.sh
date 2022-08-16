@@ -56,3 +56,7 @@ cat log/eslint.cycle.log | awk -F'(' '{print $1}' | sort | uniq > log/eslint.cyc
 wc -l log/eslint.cycle.files.log >> log/eslint.md
 
 cat log/eslint.md >> log/log.md
+
+# external linter, run in project folder
+# export LINTER_PATH="coding/lint"
+# eslint -c ${LINTER_PATH}/.eslintrc.js --resolve-plugins-relative-to ${LINTER_PATH}/ .
