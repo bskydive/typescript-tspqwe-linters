@@ -5,7 +5,7 @@ mkdir -p log
 date > log/log.md
 
 # ls scripts/linter_folder/
-./scripts/linter_folder/lines.sh
+./scripts/linter_folder/size.sh
 ./scripts/linter_folder/comments.sh
 ./scripts/linter_folder/eslint.sh
 ./scripts/linter_folder/css.sh
