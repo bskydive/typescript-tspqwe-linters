@@ -21,6 +21,8 @@ getLinesFilesWriteStats() {
 	grep --include=${fileNames} -RiEl ${pattern} ${path} > ${logFilePrefix}".files.log"
 	wc -l ${logFilePrefix}".files.log" >> ${summaryFile}
 
+	echo >> ${summaryFile}
+
 	linesCount=`cat  ${logFilePrefix}".files.log" | wc -l`
 
 	return ${linesCount}
