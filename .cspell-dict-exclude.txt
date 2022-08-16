@@ -1,7 +1,4 @@
-jscpd
-vuex
 Aaid
-AAVE
 Ábano
 adata
 Adddress
@@ -14,7 +11,6 @@ Advertisments
 alsohistory
 analize
 apexcharts
-Appboy
 Aqow
 Asmym
 Availables
@@ -54,7 +50,6 @@ compledted
 confg
 Configurartion
 conomy
-Conteiner
 Crededentials
 crossdissolve
 ctxp
@@ -65,7 +60,6 @@ dcnc
 DDTHH
 debitcard
 debouncer
-Defi
 Deutsch
 Devel
 DFNF
@@ -79,14 +73,12 @@ dogecoin
 Dogecoin
 downlad
 Dvqa
-DYDX
 Efqqgwx
 ekkqrnjfp
 embryon
 etherum
 ETHMULTISIG
 etype
-EURT
 exchangecrypto
 faio
 fakepath
@@ -108,7 +100,6 @@ formating
 FQEXY
 FQLH
 frfp
-fullwide
 funtion
 GBWZH
 Gefi
@@ -123,7 +114,6 @@ gusd
 GUSD
 happending
 hashbuf
-healthcheck
 hidespinner
 huwyjczrvkh
 Hwgr
@@ -131,7 +121,6 @@ idfa
 ignc
 Inapp
 initalize
-Intantiation
 isfront
 istorage
 ISTORAGE
@@ -158,7 +147,6 @@ Lbjs
 Lbtc
 legacycard
 Lenght
-Leves
 linkified
 linkify
 litecoin
@@ -180,8 +168,6 @@ Mdes
 MDES
 mercadolibre
 merch
-merkle
-Merkle
 Mewh
 minimim
 monintor
@@ -205,9 +191,7 @@ NWRAJQs
 Nwvm
 oleada
 onbording
-oneinch
 onwriteend
-ouputs
 papaparse
 pawdj
 Paxos
@@ -216,7 +200,6 @@ Payin
 paypro
 Paypro
 Pcsb
-pendings
 Persitence
 pevm
 Pgfc
@@ -231,7 +214,6 @@ Privkey
 productsupdates
 Proviers
 pzpaleegjrc
-QFRML
 qjgkym
 qpcc
 qqfs
@@ -253,7 +235,6 @@ retreive
 rigide
 Roboto
 Rscz
-RZEAC
 sadface
 SAKDC
 satollo
@@ -261,7 +242,6 @@ Satoshi
 satoshis
 Satoshis
 Sccn
-schnorr
 searcheable
 segwit
 Segwit
@@ -269,18 +249,12 @@ selectedtransaction
 sepa
 SEPA
 setted
-shib
-SHIB
-SHIBA
 siccome
-sigtype
 sjcl
 SJCL
 Skdc
 sochain
 sombra
-Sring
-sslerror
 ssnp
 SSSZ
 SVKXNF
@@ -327,7 +301,6 @@ UNFINISHEDONBOARDING
 unparse
 Unsubscription
 unsynced
-USDP
 utlsd
 utxo
 Utxo
@@ -339,18 +312,13 @@ uxto
 VALD
 vbmwm
 Veqq
-Verifiying
-Verifiyng
 VIEWMODEL
 Volgon
-vout
 Vouwjxe
 vvnksfw
 Vxpm
 walletid
-WDOGE
 WKSH
-Wovh
 WPKH
 wvzd
 WXYZ

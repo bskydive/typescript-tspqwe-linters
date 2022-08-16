@@ -37,14 +37,14 @@
 
 ## How to use with existed eslint in project
 
- * If CLI runs from your project folder
+1. If CLI runs from your project folder
 	* `cd your_project_path`
 	* workaround to fix duplicate linter versions and condigs: `rm -rf node_modules`
 	* `export LINTER_PATH="coding/lint"`
 	* `eslint -c ${LINTER_PATH}/.eslintrc.js --resolve-plugins-relative-to ${LINTER_PATH}/ .`
 	* `stylelint --config ${LINTER_PATH}/.stylelintrc.json --syntax css-in-js ./**/*.tsx | grep ' ⚠ ' | colrm 1 10 | tr -s ' ' | sort | uniq | less`
 	* `cspell -uc ${LINTER_PATH}/.cspell.json ./*.* | awk -F 'Unknown word ' '{print $2}' | tr -d '()' > .cspell-dict-exclude.txt`
- * If CLI runs from linters folder
+1. If CLI runs from linters folder
 	* `cd typescript-tspqwe-linters`
 	* `cp your_project_path/src ./src`
 	* `cp your_project_path/angular.json ./angular.json`
@@ -54,7 +54,7 @@
 		* for ng v9: `npm i -D @angular-eslint/builder@1 @angular-eslint/eslint-plugin@1 @angular-eslint/eslint-plugin-template@1 @angular-eslint/schematics@1 @angular-eslint/template-parser@1`
 	* add and commit files to git
 	* Run commands from the `linters.sh` one by one
- * Disabling linter rules in IDE and CLI:
+3. Disabling linter rules in IDE and CLI:
  	* `// prettier-ignore` before line/class/method
 	* eslint
 	```ts
@@ -66,7 +66,7 @@
 	```ts
 	/* tslint:disable */
 	```
- * Enable external linters in IDE:
+4. Enable external linters in IDE:
 	* remove local eslint
 
 		```bash
@@ -87,7 +87,7 @@
 	```
 	* use project related IDE config `./.vscode/*`
 	* enable using global eslint in IDE
- * Install eslint in your project
+5. Install eslint in your project
 
 	```bash
 		npm i webpack eslint @angular-eslint/builder @angular-eslint/eslint-plugin @angular-eslint/eslint-plugin-template @angular-eslint/schematics @angular-eslint/template-parser eslint-config-prettier eslint-config-standard eslint-import-resolver-typescript eslint-plugin-compat eslint-plugin-flowtype eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-node eslint-plugin-prettier eslint-plugin-promise eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-rxjs @typescript-eslint/eslint-plugin @typescript-eslint/parser 
