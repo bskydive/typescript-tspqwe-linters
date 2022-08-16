@@ -5,12 +5,20 @@
 #"test-headless": "ng test --browsers=ChromeHeadlessNoSandbox --codeCoverage=true --progress=true",
 
 echo -e "\n# UNIT TEST COVERAGE" > log/test.md
-find src/ -type f -name '*spec.ts' -exec wc -l {} \; | awk '{ total += $1 } END {print total " spec.ts"}' >> log/test.md
-#find src/ -type f \( -name '*component*.ts' -o -name '*service*.ts' -o -name '*directive*.ts' \) -exec wc -l {} \; | awk '{ total += $1 } END {print total " component|service|directive"}' >> log/test.md
-echo -e "`find src/ -type f -name '*spec.ts' | wc -l` *spec.ts" >> log/test.md
 
-grep --include=\*spec.ts -RiE 'xit\(|xdescribe\(' src/ >> test.disabled.log
-cat test.disabled.log | wc -l >> log/test.disabled.md
+#find src/ -type f -name '*spec.ts' -exec wc -l {} \; | awk '{ total += $1 } END {print total " spec.ts"}' >> log/test.md
+#echo -e "`find src/ -type f -name '*spec.ts' | wc -l` *spec.ts" >> log/test.md
+echo -e "`grep --include=\*spec.ts -R '' src/ | wc -l` *spec.ts lines" >> log/test.md
+echo -e "`grep --include=\*spec.ts -Rl '' src/ | wc -l` *spec.ts files" >> log/test.md
+
+grep --include=\*spec.ts -RiEn 'xit\(|xdescribe\(' src/ > log/test.disabled.log
+wc -l log/test.disabled.log >> log/test.md
+
+grep --include=\*spec.ts -RiEn 'xdescribe\(' src/ > log/test.group.disabled.log
+wc -l log/test.group.disabled.log >> log/test.md
+
+grep --include=\*spec.ts -RiEn 'xit\(' src/ > log/test.assert.disabled.log
+wc -l log/test.assert.disabled.log >> log/test.md
 
 cat log/test.md >> log/log.md
 
