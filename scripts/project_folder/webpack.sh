@@ -10,10 +10,8 @@ echo -e " * \![](webpack-stats1.jpg)" >> log/webpack.md
 
 cat log/webpack.md >> log/log.project.md
 
-. npm_scripts_add.sh
-
 # npm i webpack-bundle-analyzer
-# npm run build:analyze:view
+npm run build:analyze:view
 # make the screenshots
 
 # NX

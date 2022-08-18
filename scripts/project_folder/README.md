@@ -1,11 +1,17 @@
 # scripts to run in project folder
 
-execute in project folder or move `package.json` scripts and install all npm dependencies in linter folder.
+To avoid npm dependencies installation in linter folder. 
+
+Before run 
+ * enable fullTemplateTypeCheck or strictTemplates in tsconfig.json
+ * check that `npm run lint:ng` command works
+ * uncomment the NX section in scripts if you use it
 
 * run 
 	```bash
-		cp typescript-tspqwe-linters/scripts your_project_folder/
-		cd your_project_folder
-		npm i
+		cd typescript-tspqwe-linter_folder
+		./scripts/project_folder/prepare.sh "path_to_project"
+		npm i # if needed
+		npm i webpack-bundle-analyzer # if needed
 		./scripts/project_folder/run.sh
 	```
