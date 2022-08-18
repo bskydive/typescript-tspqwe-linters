@@ -89,12 +89,12 @@
 
 ## Зависимости
 
- * легче запустить из папки с проектом
  * размер библиотек
-	* ![](./doc/webpack-stats.jpg)
-	* ![](./doc/webpack-stats1.jpg)
+	* ![](log/webpack-stats.jpg)
+	* [stats.json](log/stats.json)
+	* [report.html](log/report.html)
  * Граф зависимостей
-	* ![](./doc/dependencies-graph.jpg)
+	* ![](log/dependencies-graph.jpg)
 	* Циклические зависимости
 		* 00% файлов - 00 ошибок в 00 из 00 `*.ts` файлов, прирост +00%/00 файлов
 		* [eslint.cycle](./log/eslint.cycle.log)

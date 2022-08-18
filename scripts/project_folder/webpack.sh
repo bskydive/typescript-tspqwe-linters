@@ -4,9 +4,7 @@
 # disable fullTemplateTypeCheck in tsconfig.json
 
 echo -e "\n# WEBPACK" >> log/webpack.md
-echo -e "copy stats in dist/stats.json" >> log/webpack.md
 echo -e " * \![](webpack-stats.jpg)" >> log/webpack.md
-echo -e " * \![](webpack-stats1.jpg)" >> log/webpack.md
 
 cat log/webpack.md >> log/log.project.md
 

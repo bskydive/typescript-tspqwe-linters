@@ -16,3 +16,4 @@ Before run
 		npm i webpack-bundle-analyzer # if needed
 		./scripts/project_folder/run.sh
 	```
+ * manually refine and move libs from log/npm.dependencies.log to report/README.md
