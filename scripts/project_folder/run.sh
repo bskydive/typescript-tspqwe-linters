@@ -1,13 +1,16 @@
-cp scripts/project_folder/*.sh $project_folder/
-cd $project_folder
+# usage
+# cp typescript-tspqwe-linters/scripts your_project_folder/
+# cd your_project_folder
+# npm i
+# ls scripts/project_folder/
+# ./scripts/project_folder/run.sh
 
 mkdir -p log
-# rm -rf log/*
 date > log/log/log.project.md
 
-# ls scripts/project_folder/
+./scripts/project_folder/npm_scripts_add.sh
 ./scripts/project_folder/npm.sh
 ./scripts/project_folder/git.sh
-./scripts/project_folder/build.angular.sh
+# ./scripts/project_folder/build.angular.sh # before run enable fullTemplateTypeCheck or strictTemplates in tsconfig.json
 ./scripts/project_folder/webpack.sh
 # ./lint.angular.sh

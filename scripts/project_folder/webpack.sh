@@ -10,16 +10,14 @@ echo -e " * \![](webpack-stats1.jpg)" >> log/webpack.md
 
 cat log/webpack.md >> log/log.project.md
 
-# "build": "ng build  --aot --prod",
-# "build:analyze": "ng build --stats-json",
-# "webpack:build":"webpack --profile --json > dist/stats.json",
-# "webpack:analyze:view": "webpack-bundle-analyzer dist/stats.json",
+. npm_scripts_add.sh
 
 # npm i webpack-bundle-analyzer
 # npm run build:analyze:view
 # make the screenshots
 
-# "build-stats": "nx build name --configuration production --stats-json",
+# NX
+
 # cp ./dist/app/name ./dist
 # npm run build:analyze:view
 

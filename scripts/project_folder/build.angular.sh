@@ -7,7 +7,8 @@ echo "\n# BUILD ANGULAR" > log/build.angular.md
 
 # clear console
 clear
-npm run build 2>&1 > log/build.angular.log
+#npm run build 2>&1>log/build.angular.log
+npm run build 2>log/build.angular.log
 # save console output to log/build.angular.log
 grep -iE 'error TS' log/build.angular.log > log/build.angular.errors.log
 wc -l log/build.angular.errors.log >> log/build.angular.md
