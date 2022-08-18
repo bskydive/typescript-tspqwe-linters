@@ -10,7 +10,7 @@ Before run
 * run 
 	```bash
 		cd typescript-tspqwe-linter_folder
-		./scripts/project_folder/prepare.sh "path_to_project"
+		./scripts/project_folder/prepare.sh "absolute_path_to_project"
 		npm i # if needed
 		npm i webpack-bundle-analyzer # if needed
 		./scripts/project_folder/run.sh
