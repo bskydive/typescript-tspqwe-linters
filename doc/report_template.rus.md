@@ -123,6 +123,8 @@
 ### уязвимости пакетов
 
  * 00 уязвимостей, прирост +00%
+ * [audit.parsed.log](log/audit.parsed.log)
+ * [npm.dependencies.log](log/npm.dependencies.log)
  * [npm.sh](https://github.com/bskydive/typescript-tspqwe-linters/blob/master/scripts/project_folder/npm.sh)
  * ```bash
 	grep -iE 'Path|Low|Moderate|High|Critical' log/audit.log | less
