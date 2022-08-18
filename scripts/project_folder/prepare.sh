@@ -7,7 +7,7 @@ project_folder=$1
 mkdir -p log
 [[ -z $1 ]] && echo "invalid path to project in cli parameters" | tee -a log/log.project.md && exit
 
-cp ./scripts \"${project_folder}\" || echo "run script from the typescript-tspqwe-linters folder" tee -a log/log.project.md && exit
+cp -r ./scripts \"${project_folder}\" || echo "run script from the typescript-tspqwe-linters folder" tee -a log/log.project.md && exit
 cd ${project_folder}
 # npm i
 
