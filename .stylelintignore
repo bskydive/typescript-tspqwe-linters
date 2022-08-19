@@ -1,7 +1,0 @@
-**/*.min.css
-**/dist/
-**/doc/
-**/log/
-**/vendor/
-/_gh_pages/
-**/node_modules/
